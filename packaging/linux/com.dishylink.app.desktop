@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Dishylink Linux
+Comment=Monitor and manage your Starlink connection
+GenericName=Starlink monitor
+Exec=dishy-gtk
+Icon=com.dishylink.app
+Terminal=false
+Categories=Network;
+Keywords=Starlink;network;internet;telemetry;
+StartupNotify=true
+StartupWMClass=com.dishylink.app

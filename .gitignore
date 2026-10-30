@@ -1,0 +1,15 @@
+# Rust workspace build output.
+/rust/target/
+
+# Flatpak build state.
+.flatpak-builder/
+*.flatpak
+packaging/gnome-shell-extension/*.shell-extension.zip
+
+# Local credentials and machine-specific state (never commit).
+.starlink-cookie
+.router-address
+.claude/
+CLAUDE.local.md
+*.local.md
+HANDOFF.md

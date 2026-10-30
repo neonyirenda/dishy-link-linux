@@ -1,0 +1,170 @@
+{
+  "mac": "aa:bb:cc:dd:ee:ff",
+  "steps": [
+    {
+      "atMs": 0,
+      "counters": {
+        "rxBytes": 1000,
+        "txBytes": 500
+      },
+      "fallback": {
+        "downMbps": 1,
+        "upMbps": 2
+      },
+      "result": {
+        "downMbps": 1,
+        "upMbps": 2
+      }
+    },
+    {
+      "atMs": 1000,
+      "counters": {
+        "rxBytes": 1000,
+        "txBytes": 500
+      },
+      "fallback": {
+        "downMbps": 1,
+        "upMbps": 2
+      },
+      "result": {
+        "downMbps": 1,
+        "upMbps": 2
+      }
+    },
+    {
+      "atMs": 2000,
+      "counters": {
+        "rxBytes": 2000,
+        "txBytes": 1000
+      },
+      "fallback": {
+        "downMbps": 1,
+        "upMbps": 2
+      },
+      "result": {
+        "downMbps": 0.007960199004975126,
+        "upMbps": 0.003980099502487563
+      }
+    },
+    {
+      "atMs": 3000,
+      "counters": {
+        "rxBytes": 2000,
+        "txBytes": 1000
+      },
+      "fallback": {
+        "downMbps": 1,
+        "upMbps": 2
+      },
+      "result": {
+        "downMbps": 0.007960199004975126,
+        "upMbps": 0.003980099502487563
+      }
+    },
+    {
+      "atMs": 5000,
+      "counters": {
+        "rxBytes": 2000,
+        "txBytes": 1000
+      },
+      "fallback": {
+        "downMbps": 1,
+        "upMbps": 2
+      },
+      "result": {
+        "downMbps": 0,
+        "upMbps": 0
+      }
+    },
+    {
+      "atMs": 6000,
+      "counters": {
+        "rxBytes": 0,
+        "txBytes": 0
+      },
+      "fallback": {
+        "downMbps": 1,
+        "upMbps": 2
+      },
+      "result": {
+        "downMbps": 1,
+        "upMbps": 2
+      }
+    },
+    {
+      "atMs": 25000,
+      "counters": {
+        "rxBytes": 0,
+        "txBytes": 0
+      },
+      "fallback": {
+        "downMbps": 1,
+        "upMbps": 2
+      },
+      "result": {
+        "downMbps": 1,
+        "upMbps": 2
+      }
+    },
+    {
+      "atMs": 26000,
+      "counters": {
+        "rxBytes": 100,
+        "txBytes": 100
+      },
+      "fallback": {
+        "downMbps": 1,
+        "upMbps": 2
+      },
+      "result": {
+        "downMbps": 0.0007960199004975125,
+        "upMbps": 0.0007960199004975125
+      }
+    },
+    {
+      "atMs": 27000,
+      "counters": {
+        "rxBytes": 100,
+        "txBytes": 100
+      },
+      "fallback": {
+        "downMbps": 1,
+        "upMbps": 2
+      },
+      "result": {
+        "downMbps": 0.0007960199004975125,
+        "upMbps": 0.0007960199004975125
+      }
+    },
+    {
+      "atMs": 30000,
+      "counters": {
+        "rxBytes": 200,
+        "txBytes": 200
+      },
+      "fallback": {
+        "downMbps": 1,
+        "upMbps": 2
+      },
+      "result": {
+        "downMbps": 0.00026533996683250415,
+        "upMbps": 0.00026533996683250415
+      }
+    },
+    {
+      "atMs": 30100,
+      "counters": {
+        "rxBytes": 300,
+        "txBytes": 300
+      },
+      "fallback": {
+        "downMbps": 1,
+        "upMbps": 2
+      },
+      "result": {
+        "downMbps": 0.0007960199004975125,
+        "upMbps": 0.0007960199004975125
+      }
+    }
+  ]
+}

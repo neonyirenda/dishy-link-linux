@@ -1,0 +1,1 @@
+{"month":1764547200,"samples":20,"dish":{"count":19,"sumMs":380,"sumSqMs":7600,"minMs":15,"maxMs":30,"bins":[0,0,1,18,0,0,0,0,0,0,0,0,0,0,0,0]},"router":{"count":0,"sumMs":0,"sumSqMs":0,"minMs":null,"maxMs":null,"bins":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},"dropSum":1,"dropCount":20}

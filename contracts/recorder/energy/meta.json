@@ -1,0 +1,10 @@
+{
+  "nowMs": 1781524800000,
+  "append": {
+    "minute": 1781517660,
+    "wattSeconds": 60,
+    "samples": 1,
+    "downlinkBits": 1000,
+    "uplinkBits": 100
+  }
+}

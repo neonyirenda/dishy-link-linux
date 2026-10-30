@@ -1,0 +1,44 @@
+[workspace]
+resolver = "3"
+members = [
+  "crates/dishy-cli",
+  "crates/dishy-cloud",
+  "crates/dishy-core",
+  "crates/dishy-gtk",
+  "crates/dishy-proto",
+  "crates/dishy-sky",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.92"
+license = "MIT"
+authors = ["Dishylink contributors"]
+repository = "https://github.com/neonyirenda/dishy-link-linux"
+
+[workspace.dependencies]
+anyhow = "1.0"
+base64 = "0.22"
+bytes = "1.10"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+libc = "0.2"
+prost = "0.14"
+prost-reflect = { version = "0.16", features = ["serde"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tempfile = "3"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Internal crates.
+dishy-core = { path = "crates/dishy-core" }
+dishy-proto = { path = "crates/dishy-proto" }
+dishy-sky = { path = "crates/dishy-sky" }
+
+[profile.release]
+lto = "thin"
+strip = "symbols"

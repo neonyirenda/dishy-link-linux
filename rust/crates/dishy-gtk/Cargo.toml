@@ -1,0 +1,29 @@
+[package]
+name = "dishy-gtk"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+# GTK4/libadwaita arrive with the UI shell (spec 0040, milestone M4).
+[dependencies]
+cairo-rs = { version = "0.22", features = ["png"] }
+chrono.workspace = true
+dishy-cloud = { path = "../dishy-cloud" }
+dishy-core.workspace = true
+dishy-sky.workspace = true
+glow = "0.18"
+gtk = { package = "gtk4", version = "0.11.5", features = ["v4_18"] }
+pango = { version = "0.22", features = ["v1_56"] }
+ksni = { version = "0.3.7", features = ["blocking"] }
+libadwaita = { version = "0.9.2", features = ["v1_4"] }
+libc.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tokio = { workspace = true, features = ["rt", "sync"] }
+tracing.workspace = true
+tracing-subscriber.workspace = true
+webkit6 = { version = "0.6.1", features = ["gtk_v4_18", "v2_42"] }
+
+[dev-dependencies]
+tempfile.workspace = true

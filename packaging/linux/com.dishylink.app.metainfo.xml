@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.dishylink.app</id>
+  <name>Dishylink Linux</name>
+  <summary>Monitor your Starlink connection</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <developer id="com.dishylink">
+    <name>Dishylink contributors</name>
+  </developer>
+  <description>
+    <p>Dishylink Linux is a native desktop app for monitoring Starlink performance and health.</p>
+    <p>It reads the dish and router over your local network, records history on this machine, and can optionally connect to a Starlink account for billing information and supported router controls.</p>
+  </description>
+  <launchable type="desktop-id">com.dishylink.app.desktop</launchable>
+  <url type="homepage">https://github.com/neonyirenda/dishy-link-linux</url>
+  <url type="bugtracker">https://github.com/neonyirenda/dishy-link-linux/issues</url>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="0.1.0" date="2026-10-30">
+      <description>
+        <p>First native GTK release: dashboard, sky view with the live constellation, data usage, network rules, speed test, alignment, alerts, and Starlink account controls.</p>
+      </description>
+    </release>
+  </releases>
+  <provides>
+    <binary>dishy-gtk</binary>
+  </provides>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+</component>

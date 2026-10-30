@@ -1,0 +1,2 @@
+{"startMs":1781521200000,"durationMs":5000,"cause":"EVENT_REASON_OUTAGE_NO_PINGS","severity":"warning"}
+{"startMs":1781523000000,"durationMs":2000,"cause":"EVENT_REASON_OUTAGE_BOOTING","severity":"advisory"}

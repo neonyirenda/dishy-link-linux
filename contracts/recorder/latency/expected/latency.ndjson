@@ -1,0 +1,1 @@
+{"minute":1781517600,"samples":60,"dish":{"count":60,"sumMs":380,"sumSqMs":7600,"minMs":15,"maxMs":30,"bins":[0,0,0,60,0,0,0,0,0,0,0,0,0,0,0,0]},"router":{"count":0,"sumMs":0,"sumSqMs":0,"minMs":null,"maxMs":null,"bins":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},"dropSum":0,"dropCount":60}

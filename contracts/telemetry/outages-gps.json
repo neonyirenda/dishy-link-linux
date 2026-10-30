@@ -1,0 +1,14 @@
+[
+  {
+    "startMs": 1784081136126,
+    "durationMs": 38433,
+    "cause": "BOOTING",
+    "severity": "warning"
+  },
+  {
+    "startMs": 1784081517040,
+    "durationMs": 920,
+    "cause": "NO_PINGS",
+    "severity": "warning"
+  }
+]

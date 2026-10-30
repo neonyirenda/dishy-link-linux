@@ -1,0 +1,459 @@
+{
+  "classificationCases": [
+    {
+      "input": "Neo's iPhone 15 Pro",
+      "expected": "phone"
+    },
+    {
+      "input": "Living Room Apple TV 4K",
+      "expected": "tv"
+    },
+    {
+      "input": "Desk iMac",
+      "expected": "desktop"
+    },
+    {
+      "input": "ThinkPad X1 Carbon",
+      "expected": "laptop"
+    },
+    {
+      "input": "iPad Air 5th Gen",
+      "expected": "tablet"
+    },
+    {
+      "input": "Apple Watch Ultra",
+      "expected": "watch"
+    },
+    {
+      "input": "PlayStation 5",
+      "expected": "console"
+    },
+    {
+      "input": "Nintendo Switch OLED",
+      "expected": "console"
+    },
+    {
+      "input": "Desk Lamp LED",
+      "expected": "light"
+    },
+    {
+      "input": "Unknown Gadget 123",
+      "expected": "unknown"
+    },
+    {
+      "input": "roku-express",
+      "expected": "tv"
+    },
+    {
+      "input": "chromecast",
+      "expected": "tv"
+    },
+    {
+      "input": "galaxy tab s8",
+      "expected": "tablet"
+    },
+    {
+      "input": "Samsung Galaxy S23",
+      "expected": "phone"
+    },
+    {
+      "input": "MacBook Pro 16",
+      "expected": "laptop"
+    },
+    {
+      "input": "Office PC Workstation",
+      "expected": "desktop"
+    },
+    {
+      "input": "iPhone15",
+      "expected": "phone"
+    },
+    {
+      "input": "VivoBook Pro",
+      "expected": "unknown"
+    },
+    {
+      "input": "Headphones",
+      "expected": "unknown"
+    },
+    {
+      "input": "Console Lamp",
+      "expected": "light"
+    }
+  ],
+  "ouiCases": [
+    {
+      "mac": "10:00:20:11:22:33",
+      "isPrivate": false,
+      "expectedVendor": "Apple"
+    },
+    {
+      "mac": "00:00:0c:44:55:66",
+      "isPrivate": false,
+      "expectedVendor": "Cisco Systems"
+    },
+    {
+      "mac": "02:11:22:33:44:55",
+      "isPrivate": true,
+      "expectedVendor": "Private"
+    },
+    {
+      "mac": "da:a1:19:bb:cc:dd",
+      "isPrivate": true,
+      "expectedVendor": "Private"
+    },
+    {
+      "mac": "f6:74:f4:00:11:22",
+      "isPrivate": true,
+      "expectedVendor": "Private"
+    },
+    {
+      "mac": "60:74:f4:aa:bb:cc",
+      "isPrivate": false,
+      "expectedVendor": "Govee"
+    }
+  ],
+  "scenario": [
+    {
+      "step": "baseline",
+      "atMs": 1781524800000,
+      "entries": [
+        {
+          "clientId": 101,
+          "macAddress": "00:11:22:33:44:55",
+          "rxBytes": 10000,
+          "txBytes": 5000,
+          "name": "Alice's MacBook"
+        },
+        {
+          "clientId": 102,
+          "macAddress": "60:74:f4:aa:bb:01",
+          "rxBytes": 2000,
+          "txBytes": 1000,
+          "name": "Smart Plug 1"
+        }
+      ]
+    },
+    {
+      "step": "normal_advance",
+      "atMs": 1781524805000,
+      "entries": [
+        {
+          "clientId": 101,
+          "macAddress": "00:11:22:33:44:55",
+          "rxBytes": 15000,
+          "txBytes": 7000,
+          "name": "Alice's MacBook"
+        },
+        {
+          "clientId": 102,
+          "macAddress": "60:74:f4:aa:bb:01",
+          "rxBytes": 3000,
+          "txBytes": 1500,
+          "name": "Smart Plug 1"
+        }
+      ]
+    },
+    {
+      "step": "counter_reset",
+      "atMs": 1781524810000,
+      "entries": [
+        {
+          "clientId": 101,
+          "macAddress": "00:11:22:33:44:55",
+          "rxBytes": 400,
+          "txBytes": 200,
+          "name": "Alice's MacBook"
+        },
+        {
+          "clientId": 102,
+          "macAddress": "60:74:f4:aa:bb:01",
+          "rxBytes": 3500,
+          "txBytes": 1800,
+          "name": "Smart Plug 1"
+        }
+      ]
+    },
+    {
+      "step": "impossible_spike",
+      "atMs": 1781524815000,
+      "entries": [
+        {
+          "clientId": 101,
+          "macAddress": "00:11:22:33:44:55",
+          "rxBytes": 1900000000,
+          "txBytes": 200,
+          "name": "Alice's MacBook"
+        }
+      ]
+    },
+    {
+      "step": "after_spike",
+      "atMs": 1781524820000,
+      "entries": [
+        {
+          "clientId": 101,
+          "macAddress": "00:11:22:33:44:55",
+          "rxBytes": 1900001000,
+          "txBytes": 500,
+          "name": "Alice's MacBook"
+        }
+      ]
+    },
+    {
+      "step": "gap_rebaseline",
+      "atMs": 1781524850000,
+      "entries": [
+        {
+          "clientId": 101,
+          "macAddress": "00:11:22:33:44:55",
+          "rxBytes": 1900100000,
+          "txBytes": 50000,
+          "name": "Alice's MacBook"
+        }
+      ]
+    },
+    {
+      "step": "advance_after_gap",
+      "atMs": 1781524855000,
+      "entries": [
+        {
+          "clientId": 101,
+          "macAddress": "00:11:22:33:44:55",
+          "rxBytes": 1900101000,
+          "txBytes": 50500,
+          "name": "Alice's MacBook"
+        }
+      ]
+    },
+    {
+      "step": "shared_oui_detection",
+      "atMs": 1781524860000,
+      "entries": [
+        {
+          "clientId": 102,
+          "macAddress": "60:74:f4:aa:bb:01",
+          "rxBytes": 4000,
+          "txBytes": 2000,
+          "name": "Smart Plug 1"
+        },
+        {
+          "clientId": 103,
+          "macAddress": "60:74:f4:aa:bb:01",
+          "rxBytes": 5000,
+          "txBytes": 1000,
+          "name": "Smart Plug 2"
+        }
+      ]
+    },
+    {
+      "step": "month_roll",
+      "atMs": 1782864010000,
+      "entries": [
+        {
+          "clientId": 101,
+          "macAddress": "00:11:22:33:44:55",
+          "rxBytes": 1900200000,
+          "txBytes": 60000,
+          "name": "Alice's MacBook"
+        }
+      ]
+    },
+    {
+      "step": "advance_new_month",
+      "atMs": 1782864015000,
+      "entries": [
+        {
+          "clientId": 101,
+          "macAddress": "00:11:22:33:44:55",
+          "rxBytes": 1900205000,
+          "txBytes": 62000,
+          "name": "Alice's MacBook"
+        }
+      ]
+    },
+    {
+      "step": "orphan_seed",
+      "atMs": 1782864020000,
+      "entries": [
+        {
+          "clientId": 999,
+          "macAddress": "aa:bb:cc:dd:ee:01",
+          "rxBytes": 1000,
+          "txBytes": 500,
+          "name": "Unique Device"
+        }
+      ]
+    },
+    {
+      "step": "orphan_advance",
+      "atMs": 1782864025000,
+      "entries": [
+        {
+          "clientId": 999,
+          "macAddress": "aa:bb:cc:dd:ee:01",
+          "rxBytes": 5000,
+          "txBytes": 1500,
+          "name": "Unique Device"
+        }
+      ]
+    },
+    {
+      "step": "orphan_adopted",
+      "atMs": 1782864030000,
+      "entries": [
+        {
+          "clientId": 104,
+          "macAddress": "aa:bb:cc:dd:ee:01",
+          "rxBytes": 500,
+          "txBytes": 200,
+          "name": "Unique Device"
+        }
+      ]
+    }
+  ],
+  "finalSnapshot": {
+    "version": 4,
+    "totals": [
+      {
+        "clientId": 101,
+        "macAddress": "00:11:22:33:44:55",
+        "name": "Alice's MacBook",
+        "lifetimeRx": 1900012000,
+        "lifetimeTx": 5000,
+        "monthAnchorRx": 1900007000,
+        "monthAnchorTx": 3000,
+        "sinceMs": 1782864000000,
+        "lastSeenMs": 1782864015000,
+        "periodMonth": 24318,
+        "prevRx": 1900205000,
+        "prevTx": 62000,
+        "lastPollMs": 1782864015000,
+        "selfTrafficDebtRx": 0,
+        "selfTrafficDebtTx": 0,
+        "correctedRx": 1900205000,
+        "correctedTx": 62000,
+        "months": [
+          {
+            "periodMonth": 24317,
+            "rxBytes": 1900007000,
+            "txBytes": 3000
+          }
+        ]
+      },
+      {
+        "clientId": 102,
+        "macAddress": "60:74:f4:aa:bb:01",
+        "name": "Smart Plug 1",
+        "lifetimeRx": 1500,
+        "lifetimeTx": 800,
+        "monthAnchorRx": 0,
+        "monthAnchorTx": 0,
+        "sinceMs": 1780272000000,
+        "lastSeenMs": 1781524860000,
+        "periodMonth": 24317,
+        "prevRx": 4000,
+        "prevTx": 2000,
+        "lastPollMs": 1781524860000,
+        "selfTrafficDebtRx": 0,
+        "selfTrafficDebtTx": 0,
+        "correctedRx": 4000,
+        "correctedTx": 2000
+      },
+      {
+        "clientId": 103,
+        "macAddress": "60:74:f4:aa:bb:01",
+        "name": "Smart Plug 2",
+        "lifetimeRx": 0,
+        "lifetimeTx": 0,
+        "monthAnchorRx": 0,
+        "monthAnchorTx": 0,
+        "sinceMs": 1780272000000,
+        "lastSeenMs": 1781524860000,
+        "periodMonth": 24317,
+        "prevRx": 5000,
+        "prevTx": 1000,
+        "lastPollMs": 1781524860000,
+        "selfTrafficDebtRx": 0,
+        "selfTrafficDebtTx": 0,
+        "correctedRx": 5000,
+        "correctedTx": 1000
+      },
+      {
+        "clientId": 104,
+        "macAddress": "aa:bb:cc:dd:ee:01",
+        "name": "Unique Device",
+        "lifetimeRx": 4000,
+        "lifetimeTx": 1000,
+        "monthAnchorRx": 0,
+        "monthAnchorTx": 0,
+        "sinceMs": 1782864000000,
+        "lastSeenMs": 1782864030000,
+        "periodMonth": 24318,
+        "prevRx": 500,
+        "prevTx": 200,
+        "lastPollMs": 1782864030000,
+        "selfTrafficDebtRx": 0,
+        "selfTrafficDebtTx": 0,
+        "correctedRx": 500,
+        "correctedTx": 200
+      }
+    ],
+    "sharedMacs": [
+      "60:74:f4:aa:bb:01"
+    ],
+    "aliases": [
+      [
+        "999",
+        "104"
+      ]
+    ],
+    "userMerged": [],
+    "rejectedPairs": []
+  },
+  "finalTotals": [
+    {
+      "clientId": 104,
+      "macAddress": "aa:bb:cc:dd:ee:01",
+      "name": "Unique Device",
+      "rxBytes": 4000,
+      "txBytes": 1000,
+      "sinceMs": 1782864000000,
+      "lastSeenMs": 1782864030000
+    },
+    {
+      "clientId": 101,
+      "macAddress": "00:11:22:33:44:55",
+      "name": "Alice's MacBook",
+      "rxBytes": 5000,
+      "txBytes": 2000,
+      "sinceMs": 1782864000000,
+      "lastSeenMs": 1782864015000,
+      "months": [
+        {
+          "periodMonth": 24317,
+          "rxBytes": 1900007000,
+          "txBytes": 3000
+        }
+      ]
+    },
+    {
+      "clientId": 102,
+      "macAddress": "60:74:f4:aa:bb:01",
+      "name": "Smart Plug 1",
+      "rxBytes": 1500,
+      "txBytes": 800,
+      "sinceMs": 1780272000000,
+      "lastSeenMs": 1781524860000
+    },
+    {
+      "clientId": 103,
+      "macAddress": "60:74:f4:aa:bb:01",
+      "name": "Smart Plug 2",
+      "rxBytes": 0,
+      "txBytes": 0,
+      "sinceMs": 1780272000000,
+      "lastSeenMs": 1781524860000
+    }
+  ]
+}

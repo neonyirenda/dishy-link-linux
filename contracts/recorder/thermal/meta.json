@@ -1,0 +1,11 @@
+{
+  "nowMs": 1781524800000,
+  "open": {
+    "alertKey": "powerSupplyThermalThrottle",
+    "startMs": 1781524799000
+  },
+  "close": {
+    "alertKey": "thermalShutdown",
+    "endMs": 1781524799500
+  }
+}

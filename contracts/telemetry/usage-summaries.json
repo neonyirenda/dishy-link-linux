@@ -1,0 +1,4095 @@
+{
+  "nowMs": 1781524817000,
+  "minutes": [
+    {
+      "minute": 1767247200,
+      "wattSeconds": 13.25,
+      "samples": 59,
+      "downlinkBits": 1123456,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1767333600,
+      "wattSeconds": 14,
+      "samples": 58,
+      "downlinkBits": 1246912,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1767420000,
+      "wattSeconds": 14.75,
+      "samples": 57,
+      "downlinkBits": 1370368,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1767506400,
+      "wattSeconds": 15.5,
+      "samples": 60,
+      "downlinkBits": 1493824,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1767679200,
+      "wattSeconds": 17,
+      "samples": 58,
+      "downlinkBits": 1740736,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1767765600,
+      "wattSeconds": 17.75,
+      "samples": 57,
+      "downlinkBits": 1864192,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1767852000,
+      "wattSeconds": 18.5,
+      "samples": 60,
+      "downlinkBits": 1987648,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1767938400,
+      "wattSeconds": 19.25,
+      "samples": 59,
+      "downlinkBits": 2111104,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1768111200,
+      "wattSeconds": 20.75,
+      "samples": 57,
+      "downlinkBits": 2358016,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1768197600,
+      "wattSeconds": 21.5,
+      "samples": 60,
+      "downlinkBits": 2481472,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1768284000,
+      "wattSeconds": 22.25,
+      "samples": 59,
+      "downlinkBits": 2604928,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1768370400,
+      "wattSeconds": 23,
+      "samples": 58,
+      "downlinkBits": 2728384,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1768543200,
+      "wattSeconds": 24.5,
+      "samples": 60,
+      "downlinkBits": 2975296,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1768629600,
+      "wattSeconds": 25.25,
+      "samples": 59,
+      "downlinkBits": 3098752,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1768716000,
+      "wattSeconds": 26,
+      "samples": 58,
+      "downlinkBits": 3222208,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1768802400,
+      "wattSeconds": 26.75,
+      "samples": 57,
+      "downlinkBits": 3345664,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1768975200,
+      "wattSeconds": 28.25,
+      "samples": 59,
+      "downlinkBits": 3592576,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1769061600,
+      "wattSeconds": 29,
+      "samples": 58,
+      "downlinkBits": 3716032,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1769148000,
+      "wattSeconds": 12.5,
+      "samples": 57,
+      "downlinkBits": 3839488,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1769234400,
+      "wattSeconds": 13.25,
+      "samples": 60,
+      "downlinkBits": 3962944,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1769407200,
+      "wattSeconds": 14.75,
+      "samples": 58,
+      "downlinkBits": 4209856,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1769493600,
+      "wattSeconds": 15.5,
+      "samples": 57,
+      "downlinkBits": 4333312,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1769580000,
+      "wattSeconds": 16.25,
+      "samples": 60,
+      "downlinkBits": 4456768,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1769666400,
+      "wattSeconds": 17,
+      "samples": 59,
+      "downlinkBits": 4580224,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1769839200,
+      "wattSeconds": 18.5,
+      "samples": 57,
+      "downlinkBits": 4827136,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1769925600,
+      "wattSeconds": 19.25,
+      "samples": 60,
+      "downlinkBits": 4950592,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1770012000,
+      "wattSeconds": 20,
+      "samples": 59,
+      "downlinkBits": 5074048,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1770098400,
+      "wattSeconds": 20.75,
+      "samples": 58,
+      "downlinkBits": 5197504,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1770184800,
+      "wattSeconds": 21.5,
+      "samples": 57,
+      "downlinkBits": 5320960,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1770357600,
+      "wattSeconds": 23,
+      "samples": 59,
+      "downlinkBits": 5567872,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1770444000,
+      "wattSeconds": 23.75,
+      "samples": 58,
+      "downlinkBits": 5691328,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1770530400,
+      "wattSeconds": 24.5,
+      "samples": 57,
+      "downlinkBits": 5814784,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1770616800,
+      "wattSeconds": 25.25,
+      "samples": 60,
+      "downlinkBits": 5938240,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1770789600,
+      "wattSeconds": 26.75,
+      "samples": 58,
+      "downlinkBits": 6185152,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1770876000,
+      "wattSeconds": 27.5,
+      "samples": 57,
+      "downlinkBits": 6308608,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1770962400,
+      "wattSeconds": 28.25,
+      "samples": 60,
+      "downlinkBits": 6432064,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1771048800,
+      "wattSeconds": 29,
+      "samples": 59,
+      "downlinkBits": 6555520,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1771221600,
+      "wattSeconds": 13.25,
+      "samples": 57,
+      "downlinkBits": 6802432,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1771308000,
+      "wattSeconds": 14,
+      "samples": 60,
+      "downlinkBits": 6925888,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1771394400,
+      "wattSeconds": 14.75,
+      "samples": 59,
+      "downlinkBits": 7049344,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1771480800,
+      "wattSeconds": 15.5,
+      "samples": 58,
+      "downlinkBits": 7172800,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1771653600,
+      "wattSeconds": 17,
+      "samples": 60,
+      "downlinkBits": 7419712,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1771740000,
+      "wattSeconds": 17.75,
+      "samples": 59,
+      "downlinkBits": 7543168,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1771826400,
+      "wattSeconds": 18.5,
+      "samples": 58,
+      "downlinkBits": 7666624,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1771912800,
+      "wattSeconds": 19.25,
+      "samples": 57,
+      "downlinkBits": 7790080,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1772085600,
+      "wattSeconds": 20.75,
+      "samples": 59,
+      "downlinkBits": 8036992,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1772172000,
+      "wattSeconds": 21.5,
+      "samples": 58,
+      "downlinkBits": 8160448,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1772258400,
+      "wattSeconds": 22.25,
+      "samples": 57,
+      "downlinkBits": 8283904,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1772344800,
+      "wattSeconds": 23,
+      "samples": 60,
+      "downlinkBits": 8407360,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1772431200,
+      "wattSeconds": 23.75,
+      "samples": 59,
+      "downlinkBits": 8530816,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1772517600,
+      "wattSeconds": 24.5,
+      "samples": 58,
+      "downlinkBits": 8654272,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1772604000,
+      "wattSeconds": 25.25,
+      "samples": 57,
+      "downlinkBits": 8777728,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1772776800,
+      "wattSeconds": 26.75,
+      "samples": 59,
+      "downlinkBits": 9024640,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1772863200,
+      "wattSeconds": 27.5,
+      "samples": 58,
+      "downlinkBits": 9148096,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1772949600,
+      "wattSeconds": 28.25,
+      "samples": 57,
+      "downlinkBits": 9271552,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1773036000,
+      "wattSeconds": 29,
+      "samples": 60,
+      "downlinkBits": 9395008,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1773208800,
+      "wattSeconds": 13.25,
+      "samples": 58,
+      "downlinkBits": 9641920,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1773295200,
+      "wattSeconds": 14,
+      "samples": 57,
+      "downlinkBits": 9765376,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1773381600,
+      "wattSeconds": 14.75,
+      "samples": 60,
+      "downlinkBits": 9888832,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1773468000,
+      "wattSeconds": 15.5,
+      "samples": 59,
+      "downlinkBits": 10012288,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1773640800,
+      "wattSeconds": 17,
+      "samples": 57,
+      "downlinkBits": 10259200,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1773727200,
+      "wattSeconds": 17.75,
+      "samples": 60,
+      "downlinkBits": 10382656,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1773813600,
+      "wattSeconds": 18.5,
+      "samples": 59,
+      "downlinkBits": 10506112,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1773900000,
+      "wattSeconds": 19.25,
+      "samples": 58,
+      "downlinkBits": 10629568,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1774072800,
+      "wattSeconds": 20.75,
+      "samples": 60,
+      "downlinkBits": 10876480,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1774159200,
+      "wattSeconds": 21.5,
+      "samples": 59,
+      "downlinkBits": 10999936,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1774245600,
+      "wattSeconds": 22.25,
+      "samples": 58,
+      "downlinkBits": 11123392,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1774332000,
+      "wattSeconds": 23,
+      "samples": 57,
+      "downlinkBits": 11246848,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1774504800,
+      "wattSeconds": 24.5,
+      "samples": 59,
+      "downlinkBits": 11493760,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1774591200,
+      "wattSeconds": 25.25,
+      "samples": 58,
+      "downlinkBits": 11617216,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1774677600,
+      "wattSeconds": 26,
+      "samples": 57,
+      "downlinkBits": 11740672,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1774764000,
+      "wattSeconds": 26.75,
+      "samples": 60,
+      "downlinkBits": 11864128,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1774936800,
+      "wattSeconds": 28.25,
+      "samples": 58,
+      "downlinkBits": 12111040,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1775023200,
+      "wattSeconds": 29,
+      "samples": 57,
+      "downlinkBits": 12234496,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1775109600,
+      "wattSeconds": 12.5,
+      "samples": 60,
+      "downlinkBits": 12357952,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1775196000,
+      "wattSeconds": 13.25,
+      "samples": 59,
+      "downlinkBits": 12481408,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1775282400,
+      "wattSeconds": 14,
+      "samples": 58,
+      "downlinkBits": 12604864,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1775455200,
+      "wattSeconds": 15.5,
+      "samples": 60,
+      "downlinkBits": 12851776,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1775541600,
+      "wattSeconds": 16.25,
+      "samples": 59,
+      "downlinkBits": 1000000,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1775628000,
+      "wattSeconds": 17,
+      "samples": 58,
+      "downlinkBits": 1123456,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1775714400,
+      "wattSeconds": 17.75,
+      "samples": 57,
+      "downlinkBits": 1246912,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1775887200,
+      "wattSeconds": 19.25,
+      "samples": 59,
+      "downlinkBits": 1493824,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1775973600,
+      "wattSeconds": 20,
+      "samples": 58,
+      "downlinkBits": 1617280,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1776060000,
+      "wattSeconds": 20.75,
+      "samples": 57,
+      "downlinkBits": 1740736,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1776146400,
+      "wattSeconds": 21.5,
+      "samples": 60,
+      "downlinkBits": 1864192,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1776319200,
+      "wattSeconds": 23,
+      "samples": 58,
+      "downlinkBits": 2111104,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1776405600,
+      "wattSeconds": 23.75,
+      "samples": 57,
+      "downlinkBits": 2234560,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1776492000,
+      "wattSeconds": 24.5,
+      "samples": 60,
+      "downlinkBits": 2358016,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1776578400,
+      "wattSeconds": 25.25,
+      "samples": 59,
+      "downlinkBits": 2481472,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1776751200,
+      "wattSeconds": 26.75,
+      "samples": 57,
+      "downlinkBits": 2728384,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1776837600,
+      "wattSeconds": 27.5,
+      "samples": 60,
+      "downlinkBits": 2851840,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1776924000,
+      "wattSeconds": 28.25,
+      "samples": 59,
+      "downlinkBits": 2975296,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1777010400,
+      "wattSeconds": 29,
+      "samples": 58,
+      "downlinkBits": 3098752,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1777183200,
+      "wattSeconds": 13.25,
+      "samples": 60,
+      "downlinkBits": 3345664,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1777269600,
+      "wattSeconds": 14,
+      "samples": 59,
+      "downlinkBits": 3469120,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1777356000,
+      "wattSeconds": 14.75,
+      "samples": 58,
+      "downlinkBits": 3592576,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1777442400,
+      "wattSeconds": 15.5,
+      "samples": 57,
+      "downlinkBits": 3716032,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1777615200,
+      "wattSeconds": 17,
+      "samples": 59,
+      "downlinkBits": 3962944,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1777701600,
+      "wattSeconds": 17.75,
+      "samples": 58,
+      "downlinkBits": 4086400,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1777788000,
+      "wattSeconds": 18.5,
+      "samples": 57,
+      "downlinkBits": 4209856,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1777874400,
+      "wattSeconds": 19.25,
+      "samples": 60,
+      "downlinkBits": 4333312,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1778047200,
+      "wattSeconds": 20.75,
+      "samples": 58,
+      "downlinkBits": 4580224,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1778133600,
+      "wattSeconds": 21.5,
+      "samples": 57,
+      "downlinkBits": 4703680,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1778220000,
+      "wattSeconds": 22.25,
+      "samples": 60,
+      "downlinkBits": 4827136,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1778306400,
+      "wattSeconds": 23,
+      "samples": 59,
+      "downlinkBits": 4950592,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1778479200,
+      "wattSeconds": 24.5,
+      "samples": 57,
+      "downlinkBits": 5197504,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1778565600,
+      "wattSeconds": 25.25,
+      "samples": 60,
+      "downlinkBits": 5320960,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1778652000,
+      "wattSeconds": 26,
+      "samples": 59,
+      "downlinkBits": 5444416,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1778738400,
+      "wattSeconds": 26.75,
+      "samples": 58,
+      "downlinkBits": 5567872,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1778911200,
+      "wattSeconds": 28.25,
+      "samples": 60,
+      "downlinkBits": 5814784,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1778997600,
+      "wattSeconds": 29,
+      "samples": 59,
+      "downlinkBits": 5938240,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1779084000,
+      "wattSeconds": 12.5,
+      "samples": 58,
+      "downlinkBits": 6061696,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1779170400,
+      "wattSeconds": 13.25,
+      "samples": 57,
+      "downlinkBits": 6185152,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1779343200,
+      "wattSeconds": 14.75,
+      "samples": 59,
+      "downlinkBits": 6432064,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1779429600,
+      "wattSeconds": 15.5,
+      "samples": 58,
+      "downlinkBits": 6555520,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1779516000,
+      "wattSeconds": 16.25,
+      "samples": 57,
+      "downlinkBits": 6678976,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1779602400,
+      "wattSeconds": 17,
+      "samples": 60,
+      "downlinkBits": 6802432,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1779775200,
+      "wattSeconds": 18.5,
+      "samples": 58,
+      "downlinkBits": 7049344,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1779861600,
+      "wattSeconds": 19.25,
+      "samples": 57,
+      "downlinkBits": 7172800,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1779948000,
+      "wattSeconds": 20,
+      "samples": 60,
+      "downlinkBits": 7296256,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1780034400,
+      "wattSeconds": 20.75,
+      "samples": 59,
+      "downlinkBits": 7419712,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1780207200,
+      "wattSeconds": 22.25,
+      "samples": 57,
+      "downlinkBits": 7666624,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1780293600,
+      "wattSeconds": 23,
+      "samples": 60,
+      "downlinkBits": 7790080,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1780380000,
+      "wattSeconds": 23.75,
+      "samples": 59,
+      "downlinkBits": 7913536,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1780466400,
+      "wattSeconds": 24.5,
+      "samples": 58,
+      "downlinkBits": 8036992,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1780552800,
+      "wattSeconds": 25.25,
+      "samples": 57,
+      "downlinkBits": 8160448,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1780725600,
+      "wattSeconds": 26.75,
+      "samples": 59,
+      "downlinkBits": 8407360,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1780812000,
+      "wattSeconds": 27.5,
+      "samples": 58,
+      "downlinkBits": 8530816,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1780898400,
+      "wattSeconds": 28.25,
+      "samples": 57,
+      "downlinkBits": 8654272,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1780984800,
+      "wattSeconds": 29,
+      "samples": 60,
+      "downlinkBits": 8777728,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1781157600,
+      "wattSeconds": 13.25,
+      "samples": 58,
+      "downlinkBits": 9024640,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1781244000,
+      "wattSeconds": 14,
+      "samples": 57,
+      "downlinkBits": 9148096,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1781330400,
+      "wattSeconds": 14.75,
+      "samples": 60,
+      "downlinkBits": 9271552,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1781416800,
+      "wattSeconds": 15.5,
+      "samples": 59,
+      "downlinkBits": 9395008,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1781503260,
+      "wattSeconds": 28.25,
+      "samples": 60,
+      "downlinkBits": 3345664,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1781503320,
+      "wattSeconds": 27.5,
+      "samples": 57,
+      "downlinkBits": 3222208,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1781503440,
+      "wattSeconds": 26.75,
+      "samples": 58,
+      "downlinkBits": 3098752,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1781503500,
+      "wattSeconds": 26,
+      "samples": 59,
+      "downlinkBits": 2975296,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1781503560,
+      "wattSeconds": 25.25,
+      "samples": 60,
+      "downlinkBits": 2851840,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1781503620,
+      "wattSeconds": 24.5,
+      "samples": 57,
+      "downlinkBits": 2728384,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1781503680,
+      "wattSeconds": 23.75,
+      "samples": 58,
+      "downlinkBits": 2604928,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1781503740,
+      "wattSeconds": 23,
+      "samples": 59,
+      "downlinkBits": 2481472,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1781503800,
+      "wattSeconds": 22.25,
+      "samples": 60,
+      "downlinkBits": 2358016,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1781503860,
+      "wattSeconds": 21.5,
+      "samples": 57,
+      "downlinkBits": 2234560,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1781503920,
+      "wattSeconds": 20.75,
+      "samples": 58,
+      "downlinkBits": 2111104,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1781503980,
+      "wattSeconds": 20,
+      "samples": 59,
+      "downlinkBits": 1987648,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1781504040,
+      "wattSeconds": 19.25,
+      "samples": 60,
+      "downlinkBits": 1864192,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1781504100,
+      "wattSeconds": 18.5,
+      "samples": 57,
+      "downlinkBits": 1740736,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1781504160,
+      "wattSeconds": 17.75,
+      "samples": 58,
+      "downlinkBits": 1617280,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1781504220,
+      "wattSeconds": 17,
+      "samples": 59,
+      "downlinkBits": 1493824,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1781504280,
+      "wattSeconds": 16.25,
+      "samples": 60,
+      "downlinkBits": 1370368,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1781504340,
+      "wattSeconds": 15.5,
+      "samples": 57,
+      "downlinkBits": 1246912,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1781504460,
+      "wattSeconds": 14.75,
+      "samples": 58,
+      "downlinkBits": 1123456,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1781504520,
+      "wattSeconds": 14,
+      "samples": 59,
+      "downlinkBits": 1000000,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1781504580,
+      "wattSeconds": 13.25,
+      "samples": 60,
+      "downlinkBits": 12851776,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1781504640,
+      "wattSeconds": 12.5,
+      "samples": 57,
+      "downlinkBits": 12728320,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1781504700,
+      "wattSeconds": 29,
+      "samples": 58,
+      "downlinkBits": 12604864,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1781504760,
+      "wattSeconds": 28.25,
+      "samples": 59,
+      "downlinkBits": 12481408,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1781504820,
+      "wattSeconds": 27.5,
+      "samples": 60,
+      "downlinkBits": 12357952,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1781504880,
+      "wattSeconds": 26.75,
+      "samples": 57,
+      "downlinkBits": 12234496,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1781504940,
+      "wattSeconds": 26,
+      "samples": 58,
+      "downlinkBits": 12111040,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1781505000,
+      "wattSeconds": 25.25,
+      "samples": 59,
+      "downlinkBits": 11987584,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1781505060,
+      "wattSeconds": 24.5,
+      "samples": 60,
+      "downlinkBits": 11864128,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1781505120,
+      "wattSeconds": 23.75,
+      "samples": 57,
+      "downlinkBits": 11740672,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1781505180,
+      "wattSeconds": 23,
+      "samples": 58,
+      "downlinkBits": 11617216,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1781505240,
+      "wattSeconds": 22.25,
+      "samples": 59,
+      "downlinkBits": 11493760,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1781505300,
+      "wattSeconds": 21.5,
+      "samples": 60,
+      "downlinkBits": 11370304,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1781505360,
+      "wattSeconds": 20.75,
+      "samples": 57,
+      "downlinkBits": 11246848,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1781505480,
+      "wattSeconds": 20,
+      "samples": 58,
+      "downlinkBits": 11123392,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1781505540,
+      "wattSeconds": 19.25,
+      "samples": 59,
+      "downlinkBits": 10999936,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1781505600,
+      "wattSeconds": 18.5,
+      "samples": 60,
+      "downlinkBits": 10876480,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1781505660,
+      "wattSeconds": 17.75,
+      "samples": 57,
+      "downlinkBits": 10753024,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1781505720,
+      "wattSeconds": 17,
+      "samples": 58,
+      "downlinkBits": 10629568,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1781505780,
+      "wattSeconds": 16.25,
+      "samples": 59,
+      "downlinkBits": 10506112,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1781505840,
+      "wattSeconds": 15.5,
+      "samples": 60,
+      "downlinkBits": 10382656,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1781505900,
+      "wattSeconds": 14.75,
+      "samples": 57,
+      "downlinkBits": 10259200,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1781505960,
+      "wattSeconds": 14,
+      "samples": 58,
+      "downlinkBits": 10135744,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1781506020,
+      "wattSeconds": 13.25,
+      "samples": 59,
+      "downlinkBits": 10012288,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1781506080,
+      "wattSeconds": 12.5,
+      "samples": 60,
+      "downlinkBits": 9888832,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1781506140,
+      "wattSeconds": 29,
+      "samples": 57,
+      "downlinkBits": 9765376,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1781506200,
+      "wattSeconds": 28.25,
+      "samples": 58,
+      "downlinkBits": 9641920,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1781506260,
+      "wattSeconds": 27.5,
+      "samples": 59,
+      "downlinkBits": 9518464,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1781506320,
+      "wattSeconds": 26.75,
+      "samples": 60,
+      "downlinkBits": 9395008,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1781506380,
+      "wattSeconds": 26,
+      "samples": 57,
+      "downlinkBits": 9271552,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1781506500,
+      "wattSeconds": 25.25,
+      "samples": 58,
+      "downlinkBits": 9148096,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1781506560,
+      "wattSeconds": 24.5,
+      "samples": 59,
+      "downlinkBits": 9024640,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1781506620,
+      "wattSeconds": 23.75,
+      "samples": 60,
+      "downlinkBits": 8901184,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1781506680,
+      "wattSeconds": 23,
+      "samples": 57,
+      "downlinkBits": 8777728,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1781506740,
+      "wattSeconds": 22.25,
+      "samples": 58,
+      "downlinkBits": 8654272,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1781506800,
+      "wattSeconds": 21.5,
+      "samples": 59,
+      "downlinkBits": 8530816,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1781506860,
+      "wattSeconds": 20.75,
+      "samples": 60,
+      "downlinkBits": 8407360,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1781506920,
+      "wattSeconds": 20,
+      "samples": 57,
+      "downlinkBits": 8283904,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1781506980,
+      "wattSeconds": 19.25,
+      "samples": 58,
+      "downlinkBits": 8160448,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1781507040,
+      "wattSeconds": 18.5,
+      "samples": 59,
+      "downlinkBits": 8036992,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1781507100,
+      "wattSeconds": 17.75,
+      "samples": 60,
+      "downlinkBits": 7913536,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1781507160,
+      "wattSeconds": 17,
+      "samples": 57,
+      "downlinkBits": 7790080,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1781507220,
+      "wattSeconds": 16.25,
+      "samples": 58,
+      "downlinkBits": 7666624,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1781507280,
+      "wattSeconds": 15.5,
+      "samples": 59,
+      "downlinkBits": 7543168,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1781507340,
+      "wattSeconds": 14.75,
+      "samples": 60,
+      "downlinkBits": 7419712,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1781507400,
+      "wattSeconds": 14,
+      "samples": 57,
+      "downlinkBits": 7296256,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1781507520,
+      "wattSeconds": 13.25,
+      "samples": 58,
+      "downlinkBits": 7172800,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1781507580,
+      "wattSeconds": 12.5,
+      "samples": 59,
+      "downlinkBits": 7049344,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1781507640,
+      "wattSeconds": 29,
+      "samples": 60,
+      "downlinkBits": 6925888,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1781507700,
+      "wattSeconds": 28.25,
+      "samples": 57,
+      "downlinkBits": 6802432,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1781507760,
+      "wattSeconds": 27.5,
+      "samples": 58,
+      "downlinkBits": 6678976,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1781507820,
+      "wattSeconds": 26.75,
+      "samples": 59,
+      "downlinkBits": 6555520,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1781507880,
+      "wattSeconds": 26,
+      "samples": 60,
+      "downlinkBits": 6432064,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1781507940,
+      "wattSeconds": 25.25,
+      "samples": 57,
+      "downlinkBits": 6308608,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1781508000,
+      "wattSeconds": 24.5,
+      "samples": 58,
+      "downlinkBits": 6185152,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1781508060,
+      "wattSeconds": 23.75,
+      "samples": 59,
+      "downlinkBits": 6061696,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1781508120,
+      "wattSeconds": 23,
+      "samples": 60,
+      "downlinkBits": 5938240,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1781508180,
+      "wattSeconds": 22.25,
+      "samples": 57,
+      "downlinkBits": 5814784,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1781508240,
+      "wattSeconds": 21.5,
+      "samples": 58,
+      "downlinkBits": 5691328,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1781508300,
+      "wattSeconds": 20.75,
+      "samples": 59,
+      "downlinkBits": 5567872,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1781508360,
+      "wattSeconds": 20,
+      "samples": 60,
+      "downlinkBits": 5444416,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1781508420,
+      "wattSeconds": 19.25,
+      "samples": 57,
+      "downlinkBits": 5320960,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1781508540,
+      "wattSeconds": 18.5,
+      "samples": 58,
+      "downlinkBits": 5197504,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1781508600,
+      "wattSeconds": 17.75,
+      "samples": 59,
+      "downlinkBits": 5074048,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1781508660,
+      "wattSeconds": 17,
+      "samples": 60,
+      "downlinkBits": 4950592,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1781508720,
+      "wattSeconds": 16.25,
+      "samples": 57,
+      "downlinkBits": 4827136,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1781508780,
+      "wattSeconds": 15.5,
+      "samples": 58,
+      "downlinkBits": 4703680,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1781508840,
+      "wattSeconds": 14.75,
+      "samples": 59,
+      "downlinkBits": 4580224,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1781508900,
+      "wattSeconds": 14,
+      "samples": 60,
+      "downlinkBits": 4456768,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1781508960,
+      "wattSeconds": 13.25,
+      "samples": 57,
+      "downlinkBits": 4333312,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1781509020,
+      "wattSeconds": 12.5,
+      "samples": 58,
+      "downlinkBits": 4209856,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1781509080,
+      "wattSeconds": 29,
+      "samples": 59,
+      "downlinkBits": 4086400,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1781509140,
+      "wattSeconds": 28.25,
+      "samples": 60,
+      "downlinkBits": 3962944,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1781509200,
+      "wattSeconds": 27.5,
+      "samples": 57,
+      "downlinkBits": 3839488,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1781509260,
+      "wattSeconds": 26.75,
+      "samples": 58,
+      "downlinkBits": 3716032,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1781509320,
+      "wattSeconds": 26,
+      "samples": 59,
+      "downlinkBits": 3592576,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1781509380,
+      "wattSeconds": 25.25,
+      "samples": 60,
+      "downlinkBits": 3469120,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1781509440,
+      "wattSeconds": 24.5,
+      "samples": 57,
+      "downlinkBits": 3345664,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1781509560,
+      "wattSeconds": 23.75,
+      "samples": 58,
+      "downlinkBits": 3222208,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1781509620,
+      "wattSeconds": 23,
+      "samples": 59,
+      "downlinkBits": 3098752,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1781509680,
+      "wattSeconds": 22.25,
+      "samples": 60,
+      "downlinkBits": 2975296,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1781509740,
+      "wattSeconds": 21.5,
+      "samples": 57,
+      "downlinkBits": 2851840,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1781509800,
+      "wattSeconds": 20.75,
+      "samples": 58,
+      "downlinkBits": 2728384,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1781509860,
+      "wattSeconds": 20,
+      "samples": 59,
+      "downlinkBits": 2604928,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1781509920,
+      "wattSeconds": 19.25,
+      "samples": 60,
+      "downlinkBits": 2481472,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1781509980,
+      "wattSeconds": 18.5,
+      "samples": 57,
+      "downlinkBits": 2358016,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1781510040,
+      "wattSeconds": 17.75,
+      "samples": 58,
+      "downlinkBits": 2234560,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1781510100,
+      "wattSeconds": 17,
+      "samples": 59,
+      "downlinkBits": 2111104,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1781510160,
+      "wattSeconds": 16.25,
+      "samples": 60,
+      "downlinkBits": 1987648,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1781510220,
+      "wattSeconds": 15.5,
+      "samples": 57,
+      "downlinkBits": 1864192,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1781510280,
+      "wattSeconds": 14.75,
+      "samples": 58,
+      "downlinkBits": 1740736,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1781510340,
+      "wattSeconds": 14,
+      "samples": 59,
+      "downlinkBits": 1617280,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1781510400,
+      "wattSeconds": 13.25,
+      "samples": 60,
+      "downlinkBits": 1493824,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1781510460,
+      "wattSeconds": 12.5,
+      "samples": 57,
+      "downlinkBits": 1370368,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1781510580,
+      "wattSeconds": 29,
+      "samples": 58,
+      "downlinkBits": 1246912,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1781510640,
+      "wattSeconds": 28.25,
+      "samples": 59,
+      "downlinkBits": 1123456,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1781510700,
+      "wattSeconds": 27.5,
+      "samples": 60,
+      "downlinkBits": 1000000,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1781510760,
+      "wattSeconds": 26.75,
+      "samples": 57,
+      "downlinkBits": 12851776,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1781510820,
+      "wattSeconds": 26,
+      "samples": 58,
+      "downlinkBits": 12728320,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1781510880,
+      "wattSeconds": 25.25,
+      "samples": 59,
+      "downlinkBits": 12604864,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1781510940,
+      "wattSeconds": 24.5,
+      "samples": 60,
+      "downlinkBits": 12481408,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1781511000,
+      "wattSeconds": 23.75,
+      "samples": 57,
+      "downlinkBits": 12357952,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1781511060,
+      "wattSeconds": 23,
+      "samples": 58,
+      "downlinkBits": 12234496,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1781511120,
+      "wattSeconds": 22.25,
+      "samples": 59,
+      "downlinkBits": 12111040,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1781511180,
+      "wattSeconds": 21.5,
+      "samples": 60,
+      "downlinkBits": 11987584,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1781511240,
+      "wattSeconds": 20.75,
+      "samples": 57,
+      "downlinkBits": 11864128,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1781511300,
+      "wattSeconds": 20,
+      "samples": 58,
+      "downlinkBits": 11740672,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1781511360,
+      "wattSeconds": 19.25,
+      "samples": 59,
+      "downlinkBits": 11617216,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1781511420,
+      "wattSeconds": 18.5,
+      "samples": 60,
+      "downlinkBits": 11493760,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1781511480,
+      "wattSeconds": 17.75,
+      "samples": 57,
+      "downlinkBits": 11370304,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1781511600,
+      "wattSeconds": 17,
+      "samples": 58,
+      "downlinkBits": 11246848,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1781511660,
+      "wattSeconds": 16.25,
+      "samples": 59,
+      "downlinkBits": 11123392,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1781511720,
+      "wattSeconds": 15.5,
+      "samples": 60,
+      "downlinkBits": 10999936,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1781511780,
+      "wattSeconds": 14.75,
+      "samples": 57,
+      "downlinkBits": 10876480,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1781511840,
+      "wattSeconds": 14,
+      "samples": 58,
+      "downlinkBits": 10753024,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1781511900,
+      "wattSeconds": 13.25,
+      "samples": 59,
+      "downlinkBits": 10629568,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1781511960,
+      "wattSeconds": 12.5,
+      "samples": 60,
+      "downlinkBits": 10506112,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1781512020,
+      "wattSeconds": 29,
+      "samples": 57,
+      "downlinkBits": 10382656,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1781512080,
+      "wattSeconds": 28.25,
+      "samples": 58,
+      "downlinkBits": 10259200,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1781512140,
+      "wattSeconds": 27.5,
+      "samples": 59,
+      "downlinkBits": 10135744,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1781512200,
+      "wattSeconds": 26.75,
+      "samples": 60,
+      "downlinkBits": 10012288,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1781512260,
+      "wattSeconds": 26,
+      "samples": 57,
+      "downlinkBits": 9888832,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1781512320,
+      "wattSeconds": 25.25,
+      "samples": 58,
+      "downlinkBits": 9765376,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1781512380,
+      "wattSeconds": 24.5,
+      "samples": 59,
+      "downlinkBits": 9641920,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1781512440,
+      "wattSeconds": 23.75,
+      "samples": 60,
+      "downlinkBits": 9518464,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1781512500,
+      "wattSeconds": 23,
+      "samples": 57,
+      "downlinkBits": 9395008,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1781512620,
+      "wattSeconds": 22.25,
+      "samples": 58,
+      "downlinkBits": 9271552,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1781512680,
+      "wattSeconds": 21.5,
+      "samples": 59,
+      "downlinkBits": 9148096,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1781512740,
+      "wattSeconds": 20.75,
+      "samples": 60,
+      "downlinkBits": 9024640,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1781512800,
+      "wattSeconds": 20,
+      "samples": 57,
+      "downlinkBits": 8901184,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1781512860,
+      "wattSeconds": 19.25,
+      "samples": 58,
+      "downlinkBits": 8777728,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1781512920,
+      "wattSeconds": 18.5,
+      "samples": 59,
+      "downlinkBits": 8654272,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1781512980,
+      "wattSeconds": 17.75,
+      "samples": 60,
+      "downlinkBits": 8530816,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1781513040,
+      "wattSeconds": 17,
+      "samples": 57,
+      "downlinkBits": 8407360,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1781513100,
+      "wattSeconds": 16.25,
+      "samples": 58,
+      "downlinkBits": 8283904,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1781513160,
+      "wattSeconds": 15.5,
+      "samples": 59,
+      "downlinkBits": 8160448,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1781513220,
+      "wattSeconds": 14.75,
+      "samples": 60,
+      "downlinkBits": 8036992,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1781513280,
+      "wattSeconds": 14,
+      "samples": 57,
+      "downlinkBits": 7913536,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1781513340,
+      "wattSeconds": 13.25,
+      "samples": 58,
+      "downlinkBits": 7790080,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1781513400,
+      "wattSeconds": 12.5,
+      "samples": 59,
+      "downlinkBits": 7666624,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1781513460,
+      "wattSeconds": 29,
+      "samples": 60,
+      "downlinkBits": 7543168,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1781513520,
+      "wattSeconds": 28.25,
+      "samples": 57,
+      "downlinkBits": 7419712,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1781513640,
+      "wattSeconds": 27.5,
+      "samples": 58,
+      "downlinkBits": 7296256,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1781513700,
+      "wattSeconds": 26.75,
+      "samples": 59,
+      "downlinkBits": 7172800,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1781513760,
+      "wattSeconds": 26,
+      "samples": 60,
+      "downlinkBits": 7049344,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1781513820,
+      "wattSeconds": 25.25,
+      "samples": 57,
+      "downlinkBits": 6925888,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1781513880,
+      "wattSeconds": 24.5,
+      "samples": 58,
+      "downlinkBits": 6802432,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1781513940,
+      "wattSeconds": 23.75,
+      "samples": 59,
+      "downlinkBits": 6678976,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1781514000,
+      "wattSeconds": 23,
+      "samples": 60,
+      "downlinkBits": 6555520,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1781514060,
+      "wattSeconds": 22.25,
+      "samples": 57,
+      "downlinkBits": 6432064,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1781514120,
+      "wattSeconds": 21.5,
+      "samples": 58,
+      "downlinkBits": 6308608,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1781514180,
+      "wattSeconds": 20.75,
+      "samples": 59,
+      "downlinkBits": 6185152,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1781514240,
+      "wattSeconds": 20,
+      "samples": 60,
+      "downlinkBits": 6061696,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1781514300,
+      "wattSeconds": 19.25,
+      "samples": 57,
+      "downlinkBits": 5938240,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1781514360,
+      "wattSeconds": 18.5,
+      "samples": 58,
+      "downlinkBits": 5814784,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1781514420,
+      "wattSeconds": 17.75,
+      "samples": 59,
+      "downlinkBits": 5691328,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1781514480,
+      "wattSeconds": 17,
+      "samples": 60,
+      "downlinkBits": 5567872,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1781514540,
+      "wattSeconds": 16.25,
+      "samples": 57,
+      "downlinkBits": 5444416,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1781514660,
+      "wattSeconds": 15.5,
+      "samples": 58,
+      "downlinkBits": 5320960,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1781514720,
+      "wattSeconds": 14.75,
+      "samples": 59,
+      "downlinkBits": 5197504,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1781514780,
+      "wattSeconds": 14,
+      "samples": 60,
+      "downlinkBits": 5074048,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1781514840,
+      "wattSeconds": 13.25,
+      "samples": 57,
+      "downlinkBits": 4950592,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1781514900,
+      "wattSeconds": 12.5,
+      "samples": 58,
+      "downlinkBits": 4827136,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1781514960,
+      "wattSeconds": 29,
+      "samples": 59,
+      "downlinkBits": 4703680,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1781515020,
+      "wattSeconds": 28.25,
+      "samples": 60,
+      "downlinkBits": 4580224,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1781515080,
+      "wattSeconds": 27.5,
+      "samples": 57,
+      "downlinkBits": 4456768,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1781515140,
+      "wattSeconds": 26.75,
+      "samples": 58,
+      "downlinkBits": 4333312,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1781515200,
+      "wattSeconds": 26,
+      "samples": 59,
+      "downlinkBits": 4209856,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1781515260,
+      "wattSeconds": 25.25,
+      "samples": 60,
+      "downlinkBits": 4086400,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1781515320,
+      "wattSeconds": 24.5,
+      "samples": 57,
+      "downlinkBits": 3962944,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1781515380,
+      "wattSeconds": 23.75,
+      "samples": 58,
+      "downlinkBits": 3839488,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1781515440,
+      "wattSeconds": 23,
+      "samples": 59,
+      "downlinkBits": 3716032,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1781515500,
+      "wattSeconds": 22.25,
+      "samples": 60,
+      "downlinkBits": 3592576,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1781515560,
+      "wattSeconds": 21.5,
+      "samples": 57,
+      "downlinkBits": 3469120,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1781515680,
+      "wattSeconds": 20.75,
+      "samples": 58,
+      "downlinkBits": 3345664,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1781515740,
+      "wattSeconds": 20,
+      "samples": 59,
+      "downlinkBits": 3222208,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1781515800,
+      "wattSeconds": 19.25,
+      "samples": 60,
+      "downlinkBits": 3098752,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1781515860,
+      "wattSeconds": 18.5,
+      "samples": 57,
+      "downlinkBits": 2975296,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1781515920,
+      "wattSeconds": 17.75,
+      "samples": 58,
+      "downlinkBits": 2851840,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1781515980,
+      "wattSeconds": 17,
+      "samples": 59,
+      "downlinkBits": 2728384,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1781516040,
+      "wattSeconds": 16.25,
+      "samples": 60,
+      "downlinkBits": 2604928,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1781516100,
+      "wattSeconds": 15.5,
+      "samples": 57,
+      "downlinkBits": 2481472,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1781516160,
+      "wattSeconds": 14.75,
+      "samples": 58,
+      "downlinkBits": 2358016,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1781516220,
+      "wattSeconds": 14,
+      "samples": 59,
+      "downlinkBits": 2234560,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1781516280,
+      "wattSeconds": 13.25,
+      "samples": 60,
+      "downlinkBits": 2111104,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1781516340,
+      "wattSeconds": 12.5,
+      "samples": 57,
+      "downlinkBits": 1987648,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1781516400,
+      "wattSeconds": 29,
+      "samples": 58,
+      "downlinkBits": 1864192,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1781516460,
+      "wattSeconds": 28.25,
+      "samples": 59,
+      "downlinkBits": 1740736,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1781516520,
+      "wattSeconds": 27.5,
+      "samples": 60,
+      "downlinkBits": 1617280,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1781516580,
+      "wattSeconds": 26.75,
+      "samples": 57,
+      "downlinkBits": 1493824,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1781516700,
+      "wattSeconds": 26,
+      "samples": 58,
+      "downlinkBits": 1370368,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1781516760,
+      "wattSeconds": 25.25,
+      "samples": 59,
+      "downlinkBits": 1246912,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1781516820,
+      "wattSeconds": 24.5,
+      "samples": 60,
+      "downlinkBits": 1123456,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1781516880,
+      "wattSeconds": 23.75,
+      "samples": 57,
+      "downlinkBits": 1000000,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1781516940,
+      "wattSeconds": 23,
+      "samples": 58,
+      "downlinkBits": 12851776,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1781517000,
+      "wattSeconds": 22.25,
+      "samples": 59,
+      "downlinkBits": 12728320,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1781517060,
+      "wattSeconds": 21.5,
+      "samples": 60,
+      "downlinkBits": 12604864,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1781517120,
+      "wattSeconds": 20.75,
+      "samples": 57,
+      "downlinkBits": 12481408,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1781517180,
+      "wattSeconds": 20,
+      "samples": 58,
+      "downlinkBits": 12357952,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1781517240,
+      "wattSeconds": 19.25,
+      "samples": 59,
+      "downlinkBits": 12234496,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1781517300,
+      "wattSeconds": 18.5,
+      "samples": 60,
+      "downlinkBits": 12111040,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1781517360,
+      "wattSeconds": 17.75,
+      "samples": 57,
+      "downlinkBits": 11987584,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1781517420,
+      "wattSeconds": 17,
+      "samples": 58,
+      "downlinkBits": 11864128,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1781517480,
+      "wattSeconds": 16.25,
+      "samples": 59,
+      "downlinkBits": 11740672,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1781517540,
+      "wattSeconds": 15.5,
+      "samples": 60,
+      "downlinkBits": 11617216,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1781517600,
+      "wattSeconds": 14.75,
+      "samples": 57,
+      "downlinkBits": 11493760,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1781517720,
+      "wattSeconds": 14,
+      "samples": 58,
+      "downlinkBits": 11370304,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1781517780,
+      "wattSeconds": 13.25,
+      "samples": 59,
+      "downlinkBits": 11246848,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1781517840,
+      "wattSeconds": 12.5,
+      "samples": 60,
+      "downlinkBits": 11123392,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1781517900,
+      "wattSeconds": 29,
+      "samples": 57,
+      "downlinkBits": 10999936,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1781517960,
+      "wattSeconds": 28.25,
+      "samples": 58,
+      "downlinkBits": 10876480,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1781518020,
+      "wattSeconds": 27.5,
+      "samples": 59,
+      "downlinkBits": 10753024,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1781518080,
+      "wattSeconds": 26.75,
+      "samples": 60,
+      "downlinkBits": 10629568,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1781518140,
+      "wattSeconds": 26,
+      "samples": 57,
+      "downlinkBits": 10506112,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1781518200,
+      "wattSeconds": 25.25,
+      "samples": 58,
+      "downlinkBits": 10382656,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1781518260,
+      "wattSeconds": 24.5,
+      "samples": 59,
+      "downlinkBits": 10259200,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1781518320,
+      "wattSeconds": 23.75,
+      "samples": 60,
+      "downlinkBits": 10135744,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1781518380,
+      "wattSeconds": 23,
+      "samples": 57,
+      "downlinkBits": 10012288,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1781518440,
+      "wattSeconds": 22.25,
+      "samples": 58,
+      "downlinkBits": 9888832,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1781518500,
+      "wattSeconds": 21.5,
+      "samples": 59,
+      "downlinkBits": 9765376,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1781518560,
+      "wattSeconds": 20.75,
+      "samples": 60,
+      "downlinkBits": 9641920,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1781518620,
+      "wattSeconds": 20,
+      "samples": 57,
+      "downlinkBits": 9518464,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1781518740,
+      "wattSeconds": 19.25,
+      "samples": 58,
+      "downlinkBits": 9395008,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1781518800,
+      "wattSeconds": 18.5,
+      "samples": 59,
+      "downlinkBits": 9271552,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1781518860,
+      "wattSeconds": 17.75,
+      "samples": 60,
+      "downlinkBits": 9148096,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1781518920,
+      "wattSeconds": 17,
+      "samples": 57,
+      "downlinkBits": 9024640,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1781518980,
+      "wattSeconds": 16.25,
+      "samples": 58,
+      "downlinkBits": 8901184,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1781519040,
+      "wattSeconds": 15.5,
+      "samples": 59,
+      "downlinkBits": 8777728,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1781519100,
+      "wattSeconds": 14.75,
+      "samples": 60,
+      "downlinkBits": 8654272,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1781519160,
+      "wattSeconds": 14,
+      "samples": 57,
+      "downlinkBits": 8530816,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1781519220,
+      "wattSeconds": 13.25,
+      "samples": 58,
+      "downlinkBits": 8407360,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1781519280,
+      "wattSeconds": 12.5,
+      "samples": 59,
+      "downlinkBits": 8283904,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1781519340,
+      "wattSeconds": 29,
+      "samples": 60,
+      "downlinkBits": 8160448,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1781519400,
+      "wattSeconds": 28.25,
+      "samples": 57,
+      "downlinkBits": 8036992,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1781519460,
+      "wattSeconds": 27.5,
+      "samples": 58,
+      "downlinkBits": 7913536,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1781519520,
+      "wattSeconds": 26.75,
+      "samples": 59,
+      "downlinkBits": 7790080,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1781519580,
+      "wattSeconds": 26,
+      "samples": 60,
+      "downlinkBits": 7666624,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1781519640,
+      "wattSeconds": 25.25,
+      "samples": 57,
+      "downlinkBits": 7543168,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1781519760,
+      "wattSeconds": 24.5,
+      "samples": 58,
+      "downlinkBits": 7419712,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1781519820,
+      "wattSeconds": 23.75,
+      "samples": 59,
+      "downlinkBits": 7296256,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1781519880,
+      "wattSeconds": 23,
+      "samples": 60,
+      "downlinkBits": 7172800,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1781519940,
+      "wattSeconds": 22.25,
+      "samples": 57,
+      "downlinkBits": 7049344,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1781520000,
+      "wattSeconds": 21.5,
+      "samples": 58,
+      "downlinkBits": 6925888,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1781520060,
+      "wattSeconds": 20.75,
+      "samples": 59,
+      "downlinkBits": 6802432,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1781520120,
+      "wattSeconds": 20,
+      "samples": 60,
+      "downlinkBits": 6678976,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1781520180,
+      "wattSeconds": 19.25,
+      "samples": 57,
+      "downlinkBits": 6555520,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1781520240,
+      "wattSeconds": 18.5,
+      "samples": 58,
+      "downlinkBits": 6432064,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1781520300,
+      "wattSeconds": 17.75,
+      "samples": 59,
+      "downlinkBits": 6308608,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1781520360,
+      "wattSeconds": 17,
+      "samples": 60,
+      "downlinkBits": 6185152,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1781520420,
+      "wattSeconds": 16.25,
+      "samples": 57,
+      "downlinkBits": 6061696,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1781520480,
+      "wattSeconds": 15.5,
+      "samples": 58,
+      "downlinkBits": 5938240,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1781520540,
+      "wattSeconds": 14.75,
+      "samples": 59,
+      "downlinkBits": 5814784,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1781520600,
+      "wattSeconds": 14,
+      "samples": 60,
+      "downlinkBits": 5691328,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1781520660,
+      "wattSeconds": 13.25,
+      "samples": 57,
+      "downlinkBits": 5567872,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1781520780,
+      "wattSeconds": 12.5,
+      "samples": 58,
+      "downlinkBits": 5444416,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1781520840,
+      "wattSeconds": 29,
+      "samples": 59,
+      "downlinkBits": 5320960,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1781520900,
+      "wattSeconds": 28.25,
+      "samples": 60,
+      "downlinkBits": 5197504,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1781520960,
+      "wattSeconds": 27.5,
+      "samples": 57,
+      "downlinkBits": 5074048,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1781521020,
+      "wattSeconds": 26.75,
+      "samples": 58,
+      "downlinkBits": 4950592,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1781521080,
+      "wattSeconds": 26,
+      "samples": 59,
+      "downlinkBits": 4827136,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1781521140,
+      "wattSeconds": 25.25,
+      "samples": 60,
+      "downlinkBits": 4703680,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1781521200,
+      "wattSeconds": 24.5,
+      "samples": 57,
+      "downlinkBits": 4580224,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1781521260,
+      "wattSeconds": 23.75,
+      "samples": 58,
+      "downlinkBits": 4456768,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1781521320,
+      "wattSeconds": 23,
+      "samples": 59,
+      "downlinkBits": 4333312,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1781521380,
+      "wattSeconds": 22.25,
+      "samples": 60,
+      "downlinkBits": 4209856,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1781521440,
+      "wattSeconds": 21.5,
+      "samples": 57,
+      "downlinkBits": 4086400,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1781521500,
+      "wattSeconds": 20.75,
+      "samples": 58,
+      "downlinkBits": 3962944,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1781521560,
+      "wattSeconds": 20,
+      "samples": 59,
+      "downlinkBits": 3839488,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1781521620,
+      "wattSeconds": 19.25,
+      "samples": 60,
+      "downlinkBits": 3716032,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1781521680,
+      "wattSeconds": 18.5,
+      "samples": 57,
+      "downlinkBits": 3592576,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1781521800,
+      "wattSeconds": 17.75,
+      "samples": 58,
+      "downlinkBits": 3469120,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1781521860,
+      "wattSeconds": 17,
+      "samples": 59,
+      "downlinkBits": 3345664,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1781521920,
+      "wattSeconds": 16.25,
+      "samples": 60,
+      "downlinkBits": 3222208,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1781521980,
+      "wattSeconds": 15.5,
+      "samples": 57,
+      "downlinkBits": 3098752,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1781522040,
+      "wattSeconds": 14.75,
+      "samples": 58,
+      "downlinkBits": 2975296,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1781522100,
+      "wattSeconds": 14,
+      "samples": 59,
+      "downlinkBits": 2851840,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1781522160,
+      "wattSeconds": 13.25,
+      "samples": 60,
+      "downlinkBits": 2728384,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1781522220,
+      "wattSeconds": 12.5,
+      "samples": 57,
+      "downlinkBits": 2604928,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1781522280,
+      "wattSeconds": 29,
+      "samples": 58,
+      "downlinkBits": 2481472,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1781522340,
+      "wattSeconds": 28.25,
+      "samples": 59,
+      "downlinkBits": 2358016,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1781522400,
+      "wattSeconds": 27.5,
+      "samples": 60,
+      "downlinkBits": 2234560,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1781522460,
+      "wattSeconds": 26.75,
+      "samples": 57,
+      "downlinkBits": 2111104,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1781522520,
+      "wattSeconds": 26,
+      "samples": 58,
+      "downlinkBits": 1987648,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1781522580,
+      "wattSeconds": 25.25,
+      "samples": 59,
+      "downlinkBits": 1864192,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1781522640,
+      "wattSeconds": 24.5,
+      "samples": 60,
+      "downlinkBits": 1740736,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1781522700,
+      "wattSeconds": 23.75,
+      "samples": 57,
+      "downlinkBits": 1617280,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1781522820,
+      "wattSeconds": 23,
+      "samples": 58,
+      "downlinkBits": 1493824,
+      "uplinkBits": 191848
+    },
+    {
+      "minute": 1781522880,
+      "wattSeconds": 22.25,
+      "samples": 59,
+      "downlinkBits": 1370368,
+      "uplinkBits": 184194
+    },
+    {
+      "minute": 1781522940,
+      "wattSeconds": 21.5,
+      "samples": 60,
+      "downlinkBits": 1246912,
+      "uplinkBits": 176540
+    },
+    {
+      "minute": 1781523000,
+      "wattSeconds": 20.75,
+      "samples": 57,
+      "downlinkBits": 1123456,
+      "uplinkBits": 168886
+    },
+    {
+      "minute": 1781523060,
+      "wattSeconds": 20,
+      "samples": 58,
+      "downlinkBits": 1000000,
+      "uplinkBits": 161232
+    },
+    {
+      "minute": 1781523120,
+      "wattSeconds": 19.25,
+      "samples": 59,
+      "downlinkBits": 12851776,
+      "uplinkBits": 153578
+    },
+    {
+      "minute": 1781523180,
+      "wattSeconds": 18.5,
+      "samples": 60,
+      "downlinkBits": 12728320,
+      "uplinkBits": 145924
+    },
+    {
+      "minute": 1781523240,
+      "wattSeconds": 17.75,
+      "samples": 57,
+      "downlinkBits": 12604864,
+      "uplinkBits": 138270
+    },
+    {
+      "minute": 1781523300,
+      "wattSeconds": 17,
+      "samples": 58,
+      "downlinkBits": 12481408,
+      "uplinkBits": 130616
+    },
+    {
+      "minute": 1781523360,
+      "wattSeconds": 16.25,
+      "samples": 59,
+      "downlinkBits": 12357952,
+      "uplinkBits": 122962
+    },
+    {
+      "minute": 1781523420,
+      "wattSeconds": 15.5,
+      "samples": 60,
+      "downlinkBits": 12234496,
+      "uplinkBits": 115308
+    },
+    {
+      "minute": 1781523480,
+      "wattSeconds": 14.75,
+      "samples": 57,
+      "downlinkBits": 12111040,
+      "uplinkBits": 107654
+    },
+    {
+      "minute": 1781523540,
+      "wattSeconds": 14,
+      "samples": 58,
+      "downlinkBits": 11987584,
+      "uplinkBits": 100000
+    },
+    {
+      "minute": 1781523600,
+      "wattSeconds": 13.25,
+      "samples": 59,
+      "downlinkBits": 11864128,
+      "uplinkBits": 329620
+    },
+    {
+      "minute": 1781523660,
+      "wattSeconds": 12.5,
+      "samples": 60,
+      "downlinkBits": 11740672,
+      "uplinkBits": 321966
+    },
+    {
+      "minute": 1781523720,
+      "wattSeconds": 29,
+      "samples": 57,
+      "downlinkBits": 11617216,
+      "uplinkBits": 314312
+    },
+    {
+      "minute": 1781523840,
+      "wattSeconds": 28.25,
+      "samples": 58,
+      "downlinkBits": 11493760,
+      "uplinkBits": 306658
+    },
+    {
+      "minute": 1781523900,
+      "wattSeconds": 27.5,
+      "samples": 59,
+      "downlinkBits": 11370304,
+      "uplinkBits": 299004
+    },
+    {
+      "minute": 1781523960,
+      "wattSeconds": 26.75,
+      "samples": 60,
+      "downlinkBits": 11246848,
+      "uplinkBits": 291350
+    },
+    {
+      "minute": 1781524020,
+      "wattSeconds": 26,
+      "samples": 57,
+      "downlinkBits": 11123392,
+      "uplinkBits": 283696
+    },
+    {
+      "minute": 1781524080,
+      "wattSeconds": 25.25,
+      "samples": 58,
+      "downlinkBits": 10999936,
+      "uplinkBits": 276042
+    },
+    {
+      "minute": 1781524140,
+      "wattSeconds": 24.5,
+      "samples": 59,
+      "downlinkBits": 10876480,
+      "uplinkBits": 268388
+    },
+    {
+      "minute": 1781524200,
+      "wattSeconds": 23.75,
+      "samples": 60,
+      "downlinkBits": 10753024,
+      "uplinkBits": 260734
+    },
+    {
+      "minute": 1781524260,
+      "wattSeconds": 23,
+      "samples": 57,
+      "downlinkBits": 10629568,
+      "uplinkBits": 253080
+    },
+    {
+      "minute": 1781524320,
+      "wattSeconds": 22.25,
+      "samples": 58,
+      "downlinkBits": 10506112,
+      "uplinkBits": 245426
+    },
+    {
+      "minute": 1781524380,
+      "wattSeconds": 21.5,
+      "samples": 59,
+      "downlinkBits": 10382656,
+      "uplinkBits": 237772
+    },
+    {
+      "minute": 1781524440,
+      "wattSeconds": 20.75,
+      "samples": 60,
+      "downlinkBits": 10259200,
+      "uplinkBits": 230118
+    },
+    {
+      "minute": 1781524500,
+      "wattSeconds": 20,
+      "samples": 57,
+      "downlinkBits": 10135744,
+      "uplinkBits": 222464
+    },
+    {
+      "minute": 1781524560,
+      "wattSeconds": 19.25,
+      "samples": 58,
+      "downlinkBits": 10012288,
+      "uplinkBits": 214810
+    },
+    {
+      "minute": 1781524620,
+      "wattSeconds": 18.5,
+      "samples": 59,
+      "downlinkBits": 9888832,
+      "uplinkBits": 207156
+    },
+    {
+      "minute": 1781524680,
+      "wattSeconds": 17.75,
+      "samples": 60,
+      "downlinkBits": 9765376,
+      "uplinkBits": 199502
+    },
+    {
+      "minute": 1781524740,
+      "wattSeconds": 17,
+      "samples": 57,
+      "downlinkBits": 9641920,
+      "uplinkBits": 191848
+    }
+  ],
+  "cases": [
+    {
+      "range": "1h",
+      "summary": {
+        "range": "1h",
+        "totalKWh": 0.0003217361111111111,
+        "totalDownGB": 0.047848504,
+        "totalUpGB": 0.00154098325,
+        "coverage": {
+          "sampledSeconds": 3276,
+          "expectedSeconds": 3600,
+          "fraction": 0.91
+        },
+        "buckets": [
+          {
+            "t": 1781521200,
+            "kWh": 0.00002513888888888889,
+            "downGB": 0.002135792,
+            "upGB": 0.0000633945,
+            "sampledSeconds": 234,
+            "expectedSeconds": 283
+          },
+          {
+            "t": 1781521500,
+            "kWh": 0.000021805555555555554,
+            "downGB": 0.00188888,
+            "upGB": 0.000107405,
+            "sampledSeconds": 234,
+            "expectedSeconds": 300
+          },
+          {
+            "t": 1781521800,
+            "kWh": 0.000022569444444444443,
+            "downGB": 0.00201388,
+            "upGB": 0.0001868775,
+            "sampledSeconds": 292,
+            "expectedSeconds": 300
+          },
+          {
+            "t": 1781522100,
+            "kWh": 0.000026944444444444445,
+            "downGB": 0.00162808,
+            "upGB": 0.00016295875,
+            "sampledSeconds": 293,
+            "expectedSeconds": 300
+          },
+          {
+            "t": 1781522400,
+            "kWh": 0.00003611111111111111,
+            "downGB": 0.00124228,
+            "upGB": 0.00013904,
+            "sampledSeconds": 294,
+            "expectedSeconds": 300
+          },
+          {
+            "t": 1781522700,
+            "kWh": 0.00002513888888888889,
+            "downGB": 0.000716048,
+            "upGB": 0.0000940105,
+            "sampledSeconds": 234,
+            "expectedSeconds": 300
+          },
+          {
+            "t": 1781523000,
+            "kWh": 0.000026736111111111112,
+            "downGB": 0.005038552,
+            "upGB": 0.00009598625,
+            "sampledSeconds": 291,
+            "expectedSeconds": 300
+          },
+          {
+            "t": 1781523300,
+            "kWh": 0.000021527777777777776,
+            "downGB": 0.00764656,
+            "upGB": 0.0000720675,
+            "sampledSeconds": 292,
+            "expectedSeconds": 300
+          },
+          {
+            "t": 1781523600,
+            "kWh": 0.000023055555555555554,
+            "downGB": 0.005839472,
+            "upGB": 0.0001590695,
+            "sampledSeconds": 234,
+            "expectedSeconds": 300
+          },
+          {
+            "t": 1781523900,
+            "kWh": 0.00003611111111111111,
+            "downGB": 0.00695212,
+            "upGB": 0.00017731,
+            "sampledSeconds": 293,
+            "expectedSeconds": 300
+          },
+          {
+            "t": 1781524200,
+            "kWh": 0.00003090277777777778,
+            "downGB": 0.00656632,
+            "upGB": 0.00015339125,
+            "sampledSeconds": 294,
+            "expectedSeconds": 300
+          },
+          {
+            "t": 1781524500,
+            "kWh": 0.000025694444444444445,
+            "downGB": 0.00618052,
+            "upGB": 0.0001294725,
+            "sampledSeconds": 291,
+            "expectedSeconds": 300
+          },
+          {
+            "t": 1781524800,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 17
+          }
+        ]
+      }
+    },
+    {
+      "range": "6h",
+      "summary": {
+        "range": "6h",
+        "totalKWh": 0.001956527777777778,
+        "totalDownGB": 0.295319368,
+        "totalUpGB": 0.00909007375,
+        "coverage": {
+          "sampledSeconds": 19773,
+          "expectedSeconds": 21600,
+          "fraction": 0.9154166666666667
+        },
+        "buckets": [
+          {
+            "t": 1781503200,
+            "kWh": 0.00016270833333333334,
+            "downGB": 0.016353312,
+            "upGB": 0.00074220525,
+            "sampledSeconds": 1579,
+            "expectedSeconds": 1783
+          },
+          {
+            "t": 1781505000,
+            "kWh": 0.00016555555555555556,
+            "downGB": 0.036123248,
+            "upGB": 0.00075470525,
+            "sampledSeconds": 1638,
+            "expectedSeconds": 1800
+          },
+          {
+            "t": 1781506800,
+            "kWh": 0.00016034722222222223,
+            "downGB": 0.02402456,
+            "upGB": 0.0007460945,
+            "sampledSeconds": 1638,
+            "expectedSeconds": 1800
+          },
+          {
+            "t": 1781508600,
+            "kWh": 0.0001590277777777778,
+            "downGB": 0.012128032,
+            "upGB": 0.0007700755,
+            "sampledSeconds": 1697,
+            "expectedSeconds": 1800
+          },
+          {
+            "t": 1781510400,
+            "kWh": 0.0001632638888888889,
+            "downGB": 0.03382388,
+            "upGB": 0.00073174325,
+            "sampledSeconds": 1638,
+            "expectedSeconds": 1800
+          },
+          {
+            "t": 1781512200,
+            "kWh": 0.00016763888888888888,
+            "downGB": 0.029209712,
+            "upGB": 0.0007231325,
+            "sampledSeconds": 1638,
+            "expectedSeconds": 1800
+          },
+          {
+            "t": 1781514000,
+            "kWh": 0.00016243055555555555,
+            "downGB": 0.017111024,
+            "upGB": 0.00071452175,
+            "sampledSeconds": 1638,
+            "expectedSeconds": 1800
+          },
+          {
+            "t": 1781515800,
+            "kWh": 0.00016152777777777777,
+            "downGB": 0.021433528,
+            "upGB": 0.00077868625,
+            "sampledSeconds": 1698,
+            "expectedSeconds": 1800
+          },
+          {
+            "t": 1781517600,
+            "kWh": 0.00015576388888888888,
+            "downGB": 0.034394864,
+            "upGB": 0.00078914825,
+            "sampledSeconds": 1638,
+            "expectedSeconds": 1800
+          },
+          {
+            "t": 1781519400,
+            "kWh": 0.00016972222222222223,
+            "downGB": 0.022296176,
+            "upGB": 0.0007805375,
+            "sampledSeconds": 1638,
+            "expectedSeconds": 1800
+          },
+          {
+            "t": 1781521200,
+            "kWh": 0.0001645138888888889,
+            "downGB": 0.010197488,
+            "upGB": 0.00077192675,
+            "sampledSeconds": 1638,
+            "expectedSeconds": 1800
+          },
+          {
+            "t": 1781523000,
+            "kWh": 0.00016402777777777778,
+            "downGB": 0.038223544,
+            "upGB": 0.000787297,
+            "sampledSeconds": 1695,
+            "expectedSeconds": 1800
+          },
+          {
+            "t": 1781524800,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 17
+          }
+        ]
+      }
+    },
+    {
+      "range": "12h",
+      "summary": {
+        "range": "12h",
+        "totalKWh": 0.001956527777777778,
+        "totalDownGB": 0.295319368,
+        "totalUpGB": 0.00909007375,
+        "coverage": {
+          "sampledSeconds": 19773,
+          "expectedSeconds": 43200,
+          "fraction": 0.45770833333333333
+        },
+        "buckets": [
+          {
+            "t": 1781481600,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 3583
+          },
+          {
+            "t": 1781485200,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781488800,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781492400,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781496000,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781499600,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781503200,
+            "kWh": 0.0003282638888888889,
+            "downGB": 0.05247656,
+            "upGB": 0.0014969105,
+            "sampledSeconds": 3217,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781506800,
+            "kWh": 0.000319375,
+            "downGB": 0.036152592,
+            "upGB": 0.00151617,
+            "sampledSeconds": 3335,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781510400,
+            "kWh": 0.0003309027777777778,
+            "downGB": 0.063033592,
+            "upGB": 0.00145487575,
+            "sampledSeconds": 3276,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781514000,
+            "kWh": 0.0003239583333333333,
+            "downGB": 0.038544552,
+            "upGB": 0.001493208,
+            "sampledSeconds": 3336,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781517600,
+            "kWh": 0.00032548611111111114,
+            "downGB": 0.05669104,
+            "upGB": 0.00156968575,
+            "sampledSeconds": 3276,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781521200,
+            "kWh": 0.00032854166666666665,
+            "downGB": 0.048421032,
+            "upGB": 0.00155922375,
+            "sampledSeconds": 3333,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781524800,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 17
+          }
+        ]
+      }
+    },
+    {
+      "range": "today",
+      "summary": {
+        "range": "today",
+        "totalKWh": 0.001956527777777778,
+        "totalDownGB": 0.295319368,
+        "totalUpGB": 0.00909007375,
+        "coverage": {
+          "sampledSeconds": 19773,
+          "expectedSeconds": 43217,
+          "fraction": 0.4575282874794641
+        },
+        "buckets": [
+          {
+            "t": 1781481600,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781485200,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781488800,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781492400,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781496000,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781499600,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781503200,
+            "kWh": 0.0003282638888888889,
+            "downGB": 0.05247656,
+            "upGB": 0.0014969105,
+            "sampledSeconds": 3217,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781506800,
+            "kWh": 0.000319375,
+            "downGB": 0.036152592,
+            "upGB": 0.00151617,
+            "sampledSeconds": 3335,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781510400,
+            "kWh": 0.0003309027777777778,
+            "downGB": 0.063033592,
+            "upGB": 0.00145487575,
+            "sampledSeconds": 3276,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781514000,
+            "kWh": 0.0003239583333333333,
+            "downGB": 0.038544552,
+            "upGB": 0.001493208,
+            "sampledSeconds": 3336,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781517600,
+            "kWh": 0.00032548611111111114,
+            "downGB": 0.05669104,
+            "upGB": 0.00156968575,
+            "sampledSeconds": 3276,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781521200,
+            "kWh": 0.00032854166666666665,
+            "downGB": 0.048421032,
+            "upGB": 0.00155922375,
+            "sampledSeconds": 3333,
+            "expectedSeconds": 3600
+          },
+          {
+            "t": 1781524800,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 17
+          }
+        ]
+      }
+    },
+    {
+      "range": "day",
+      "summary": {
+        "range": "day",
+        "totalKWh": 0.002023888888888889,
+        "totalDownGB": 0.307234424,
+        "totalUpGB": 0.009329946,
+        "coverage": {
+          "sampledSeconds": 20415,
+          "expectedSeconds": 1166417,
+          "fraction": 0.01750231692439325
+        },
+        "buckets": [
+          {
+            "t": 1780358400,
+            "kWh": 0.000006597222222222222,
+            "downGB": 0.000989192,
+            "upGB": 0.00004024575,
+            "sampledSeconds": 59,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1780444800,
+            "kWh": 0.000006805555555555556,
+            "downGB": 0.001004624,
+            "upGB": 0.0000412025,
+            "sampledSeconds": 58,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1780531200,
+            "kWh": 0.000007013888888888889,
+            "downGB": 0.001020056,
+            "upGB": 0.0000125,
+            "sampledSeconds": 57,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1780617600,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1780704000,
+            "kWh": 0.000007430555555555556,
+            "downGB": 0.00105092,
+            "upGB": 0.0000144135,
+            "sampledSeconds": 59,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1780790400,
+            "kWh": 0.000007638888888888888,
+            "downGB": 0.001066352,
+            "upGB": 0.00001537025,
+            "sampledSeconds": 58,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1780876800,
+            "kWh": 0.000007847222222222223,
+            "downGB": 0.001081784,
+            "upGB": 0.000016327,
+            "sampledSeconds": 57,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1780963200,
+            "kWh": 0.000008055555555555556,
+            "downGB": 0.001097216,
+            "upGB": 0.00001728375,
+            "sampledSeconds": 60,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1781049600,
+            "kWh": null,
+            "downGB": null,
+            "upGB": null,
+            "sampledSeconds": 0,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1781136000,
+            "kWh": 0.0000036805555555555556,
+            "downGB": 0.00112808,
+            "upGB": 0.00001919725,
+            "sampledSeconds": 58,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1781222400,
+            "kWh": 0.000003888888888888889,
+            "downGB": 0.001143512,
+            "upGB": 0.000020154,
+            "sampledSeconds": 57,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1781308800,
+            "kWh": 0.000004097222222222222,
+            "downGB": 0.001158944,
+            "upGB": 0.00002111075,
+            "sampledSeconds": 60,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1781395200,
+            "kWh": 0.000004305555555555556,
+            "downGB": 0.001174376,
+            "upGB": 0.0000220675,
+            "sampledSeconds": 59,
+            "expectedSeconds": 86400
+          },
+          {
+            "t": 1781481600,
+            "kWh": 0.001956527777777778,
+            "downGB": 0.295319368,
+            "upGB": 0.00909007375,
+            "sampledSeconds": 19773,
+            "expectedSeconds": 43217
+          }
+        ]
+      }
+    },
+    {
+      "range": "week",
+      "summary": {
+        "range": "week",
+        "totalKWh": 0.0023136805555555554,
+        "totalDownGB": 0.34120184,
+        "totalUpGB": 0.0107232785,
+        "coverage": {
+          "sampledSeconds": 23398,
+          "expectedSeconds": 6696017,
+          "fraction": 0.003494316098659845
+        },
+        "buckets": [
+          {
+            "t": 1774828800,
+            "kWh": 0.000026944444444444445,
+            "downGB": 0.00772372,
+            "upGB": 0.000146694,
+            "sampledSeconds": 292,
+            "expectedSeconds": 604800
+          },
+          {
+            "t": 1775433600,
+            "kWh": 0.000029375,
+            "downGB": 0.002416656,
+            "upGB": 0.00010848625,
+            "sampledSeconds": 351,
+            "expectedSeconds": 604800
+          },
+          {
+            "t": 1776038400,
+            "kWh": 0.000038541666666666664,
+            "downGB": 0.00159876,
+            "upGB": 0.00015058325,
+            "sampledSeconds": 351,
+            "expectedSeconds": 604800
+          },
+          {
+            "t": 1776643200,
+            "kWh": 0.00003465277777777778,
+            "downGB": 0.001874992,
+            "upGB": 0.00015913175,
+            "sampledSeconds": 294,
+            "expectedSeconds": 604800
+          },
+          {
+            "t": 1777248000,
+            "kWh": 0.000027083333333333332,
+            "downGB": 0.002879616,
+            "upGB": 0.0002299935,
+            "sampledSeconds": 348,
+            "expectedSeconds": 604800
+          },
+          {
+            "t": 1777852800,
+            "kWh": 0.000029652777777777777,
+            "downGB": 0.002924368,
+            "upGB": 0.0000758945,
+            "sampledSeconds": 294,
+            "expectedSeconds": 604800
+          },
+          {
+            "t": 1778457600,
+            "kWh": 0.000044375,
+            "downGB": 0.004160472,
+            "upGB": 0.00013144825,
+            "sampledSeconds": 353,
+            "expectedSeconds": 604800
+          },
+          {
+            "t": 1779062400,
+            "kWh": 0.000024791666666666665,
+            "downGB": 0.00483948,
+            "upGB": 0.00017354525,
+            "sampledSeconds": 349,
+            "expectedSeconds": 604800
+          },
+          {
+            "t": 1779667200,
+            "kWh": 0.000027986111111111112,
+            "downGB": 0.004575592,
+            "upGB": 0.00017826675,
+            "sampledSeconds": 291,
+            "expectedSeconds": 604800
+          },
+          {
+            "t": 1780272000,
+            "kWh": 0.000041875,
+            "downGB": 0.006104904,
+            "upGB": 0.000163021,
+            "sampledSeconds": 351,
+            "expectedSeconds": 604800
+          },
+          {
+            "t": 1780876800,
+            "kWh": 0.000031875,
+            "downGB": 0.006783912,
+            "upGB": 0.00011614025,
+            "sampledSeconds": 351,
+            "expectedSeconds": 604800
+          },
+          {
+            "t": 1781481600,
+            "kWh": 0.001956527777777778,
+            "downGB": 0.295319368,
+            "upGB": 0.00909007375,
+            "sampledSeconds": 19773,
+            "expectedSeconds": 43217
+          }
+        ]
+      }
+    },
+    {
+      "range": "month",
+      "summary": {
+        "range": "month",
+        "totalKWh": 0.002729513888888889,
+        "totalDownGB": 0.399753992,
+        "totalUpGB": 0.01261925525,
+        "coverage": {
+          "sampledSeconds": 27607,
+          "expectedSeconds": 14299217,
+          "fraction": 0.0019306651546025211
+        },
+        "buckets": [
+          {
+            "t": 1767225600,
+            "kWh": 0.00013472222222222222,
+            "downGB": 0.009158912,
+            "upGB": 0.00065693,
+            "sampledSeconds": 1461,
+            "expectedSeconds": 2678400
+          },
+          {
+            "t": 1769904000,
+            "kWh": 0.00013444444444444444,
+            "downGB": 0.018986008,
+            "upGB": 0.00060418425,
+            "sampledSeconds": 1344,
+            "expectedSeconds": 2419200
+          },
+          {
+            "t": 1772323200,
+            "kWh": 0.00015451388888888888,
+            "downGB": 0.031921112,
+            "upGB": 0.0006741515,
+            "sampledSeconds": 1462,
+            "expectedSeconds": 2678400
+          },
+          {
+            "t": 1775001600,
+            "kWh": 0.00013395833333333334,
+            "downGB": 0.013447464,
+            "upGB": 0.0006348625,
+            "sampledSeconds": 1404,
+            "expectedSeconds": 2592000
+          },
+          {
+            "t": 1777593600,
+            "kWh": 0.0001415972222222222,
+            "downGB": 0.018032312,
+            "upGB": 0.000679892,
+            "sampledSeconds": 1461,
+            "expectedSeconds": 2678400
+          },
+          {
+            "t": 1780272000,
+            "kWh": 0.002030277777777778,
+            "downGB": 0.308208184,
+            "upGB": 0.009369235,
+            "sampledSeconds": 20475,
+            "expectedSeconds": 1252817
+          }
+        ]
+      }
+    }
+  ]
+}

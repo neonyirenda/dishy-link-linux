@@ -1,0 +1,159 @@
+{
+  "rev2Circular": {
+    "scale": 64,
+    "longAxisMm": 590,
+    "parts": [
+      [0, 2351, 0.95],
+      [2351, 449, 0.4],
+      [2800, 300, 0.4],
+      [3100, 1200, 0.4],
+      [4300, 1000, 0.4]
+    ],
+    "vertexCount": 2620,
+    "triangleCount": 5300,
+    "joint": {
+      "baseVertex": 1552,
+      "pivot": [0, 0, -3046]
+    },
+    "keepCameraOutside": false,
+    "beamOriginMm": null
+  },
+  "rev3Rectangular": {
+    "scale": 50,
+    "longAxisMm": 562,
+    "parts": [
+      [0, 2514, 0.95],
+      [2514, 286, 0.4],
+      [2800, 700, 0.4],
+      [3500, 200, 0.4],
+      [3700, 1000, 0.4]
+    ],
+    "vertexCount": 2346,
+    "triangleCount": 4700,
+    "joint": {
+      "baseVertex": 1402,
+      "pivot": [-5, -612, -2708]
+    },
+    "keepCameraOutside": false,
+    "beamOriginMm": null
+  },
+  "rev4Standard": {
+    "scale": 100,
+    "longAxisMm": 594,
+    "parts": [
+      [0, 3413, 1],
+      [3413, 187, 0.44]
+    ],
+    "vertexCount": 1799,
+    "triangleCount": 3600,
+    "joint": null,
+    "keepCameraOutside": false,
+    "beamOriginMm": null
+  },
+  "rev5Standard": {
+    "scale": 100,
+    "longAxisMm": 384.4,
+    "parts": [
+      [0, 2356, 0.44],
+      [2356, 284, 1],
+      [2640, 656, 0.44]
+    ],
+    "vertexCount": 1679,
+    "triangleCount": 3296,
+    "joint": null,
+    "keepCameraOutside": false,
+    "beamOriginMm": null
+  },
+  "performanceGen1": {
+    "scale": 50,
+    "longAxisMm": 562,
+    "parts": [
+      [0, 2514, 0.95],
+      [2514, 286, 0.4],
+      [2800, 700, 0.4],
+      [3500, 200, 0.4],
+      [3700, 1000, 0.4]
+    ],
+    "vertexCount": 2346,
+    "triangleCount": 4700,
+    "joint": {
+      "baseVertex": 1402,
+      "pivot": [-5, -612, -2708]
+    },
+    "keepCameraOutside": false,
+    "beamOriginMm": null
+  },
+  "performanceGen2": {
+    "scale": 50,
+    "longAxisMm": 575,
+    "parts": [
+      [0, 1165, 1],
+      [1165, 1035, 0.14],
+      [2200, 1400, 0.4]
+    ],
+    "vertexCount": 1790,
+    "triangleCount": 3600,
+    "joint": null,
+    "keepCameraOutside": false,
+    "beamOriginMm": null
+  },
+  "performanceGen3": {
+    "scale": 100,
+    "longAxisMm": 610.1,
+    "parts": [
+      [0, 2074, 1],
+      [2074, 1526, 0.14]
+    ],
+    "vertexCount": 1809,
+    "triangleCount": 3600,
+    "joint": null,
+    "keepCameraOutside": false,
+    "beamOriginMm": null
+  },
+  "aviation": {
+    "scale": 5,
+    "longAxisMm": 3000,
+    "parts": [
+      [0, 1084, 1],
+      [1084, 268, 0.94],
+      [1352, 10990, 0.88],
+      [12342, 576, 0.33],
+      [12918, 64, 0.2]
+    ],
+    "vertexCount": 6658,
+    "triangleCount": 12982,
+    "joint": {
+      "baseVertex": 0,
+      "pivot": [0, 0, 0]
+    },
+    "keepCameraOutside": true,
+    "beamOriginMm": [0, 210, 504]
+  },
+  "mini1": {
+    "scale": 100,
+    "longAxisMm": 299,
+    "parts": [
+      [0, 2594, 1],
+      [2594, 406, 0.44],
+      [3000, 744, 1]
+    ],
+    "vertexCount": 1870,
+    "triangleCount": 3744,
+    "joint": null,
+    "keepCameraOutside": false,
+    "beamOriginMm": null
+  },
+  "mini2": {
+    "scale": 100,
+    "longAxisMm": 299,
+    "parts": [
+      [0, 3000, 1],
+      [3000, 744, 1]
+    ],
+    "vertexCount": 1870,
+    "triangleCount": 3744,
+    "joint": null,
+    "keepCameraOutside": false,
+    "beamOriginMm": null
+  }
+}

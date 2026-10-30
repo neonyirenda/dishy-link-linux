@@ -1,0 +1,7 @@
+{
+  "uuid": "dishylink@dishylink.app",
+  "name": "Dishylink Linux",
+  "description": "Starlink status in Quick Settings, from the Dishylink Linux app (spec 0189). Shows online state and throughput, and opens the app.",
+  "shell-version": ["46", "47", "48", "49", "50", "51"],
+  "url": "https://github.com/neonyirenda/dishy-link-linux"
+}
