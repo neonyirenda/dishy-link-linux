@@ -54,8 +54,8 @@
         }
       },
       "build-commands": [
-        "cd rust && cargo --offline build --release --locked -p dishy-gtk",
-        "install -Dm755 rust/target/release/dishy-gtk /app/bin/dishy-gtk",
+        "cargo --offline build --release --locked -p dishy-gtk",
+        "install -Dm755 target/release/dishy-gtk /app/bin/dishy-gtk",
         "install -Dm644 packaging/linux/com.dishylink.app.desktop /app/share/applications/com.dishylink.app.desktop",
         "install -Dm644 packaging/linux/com.dishylink.app.metainfo.xml /app/share/metainfo/com.dishylink.app.metainfo.xml",
         "install -Dm644 packaging/linux/icons/com.dishylink.app.svg /app/share/icons/hicolor/scalable/apps/com.dishylink.app.svg",
@@ -66,7 +66,7 @@
           "type": "dir",
           "path": "../..",
           "skip": [
-            "rust/target",
+            "target",
             ".git",
             ".flatpak-builder",
             ".starlink-cookie",

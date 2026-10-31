@@ -44,5 +44,5 @@ remains for desktops without the extension, behind a switch.
 - Rust tests cover the property mapping, the changed-properties diff, the
   introspection XML, and the tray preference. The extension's JavaScript
   passes a syntax check.
-- Manual: install the extension (see `rust/README.md`) and log in again. The
+- Manual: install the extension (see the README) and log in again. The
   pill shows the live status and opens the app.

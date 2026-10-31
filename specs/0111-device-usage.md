@@ -23,7 +23,7 @@ native icons and labels.
 ## Requirements
 
 - **SPEC-DEV-001** — The MAC address is resolved against the IEEE OUI registry
-  (`contracts/oui.json`). Randomized / locally-administered MAC addresses
+  (`crates/dishy-core/data/oui.json`). Randomized / locally-administered MAC addresses
   (second hex character `2`, `6`, `a`, or `e` case-insensitive) are identified
   as private and never mapped to a real vendor brand.
 - **SPEC-DEV-002** — A device is classified into `DeviceKind` (`phone`,

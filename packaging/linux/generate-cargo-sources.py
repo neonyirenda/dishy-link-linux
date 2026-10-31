@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write cargo-sources.json for the Flatpak build from rust/Cargo.lock.
+"""Write cargo-sources.json for the Flatpak build from Cargo.lock.
 
 Same output shape as flatpak-builder-tools' flatpak-cargo-generator, without
 its dependencies: each registry crate becomes a checksummed archive unpacked
@@ -15,7 +15,7 @@ import tomllib
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-LOCK = HERE.parent.parent / "rust" / "Cargo.lock"
+LOCK = HERE.parent.parent / "Cargo.lock"
 OUT = HERE / "cargo-sources.json"
 REGISTRY = "registry+https://github.com/rust-lang/crates.io-index"
 

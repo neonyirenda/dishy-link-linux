@@ -38,6 +38,6 @@ is the port of `core/grpcWeb.ts`.
 
 ## Acceptance criteria
 
-`rust/crates/dishy-core/tests/transport.rs` proves each requirement against a
+`crates/dishy-core/tests/transport.rs` proves each requirement against a
 fake HTTP server, including byte-identical request framing and the absence of
 `Origin`/`Referer`.

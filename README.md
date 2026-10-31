@@ -1,37 +1,27 @@
 # Dishylink Linux
 
-A native Linux desktop app for monitoring a Starlink kit, written in Rust with
-GTK 4 and libadwaita, plus a GNOME Shell extension that puts your link's
-status in Quick Settings.
+A native Linux app for monitoring your Starlink, written in Rust with GTK 4 and
+libadwaita, with a GNOME Shell extension that puts your link's status in Quick
+Settings.
 
-> **Forked from [DaveyHert/Dishylink](https://github.com/DaveyHert/Dishylink).**
-> The upstream project is an Electron app for macOS and Windows, plus a browser
-> extension. This fork is a from-scratch native port for Linux. It keeps the
-> upstream's device protocol knowledge, on-disk history format, translations
-> and test fixtures. It drops the Electron app, the macOS and Windows builds,
-> the browser extension, the Docker image and the landing site. Thanks to
-> [@DaveyHert](https://github.com/DaveyHert) and the upstream contributors.
-> MIT-licensed, like the original.
+Forked from [DaveyHert/Dishylink](https://github.com/DaveyHert/Dishylink).
 
-![Dashboard, dark](docs/screenshots/dashboard-dark.webp)
+![Dashboard](docs/screenshots/dashboard-dark.webp)
 
-Dishylink Linux talks to your dish and router directly over your local network,
-so it keeps working during an outage, which is exactly when you want to see what
-happened. It records history to your own machine. Signing in to your Starlink
-account is optional; it adds plan and billing details and a few router
-controls. The session is kept in your desktop keyring (Secret Service) and is
-sent only to Starlink.
+It reads your dish and router directly over your local network, so it keeps
+working during an outage, which is exactly when you want to see what happened.
+History is recorded on your own machine. Signing in to your Starlink account is
+optional. It adds plan and billing details and router controls that current
+firmware only accepts through the account. The session is stored in your
+desktop keyring (Secret Service) and is sent only to Starlink.
 
 ## Screens
-
-Every screen, in the default dark-glass theme. Light-mode versions follow
-below.
 
 | | |
 | :-: | :-: |
 | **Dashboard**: live throughput, latency, power, ping success, obstructions, events | **Satellite view**: 3-D obstruction dome, live constellation, time-lapse |
 | ![Dashboard](docs/screenshots/dashboard-dark.webp) | ![Satellite view](docs/screenshots/satellite-dark.webp) |
-| **Data usage**: per-period totals and per-device usage | **Network**: connected devices, mesh nodes, metering rules |
+| **Data usage**: totals by period and per-device usage | **Network**: connected devices, mesh nodes, metering rules |
 | ![Data usage](docs/screenshots/datausage-dark.webp) | ![Network](docs/screenshots/network-dark.webp) |
 | **Alignment**: rotation and tilt against the dish's recommendation | **Speed test**: Starlink beam view and gauge |
 | ![Alignment](docs/screenshots/alignment-dark.webp) | ![Speed test](docs/screenshots/speedtest-dark.webp) |
@@ -59,12 +49,12 @@ screenshots.
 
 </details>
 
-### GNOME Shell extension
+### GNOME Quick Settings pill
 
-The Quick Settings pill shows whether the link is online, the live download and
-upload rates, latency, and active alerts, and opens the app. It only reads the
-status the app publishes on D-Bus (`com.dishylink.Status1`); it never talks to
-the dish or router itself.
+The extension shows whether the link is online, the live download and upload
+rates, latency, and active alerts, and opens the app. It only reads the status
+the app publishes on D-Bus (`com.dishylink.Status1` at
+`/com/dishylink/app/Status`). It never talks to the dish or the router.
 
 <!-- extension screenshot: docs/screenshots/gnome-extension.webp -->
 
@@ -72,37 +62,41 @@ the dish or router itself.
 
 - **Dashboard**: stat tiles with sparklines and drill-downs; throughput, latency
   and power charts over 15 minutes, 1 hour or 6 hours; obstruction map; outage
-  and event log with post-mortems.
+  and event log with post-mortems; dish terminal view.
 - **Always-on recording**: the recorder runs on its own thread, so closing the
-  window doesn't stop it. History uses atomic JSON Lines files with torn-tail
-  recovery, plus per-minute energy and latency, events, thermal and hourly
-  obstruction snapshots.
-- **Sky view**: obstruction dome rendered natively with OpenGL, live
-  constellation from the public CelesTrak catalogue (SGP4), serving-satellite
-  highlight and per-kit 3-D dish models.
+  window doesn't stop it. It writes atomic JSON Lines files with torn-tail
+  recovery, plus per-minute energy and latency, events, thermal readings and
+  hourly obstruction snapshots.
+- **Satellite view**: the obstruction dome rendered natively with OpenGL, the
+  live constellation from the public CelesTrak catalogue (SGP4), the likely
+  serving satellite highlighted, per-kit 3-D dish models, and a time-lapse of
+  the sky survey.
 - **Network**: router clients and mesh nodes, per-device usage with a
-  billing-month odometer, metering rules with allowances, countdowns and
-  weekly timetables, and confirmed device pause and rename.
-- **Alerts**: alert engine with 48-hour history, desktop notifications (opt-in)
-  and an alert chime.
+  billing-month odometer, and metering rules with allowances, countdowns and
+  weekly timetables, per device or per group. Rules only announce; pausing or
+  renaming a device is a separate, confirmed action.
+- **Alerts**: an alert engine with 48-hour history, opt-in desktop
+  notifications and an alert chime.
 - **Settings**: dish and router controls (reboot, stow, factory reset, snow
   melt, sleep schedule, update window, DNS, subnet, Wi-Fi password). Every
   write is confirmed and sent exactly once.
-- **Desktop integration**: single instance, tray icon (StatusNotifierItem) with a
-  throughput readout, start at login, the GNOME Quick Settings pill, and five
-  languages (English, Spanish, French, German, Portuguese).
-- **Headless recorder**: `dishy record` runs the same recorder without a GUI,
+- **Desktop integration**: single instance, a tray icon with a throughput
+  readout, start at login, the Quick Settings pill, dark-glass and light themes,
+  and five languages (English, Spanish, French, German, Portuguese).
+- **Headless recorder**: `dishy record` runs the same recorder without a window,
   for example on a server or a Raspberry Pi.
 
 ## Building
 
-Requires Rust (stable, edition 2024, 1.92+) and the GTK stack. On Fedora:
+You need Rust 1.92 or newer and the GTK development packages.
+
+Fedora:
 
 ```sh
 sudo dnf install gtk4-devel libadwaita-devel webkitgtk6.0-devel libsecret
 ```
 
-On Debian or Ubuntu:
+Debian or Ubuntu:
 
 ```sh
 sudo apt install libgtk-4-dev libadwaita-1-dev libwebkitgtk-6.0-dev libsecret-tools
@@ -111,23 +105,38 @@ sudo apt install libgtk-4-dev libadwaita-1-dev libwebkitgtk-6.0-dev libsecret-to
 Then:
 
 ```sh
-cd rust
-cargo run -p dishy-gtk --release      # the desktop app
-cargo run -p dishy-cli -- record      # headless recorder
-cargo test --workspace                # tests
+cargo run -p dishy-gtk --release           # the app: window, tray and recorder
+cargo run -p dishy-gtk -- --hidden         # tray-only start (what autostart uses)
+cargo run -p dishy-cli -- status           # one dish status reply as JSON
+cargo run -p dishy-cli -- status --router  # the router's status
+cargo run -p dishy-cli -- record           # headless recorder
+cargo run -p dishy-cli -- record --once    # one poll, then exit
+```
+
+The app and `dishy record` share `~/.config/Dishylink/data`; only one of them
+records at a time. Set `HISTORIAN_DATA_DIR`, or pass `--data-dir` to the CLI, to
+record somewhere else.
+
+Tests, as CI runs them:
+
+```sh
+cargo fmt --all -- --check
+cargo clippy --workspace --all-targets -- -D warnings
+cargo test --workspace
 ```
 
 ### Flatpak
 
+Needs `flatpak-builder` and the GNOME 51 SDK with the rust-stable extension.
+
 ```sh
-flatpak-builder --user --install --force-clean build-dir packaging/linux/com.dishylink.app.json
+python3 packaging/linux/generate-cargo-sources.py   # after any Cargo.lock change
+flatpak-builder --user --install --force-clean build-flatpak packaging/linux/com.dishylink.app.json
 flatpak run com.dishylink.app
 ```
 
 The Flatpak builds offline from the crates vendored in
-`packaging/linux/cargo-sources.json`. Re-run
-`python3 packaging/linux/generate-cargo-sources.py` whenever `rust/Cargo.lock`
-changes.
+`packaging/linux/cargo-sources.json`.
 
 ### GNOME Shell extension
 
@@ -136,40 +145,53 @@ Install it from **Settings → App → Quick Settings pill**, or by hand:
 ```sh
 packaging/gnome-shell-extension/make-extension.sh
 gnome-extensions install --force packaging/gnome-shell-extension/dishylink@dishylink.app.shell-extension.zip
+# On Wayland, log out and back in, then:
+gnome-extensions enable dishylink@dishylink.app
 ```
 
-On Wayland, log out and back in, then enable it in Extensions. It supports
-GNOME Shell 46–51.
+It supports GNOME Shell 46–51. The pill hides while the app isn't running. With
+it installed, you can turn off **Settings → App → Show tray icon**.
 
-## Hardware safety
+## Network use
 
-The router is a small embedded box that has rebooted under ordinary load.
-Dishylink Linux never calls the router's `get_ping`, adds no poll the specs
-don't approve, and reuses replies it already fetches wherever it can. A test
-enforces the `get_ping` rule. See `specs/` for the approved cadences.
+The dish answers at `192.168.100.1:9201` and the router at its LAN address on
+port 9001, both in grpc-web over HTTP. The approved cadences are 5 s history,
+2 s status and 30 s obstruction. The network page reads the client list
+every 5 s and radio temperatures every 15 s, only while it is visible.
+Dish settings are read only while Settings is visible, at most once a minute.
+The app never calls the router's `get_ping`, which has rebooted it under load.
+A test enforces this.
+
+Beyond the dish, the router and your Starlink account, the app reaches three
+public hosts, each only on demand:
+
+- CelesTrak, for the satellite catalogue while the satellite view is open
+- geojs, only when you press **Approximate from IP**
+- Cloudflare, only during a speed test
+
+Every reply is read with a 16 MiB cap.
 
 ## Repository layout
 
 ```
-rust/crates/
+crates/
   dishy-proto/   protoset loading, request encoding, response decoding
   dishy-core/    grpc-web transport, device clients, polling, recording
   dishy-cloud/   starlink.com account and device gateway
   dishy-sky/     sky maths: survey, camera, vertex buffers
   dishy-cli/     headless recorder and diagnostics
-  dishy-gtk/     GTK4/libadwaita application (translations in locales/)
+  dishy-gtk/     the GTK app (translations in locales/)
 packaging/
   linux/                    .desktop, AppStream, Flatpak manifest, vendored crates
   gnome-shell-extension/    the Quick Settings pill
-specs/           requirements with IDs; every active one is cited by a test
-contracts/       protocol and recorder fixtures shared with upstream
-schema/          the dish's gRPC protoset
+specs/           requirements with IDs; each active one is cited by a test
+docs/            screenshots
 ```
 
 ## License
 
-MIT. See [LICENSE](LICENSE). Copyright © 2026 daveyhert (upstream Dishylink)
-and the Dishylink Linux contributors. Bundled fonts (Barlow, IBM Plex Mono) are
-SIL OFL; their licences ship with them.
+MIT, unchanged from the original. See [LICENSE](LICENSE).
 
-Dishylink Linux is not affiliated with or endorsed by SpaceX or Starlink.
+Dishylink Linux is an unofficial, independent project with no affiliation to
+SpaceX or Starlink. Starlink is a trademark of Space Exploration Technologies
+Corp.

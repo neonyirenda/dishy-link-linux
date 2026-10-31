@@ -5,8 +5,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 Dishylink Linux: a native Rust/GTK4/libadwaita app and recorder for a Starlink kit, plus a
-GNOME Shell extension (`packaging/gnome-shell-extension`). Forked from DaveyHert/Dishylink; only
-the Linux port lives here. Changes are verified against real hardware on the Starlink network.
+GNOME Shell extension (`packaging/gnome-shell-extension`). The Cargo workspace is the repo root
+(`crates/`). Forked from DaveyHert/Dishylink, which is referenced only; nothing from it lives
+here except what the build needs (protoset, OUI table, fixtures, translations, inside the crates).
+Changes are verified against real hardware on the Starlink network.
 
 ## Hardware safety — read before touching anything router-facing
 
@@ -23,9 +25,10 @@ the Linux port lives here. Changes are verified against real hardware on the Sta
 
 - Spec first: add or amend a requirement ID in `specs/`, write the failing test citing it
   (`// SPEC-AREA-NNN`), then implement. Every active requirement must be cited by a test.
-- CI (`.github/workflows/rust.yml`): `cargo fmt --check`, `cargo clippy -D warnings`,
+- CI (`.github/workflows/ci.yml`): `cargo fmt --check`, `cargo clippy -D warnings`,
   `cargo test --workspace` under Xvfb, and a Flatpak build. Re-run
-  `packaging/linux/generate-cargo-sources.py` whenever `rust/Cargo.lock` changes.
+  `packaging/linux/generate-cargo-sources.py` whenever `Cargo.lock` changes.
+- The app and `dishy record` share `~/.config/Dishylink/data` via `dishy_core::paths`.
 - Every HTTP reply is read through `dishy_core::http_body::read_capped` (spec 0193).
 
 ## Credentials

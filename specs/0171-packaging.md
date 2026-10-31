@@ -34,8 +34,8 @@ access than it uses.
 - **SPEC-PKG-004** — The package installs the scalable app icon, a 512 px
   bitmap icon, the desktop entry, and the metadata under the app id. It also
   installs the `secret-tool` helper the session store calls.
-- **SPEC-PKG-005** — CI builds the Flatpak bundle on every change to the Rust
-  tree or the packaging files, and validates both metadata files.
+- **SPEC-PKG-005** — CI builds the Flatpak bundle on every push and pull
+  request, and validates both metadata files.
 
 ## Acceptance criteria
 

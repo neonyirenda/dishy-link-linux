@@ -25,6 +25,10 @@ ring buffer and writes append-only JSON Lines stores, with honest gaps.
   filled with last-known values.
 - **SPEC-RECORDER-007** — One process owns a data directory, enforced by the
   same lock protocol as the TypeScript collector.
+- **SPEC-RECORDER-008** — The app and `dishy record` default to the same data
+  directory, `$XDG_CONFIG_HOME/Dishylink/data` (`~/.config/Dishylink/data`
+  when unset). `HISTORIAN_DATA_DIR`, then `--data-dir` for the CLI, override
+  it. Both resolve it through one function in `dishy-core`.
 
 ## Acceptance criteria
 

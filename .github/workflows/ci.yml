@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: fmt, clippy, test
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      # dishy-gtk links the real native stack. Xvfb lets the one window test run
+      # instead of skipping on a headless runner; libsecret and WebKitGTK join
+      # in M9 with the embedded account flow.
+      - name: Install GTK dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-4-dev libadwaita-1-dev xvfb xauth
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Format
+        run: cargo fmt --all -- --check
+
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets -- -D warnings
+
+      - name: Test
+        run: xvfb-run -a cargo test --workspace
+
+  # Spec 0171: the desktop entry and AppStream metadata stay valid, and the
+  # Flatpak builds offline from the vendored crates in cargo-sources.json.
+  flatpak:
+    name: flatpak bundle
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-51
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate metadata
+        run: |
+          desktop-file-validate packaging/linux/com.dishylink.app.desktop
+          appstreamcli validate --pedantic --no-net packaging/linux/com.dishylink.app.metainfo.xml
+
+      - name: Check vendored crates match Cargo.lock
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          python3 packaging/linux/generate-cargo-sources.py
+          git diff --exit-code packaging/linux/cargo-sources.json
+
+      - name: Build
+        uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+        with:
+          bundle: dishylink.flatpak
+          manifest-path: packaging/linux/com.dishylink.app.json
+          cache-key: flatpak-builder-${{ github.sha }}

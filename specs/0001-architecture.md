@@ -20,7 +20,7 @@ integration, and presentation are not the same layer.
 - **SPEC-ARCH-003** — `dishy-cli` and `dishy-gtk` must embed the same recorder
   implementation, not two copies of it.
 - **SPEC-ARCH-004** — The protobuf schema is loaded from
-  `schema/dish.protoset`; no generated Rust struct may be the only definition
+  `crates/dishy-proto/dish.protoset`; no generated Rust struct may be the only definition
   of a device field.
 - **SPEC-ARCH-005** — The recorder's on-disk format must remain readable by the
   TypeScript historian and vice versa.

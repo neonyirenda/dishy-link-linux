@@ -1,5 +1,5 @@
 # Rust workspace build output.
-/rust/target/
+/target/
 
 # Flatpak build state.
 .flatpak-builder/
