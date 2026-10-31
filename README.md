@@ -56,7 +56,7 @@ rates, latency, and active alerts, and opens the app. It only reads the status
 the app publishes on D-Bus (`com.dishylink.Status1` at
 `/com/dishylink/app/Status`). It never talks to the dish or the router.
 
-<!-- extension screenshot: docs/screenshots/gnome-extension.webp -->
+![GNOME Quick Settings pill](docs/screenshots/gnome-extension.webp)
 
 ## Features
 
