@@ -14,15 +14,23 @@ and dispatches once.
 ## Requirements
 
 - **SPEC-CLOUDCFG-001** — Custom DNS accepts at most four IPv4/IPv6 literals,
-  canonicalizes and de-duplicates them in order, and permits an empty list to
-  restore Starlink DNS. Invalid input is rejected before any gateway call.
+  canonicalizes and de-duplicates them in order, sets `customDnsDisabled` to false
+  (with `applyCustomDnsDisabled`), and permits an empty list to restore Starlink
+  DNS with `customDnsDisabled` set to true. Invalid input is rejected before any gateway call.
 - **SPEC-CLOUDCFG-002** — Bypass changes and factory reset are encoded with the
   correct `WifiSetConfig` apply flag or factory-reset oneof and target only a
   fresh controller. A write is never automatically replayed after an ambiguous
   failure.
 - **SPEC-CLOUDCFG-003** — Router settings expose four validated DNS fields and
-  send only a typed update through the host cloud worker. The page never owns a
-  cookie/client, and it reports both success and failure to the user.
+  the subnet preset selector, populating both from the router's active configuration,
+  and send only typed updates through the host cloud worker. After DNS or subnet
+  writes succeed, the host re-reads configuration through the signed-in account
+  gateway and refreshes the form. A subnet write is reported as successful only
+  when the read-back contains the requested subnet; a mismatch is reported as
+  unconfirmed, and a failed refresh is reported separately from the write result.
+  Logs identify the operation, gateway acknowledgement/failure, and read-back
+  result without recording credentials or submitted Wi-Fi passwords. The page
+  never owns a cookie/client, and it reports both success and failure to the user.
 - **SPEC-CLOUDCFG-004** — Subnet changes are limited to the official presets and
   WPA2 passphrase length; the current networks are read first, and the write
   preserves SSIDs/config while removing router-assigned identifiers and
@@ -49,6 +57,12 @@ and dispatches once.
   ambiguous failure.
 - The GTK smoke test submits a DNS setting through the settings action channel
   and confirms the result is presented as a toast.
+- After a successful DNS write, a refreshed config populates DNS and subnet
+  controls without reverting an unchanged response over a user edit.
+- A subnet write is not reported as applied unless the authenticated read-back
+  reports the requested subnet; a mismatch or failed read-back is surfaced.
+- Logs distinguish a write failure from an acknowledged write followed by a
+  mismatching or failed read-back, without recording credentials or passwords.
 - The GTK smoke test submits a subnet selection and passphrase through the same
   typed action channel; invalid passphrases do not dispatch.
 - Settings tests verify the bypass target is inverted from known state and is

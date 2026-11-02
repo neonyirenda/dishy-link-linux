@@ -16,6 +16,7 @@ pub mod device_group;
 pub mod device_kind;
 pub mod energy;
 pub mod external;
+pub mod gateway;
 pub mod grpc_web;
 pub mod http_body;
 pub mod jsonl;

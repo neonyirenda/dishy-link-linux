@@ -870,7 +870,10 @@ mod tests {
             "http://[2001:db8::1]:9001/SpaceX.API.Device.Device/Handle"
         );
         runner.set_router_address(None).unwrap();
-        assert_eq!(runner.router.handle_url(), crate::ROUTER_LAN_HANDLE_URL);
+        assert_eq!(
+            runner.router.handle_url(),
+            crate::client::router_handle_url(&crate::gateway::default_router_address().to_string())
+        );
     }
 
     // SPEC-DISHCFG-005, SPEC-SAFETY-005: the settings snapshot has its own

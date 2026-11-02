@@ -57,7 +57,6 @@ fn the_flatpak_manifest_grants_only_what_the_app_uses() {
         "--share=network",
         "--share=ipc",
         "--socket=wayland",
-        "--socket=fallback-x11",
         "--device=dri",
         "--talk-name=org.freedesktop.secrets",
         "--talk-name=org.kde.StatusNotifierWatcher",

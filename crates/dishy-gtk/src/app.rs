@@ -207,7 +207,11 @@ enum CloudRequest {
 
 enum CloudUpdate {
     State(CloudState),
-    RouterWriteResult(Result<(), String>),
+    RouterWriteResult {
+        result: Result<(), String>,
+        refreshed_config: Option<Result<WifiConfig, String>>,
+        requested_subnet: Option<String>,
+    },
     ClientWriteResult(Result<(), String>),
     DishWriteResult(Result<(), String>),
     RouterWifiConfig {
@@ -422,11 +426,78 @@ impl AppState {
                             }));
                         }
                         CloudRequest::UpdateRouterConfig(update) => {
+                            let operation = router_config_operation(&update);
+                            let requested_subnet = match &update {
+                                RouterConfigUpdate::Subnet { subnet, .. } => Some(subnet.clone()),
+                                _ => None,
+                            };
+                            tracing::info!(
+                                operation,
+                                requested_subnet = requested_subnet.as_deref().unwrap_or("n/a"),
+                                "router config write started"
+                            );
+                            let refresh_config = matches!(
+                                &update,
+                                RouterConfigUpdate::CustomDns { .. }
+                                    | RouterConfigUpdate::Subnet { .. }
+                            );
                             let result = runtime
                                 .block_on(client.update_router_config(update))
                                 .map(|_| ())
                                 .map_err(|error| error.to_string());
-                            let _ = updates.send(CloudUpdate::RouterWriteResult(result));
+                            match &result {
+                                Ok(()) => tracing::info!(
+                                    operation,
+                                    "router config write acknowledged by gateway"
+                                ),
+                                Err(error) => {
+                                    tracing::warn!(operation, error, "router config write failed")
+                                }
+                            }
+                            let refreshed_config = if result.is_ok() && refresh_config {
+                                tracing::info!(operation, "router config read-back started");
+                                let result = runtime
+                                    .block_on(async {
+                                        let value = client.router_wifi_config().await?;
+                                        serde_json::from_value::<WifiConfig>(value).map_err(
+                                            |error| {
+                                                dishy_cloud::CloudError::GrpcProtocol(
+                                                    error.to_string(),
+                                                )
+                                            },
+                                        )
+                                    })
+                                    .map_err(|error| error.to_string());
+                                match &result {
+                                    Ok(config) => {
+                                        let actual_subnet = config.subnet().unwrap_or("unknown");
+                                        let subnet_matches = requested_subnet
+                                            .as_deref()
+                                            .is_none_or(|requested| requested == actual_subnet);
+                                        tracing::info!(
+                                            operation,
+                                            requested_subnet =
+                                                requested_subnet.as_deref().unwrap_or("n/a"),
+                                            actual_subnet,
+                                            subnet_matches,
+                                            "router config read-back completed"
+                                        );
+                                    }
+                                    Err(error) => tracing::warn!(
+                                        operation,
+                                        error,
+                                        "router config read-back failed"
+                                    ),
+                                }
+                                Some(result)
+                            } else {
+                                None
+                            };
+                            let _ = updates.send(CloudUpdate::RouterWriteResult {
+                                result,
+                                refreshed_config,
+                                requested_subnet,
+                            });
                         }
                         CloudRequest::UpdateClient(update) => {
                             // Sent once; a failure is reported, never retried.
@@ -739,9 +810,36 @@ impl AppState {
                         page.set_cloud_roster_state(false, None);
                     }
                 }
-                Some(CloudUpdate::RouterWriteResult(result)) => {
+                Some(CloudUpdate::RouterWriteResult {
+                    result,
+                    refreshed_config,
+                    requested_subnet,
+                }) => {
+                    let subnet_mismatch = requested_subnet.as_deref().and_then(|requested| {
+                        refreshed_config
+                            .as_ref()
+                            .and_then(|result| result.as_ref().ok())
+                            .and_then(|config| router_subnet_mismatch(requested, config))
+                    });
+                    if let Some(Ok(config)) = refreshed_config.as_ref() {
+                        self.apply_cloud_network_config(config.clone());
+                    }
                     if let Some(settings) = self.settings.borrow().as_ref() {
-                        settings.set_cloud_write_result(result);
+                        match result {
+                            Err(error) => settings.set_cloud_write_result(Err(error)),
+                            Ok(()) => match (subnet_mismatch, refreshed_config) {
+                                (Some((requested, actual)), _) => {
+                                    settings.set_config_not_applied(&requested, &actual);
+                                }
+                                (None, Some(Err(error))) => {
+                                    tracing::warn!(
+                                        "router settings write succeeded but refresh failed: {error}"
+                                    );
+                                    settings.set_config_refresh_error(&error);
+                                }
+                                _ => settings.set_cloud_write_result(Ok(())),
+                            },
+                        }
                     }
                 }
                 Some(CloudUpdate::ClientWriteResult(result)) => {
@@ -1910,9 +2008,30 @@ fn cloud_roster_reads_allowed(
     requested && cloud_network_reads_allowed(network_visible, lan_reachable, account_connected)
 }
 
+fn router_config_operation(update: &RouterConfigUpdate) -> &'static str {
+    match update {
+        RouterConfigUpdate::CustomDns { .. } => "custom_dns",
+        RouterConfigUpdate::Bypass { .. } => "bypass",
+        RouterConfigUpdate::FactoryReset => "factory_reset",
+        RouterConfigUpdate::Subnet { .. } => "subnet",
+        RouterConfigUpdate::WifiPassword { .. } => "wifi_password",
+        RouterConfigUpdate::MeshName { .. } => "mesh_name",
+        RouterConfigUpdate::ClientPause { .. } => "client_pause",
+        RouterConfigUpdate::ClientRename { .. } => "client_rename",
+    }
+}
+
+fn router_subnet_mismatch(requested: &str, config: &WifiConfig) -> Option<(String, String)> {
+    let actual = config.subnet().unwrap_or("unknown");
+    (actual != requested).then(|| (requested.to_owned(), actual.to_owned()))
+}
+
 #[cfg(test)]
 mod tests {
-    use super::{CloudRequest, newest_connect};
+    use super::{
+        CloudRequest, WifiConfig, newest_connect, router_config_operation, router_subnet_mismatch,
+    };
+    use dishy_cloud::router_config::RouterConfigUpdate;
 
     // SPEC-CLOUD-011: queued sign-in snapshots collapse to the newest; other
     // requests keep their order.
@@ -1927,6 +2046,42 @@ mod tests {
         assert_eq!(cookie, "third");
         assert!(matches!(deferred.pop_front(), Some(CloudRequest::Refresh)));
         assert!(deferred.is_empty());
+    }
+
+    // SPEC-CLOUDCFG-003: a successful RPC is not shown as applied when the
+    // authenticated read-back still reports the old subnet.
+    #[test]
+    fn subnet_write_requires_readback_confirmation() {
+        let config: WifiConfig = serde_json::from_value(serde_json::json!({
+            "networks": [{"ipv4": "10.0.0.1/16"}]
+        }))
+        .unwrap();
+        assert_eq!(
+            router_subnet_mismatch("192.168.1.1/24", &config),
+            Some(("192.168.1.1/24".into(), "10.0.0.1/16".into()))
+        );
+        assert_eq!(router_subnet_mismatch("10.0.0.1/16", &config), None);
+        assert_eq!(
+            router_subnet_mismatch("192.168.1.1/24", &WifiConfig::default()),
+            Some(("192.168.1.1/24".into(), "unknown".into()))
+        );
+    }
+
+    #[test]
+    fn router_config_operation_labels_do_not_include_sensitive_values() {
+        assert_eq!(
+            router_config_operation(&RouterConfigUpdate::Subnet {
+                subnet: "192.168.1.1/24".into(),
+                password: "not-for-logs".into(),
+            }),
+            "subnet"
+        );
+        assert_eq!(
+            router_config_operation(&RouterConfigUpdate::CustomDns {
+                nameservers: vec!["1.1.1.1".into()],
+            }),
+            "custom_dns"
+        );
     }
 
     use super::{cloud_network_reads_allowed, cloud_roster_reads_allowed};

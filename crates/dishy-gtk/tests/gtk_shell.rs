@@ -1583,12 +1583,48 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
     // typed data only; the host cloud worker owns credential and gateway write.
     let mut settings_widgets = Vec::new();
     collect_widgets(shell.settings.widget(), &mut settings_widgets);
+    // SPEC-CLOUDCFG-003: live config seeds the active DNS servers and supported
+    // subnet preset before the user edits or submits either field.
+    let active_config: WifiConfig = serde_json::from_value(serde_json::json!({
+        "nameservers": ["9.9.9.9", "2606:4700:4700::1111"],
+        "customDnsDisabled": false,
+        "networks": [{"ipv4": "10.0.0.1/16"}]
+    }))
+    .expect("valid router config");
+    shell.settings.set_network_snapshot(Some(&NetworkSnapshot {
+        reachable: false,
+        devices: Vec::new(),
+        nodes: Vec::new(),
+        config: Some(active_config.clone()),
+        radios: Vec::new(),
+    }));
     let primary_dns = settings_widgets
         .iter()
         .find(|widget| widget.widget_name() == "router-dns-0")
         .and_then(|widget| widget.clone().downcast::<gtk::Entry>().ok())
         .expect("primary DNS entry exists");
+    assert_eq!(primary_dns.text(), "9.9.9.9");
+    let backup_dns = settings_widgets
+        .iter()
+        .find(|widget| widget.widget_name() == "router-dns-1")
+        .and_then(|widget| widget.clone().downcast::<gtk::Entry>().ok())
+        .expect("backup DNS entry exists");
+    assert_eq!(backup_dns.text(), "2606:4700:4700::1111");
+    let subnet_selector = settings_widgets
+        .iter()
+        .find(|widget| widget.widget_name() == "router-subnet-select")
+        .and_then(|widget| widget.clone().downcast::<libadwaita::ComboRow>().ok())
+        .expect("subnet selector exists");
+    assert_eq!(subnet_selector.selected(), 5);
     primary_dns.set_text("1.1.1.1");
+    shell.settings.set_network_snapshot(Some(&NetworkSnapshot {
+        reachable: false,
+        devices: Vec::new(),
+        nodes: Vec::new(),
+        config: Some(active_config),
+        radios: Vec::new(),
+    }));
+    assert_eq!(primary_dns.text(), "1.1.1.1");
     find_button(shell.settings.widget(), |button| {
         button.widget_name() == "router-dns-save"
     })
@@ -1600,6 +1636,22 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
         )) if nameservers == ["1.1.1.1"]
     ));
     shell.settings.set_cloud_write_result(Ok(()));
+    let refreshed_config: WifiConfig = serde_json::from_value(serde_json::json!({
+        "nameservers": ["1.1.1.1"],
+        "customDnsDisabled": false,
+        "networks": [{"ipv4": "10.1.0.1/16"}]
+    }))
+    .expect("refreshed router config");
+    shell.settings.set_network_snapshot(Some(&NetworkSnapshot {
+        reachable: false,
+        devices: Vec::new(),
+        nodes: Vec::new(),
+        config: Some(refreshed_config),
+        radios: Vec::new(),
+    }));
+    assert_eq!(primary_dns.text(), "1.1.1.1");
+    assert_eq!(backup_dns.text(), "");
+    assert_eq!(subnet_selector.selected(), 6);
     // SPEC-CLOUDCFG-008: when a bypassed router is unreachable on the LAN, its
     // confirmed reset uses the authenticated gateway instead of being hidden.
     shell.settings.set_router_reachable(Some(false));
@@ -1641,6 +1693,7 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
     // libadwaita's AdwComboRow cannot represent "no selection"; index 0 is the
     // placeholder row, presets start at index 1. Saving with the placeholder
     // row shows a local error and dispatches nothing.
+    subnet_selector.set_selected(0);
     assert_eq!(subnet_selector.selected(), 0);
     let subnet_password = settings_widgets
         .iter()
@@ -1962,6 +2015,11 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
         .find(|widget| widget.widget_name() == "router-address-entry")
         .and_then(|widget| widget.clone().downcast::<gtk::Entry>().ok())
         .expect("router address entry is available before connection");
+    let default_gateway = dishy_core::gateway::default_router_address().to_string();
+    assert_eq!(
+        address_entry.placeholder_text().as_deref(),
+        Some(default_gateway.as_str())
+    );
     let save_address = settings_widgets
         .iter()
         .find(|widget| widget.widget_name() == "router-address-save")

@@ -178,9 +178,12 @@ pub fn build_router_config_request_with_context(
                     normalized.push(canonical);
                 }
             }
+            let custom_dns_disabled = normalized.is_empty();
             request["wifiSetConfig"] = json!({ "wifiConfig": {
                 "nameservers": normalized,
-                "applyNameservers": true
+                "applyNameservers": true,
+                "customDnsDisabled": custom_dns_disabled,
+                "applyCustomDnsDisabled": true,
             }});
         }
         RouterConfigUpdate::Bypass { enabled } => {

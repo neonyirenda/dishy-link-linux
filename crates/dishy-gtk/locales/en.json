@@ -811,6 +811,8 @@
     "switchTheme": "Color theme: {{theme}}. Switch to {{next}}."
   },
   "settings": {
+    "routerConfigRefreshFailed": "The gateway accepted the write, but router settings couldn't be reloaded: {{message}}",
+    "routerConfigNotApplied": "The router has not confirmed {{requested}}; it still reports {{actual}}.",
     "shellExtension": "Quick Settings pill",
     "shellExtensionDesc": "Install the Dishylink GNOME Shell extension to show Starlink status beside Wi-Fi and Bluetooth.",
     "shellExtensionInstall": "Install",

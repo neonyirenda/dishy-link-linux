@@ -9,7 +9,6 @@
     "--share=network",
     "--share=ipc",
     "--socket=wayland",
-    "--socket=fallback-x11",
     "--device=dri",
     "--talk-name=org.freedesktop.secrets",
     "--talk-name=org.kde.StatusNotifierWatcher",

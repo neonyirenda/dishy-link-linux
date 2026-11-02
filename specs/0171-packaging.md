@@ -21,7 +21,7 @@ access than it uses.
 - **SPEC-PKG-002** — The Flatpak manifest builds offline from vendored crate
   sources generated from `Cargo.lock`, and grants exactly what the app uses:
   - network;
-  - the Wayland or X11 display, IPC, and GPU (for the GL sky view);
+  - the Wayland display only, IPC, and GPU (for the GL sky view);
   - the Secret Service (`org.freedesktop.secrets`) for the account session;
   - the StatusNotifier names for the tray, and notifications;
   - create access to the host's `xdg-config/autostart`, and nothing broader
@@ -40,8 +40,8 @@ access than it uses.
 ## Acceptance criteria
 
 - A `dishy-gtk` test checks the ids, the `Exec` binary, and the manifest's
-  finish-args against this list, and that every `Cargo.lock` crate has a
-  vendored source.
+  finish-args against this list (including no X11 socket), and that every
+  `Cargo.lock` crate has a vendored source.
 - Autostart tests cover the sandboxed path and `Exec`.
 - `flatpak-builder --user --install` produces an app that launches, shows the
   tray, and starts hidden at login on a GNOME session.

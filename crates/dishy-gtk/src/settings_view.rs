@@ -17,7 +17,7 @@ use libadwaita::prelude::*;
 use dishy_cloud::dish_config::{DishConfigUpdate, SnowMeltMode};
 use dishy_cloud::router_config::{RouterConfigUpdate, validate_router_config_update};
 use dishy_core::control::{ControlAction, ControlTarget};
-use dishy_core::network::NetworkSnapshot;
+use dishy_core::network::{NetworkSnapshot, WifiConfig};
 use dishy_core::telemetry::DishStatus;
 
 use crate::i18n::{Locale, SUPPORTED_LOCALES, Translator};
@@ -146,6 +146,7 @@ struct Inner {
     router_value: gtk::Label,
     router_address: gtk::Entry,
     router_address_error: gtk::Label,
+    router_config: RefCell<Option<WifiConfig>>,
     dns_entries: Vec<gtk::Entry>,
     dns_save_button: gtk::Button,
     dns_error: gtk::Label,
@@ -329,13 +330,21 @@ impl SettingsPage {
                 .build();
             let router_address = gtk::Entry::new();
             router_address.set_widget_name("router-address-entry");
-            router_address.set_placeholder_text(Some("192.168.1.1"));
+            router_address.set_placeholder_text(Some(
+                &dishy_core::gateway::default_router_address().to_string(),
+            ));
             configure_entry(&router_address);
             let save_router_address =
                 form_action_button(&translator.text("common.save"), "router-address-save");
             let address_row = adw::ActionRow::builder()
                 .title(translator.text("routerAddress.title"))
-                .subtitle(translator.text_with("routerAddress.tip", &[("fallback", "192.168.1.1")]))
+                .subtitle(translator.text_with(
+                    "routerAddress.tip",
+                    &[(
+                        "fallback",
+                        &dishy_core::gateway::default_router_address().to_string(),
+                    )],
+                ))
                 .subtitle_lines(0)
                 .build();
             address_row.add_suffix(&router_address);
@@ -686,6 +695,7 @@ impl SettingsPage {
                 router_value,
                 router_address,
                 router_address_error,
+                router_config: RefCell::new(None),
                 dns_entries,
                 dns_save_button,
                 dns_error,
@@ -1148,6 +1158,12 @@ impl SettingsPage {
     /// Seed mesh rename choices from the cached network reply only. This never
     /// asks the router for another roster or config read.
     pub fn set_network_snapshot(&self, snapshot: Option<&NetworkSnapshot>) {
+        if let Some(snapshot) = snapshot
+            && let Some(config) = snapshot.config.as_ref()
+            && self.inner.router_config.borrow().as_ref() != Some(config)
+        {
+            self.inner.set_router_config(config);
+        }
         let devices = snapshot
             .filter(|snapshot| snapshot.reachable)
             .into_iter()
@@ -1249,6 +1265,24 @@ impl SettingsPage {
                 .translator
                 .text_with("common.failed", &[("message", &error)]),
         };
+        self.inner.last_toast.replace(Some(message.clone()));
+        self.inner.root.add_toast(adw::Toast::new(&message));
+    }
+
+    pub fn set_config_refresh_error(&self, error: &str) {
+        let message = self
+            .inner
+            .translator
+            .text_with("settings.routerConfigRefreshFailed", &[("message", error)]);
+        self.inner.last_toast.replace(Some(message.clone()));
+        self.inner.root.add_toast(adw::Toast::new(&message));
+    }
+
+    pub fn set_config_not_applied(&self, requested: &str, actual: &str) {
+        let message = self.inner.translator.text_with(
+            "settings.routerConfigNotApplied",
+            &[("requested", requested), ("actual", actual)],
+        );
         self.inner.last_toast.replace(Some(message.clone()));
         self.inner.root.add_toast(adw::Toast::new(&message));
     }
@@ -1524,6 +1558,24 @@ impl SettingsPage {
 }
 
 impl Inner {
+    fn set_router_config(&self, config: &WifiConfig) {
+        *self.router_config.borrow_mut() = Some(config.clone());
+        let nameservers = if config.custom_dns_disabled {
+            &[][..]
+        } else {
+            config.nameservers.as_slice()
+        };
+        for (index, entry) in self.dns_entries.iter().enumerate() {
+            entry.set_text(nameservers.get(index).map(String::as_str).unwrap_or(""));
+        }
+        let selected = config
+            .subnet()
+            .and_then(|subnet| SUBNET_PRESETS.iter().position(|preset| *preset == subnet))
+            .map(|index| index as u32 + 1)
+            .unwrap_or(0);
+        self.subnet_row.set_selected(selected);
+    }
+
     fn set_self_devices(&self, mut devices: Vec<(u32, String)>) {
         devices.sort_by_key(|(client_id, _)| *client_id);
         devices.dedup_by_key(|(client_id, _)| *client_id);

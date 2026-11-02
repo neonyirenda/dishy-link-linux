@@ -34,9 +34,11 @@ account work in M9, where they can take the cloud path the Electron app uses.
   explicit confirmation dialog naming the action; a single click cannot send
   them. Every control result arrives as a toast: the action's success catalog
   key on success, or `common.failed` with the device's error on failure.
-- **SPEC-CTRL-007** — The router address can be edited and saved before the
-  router answers. A valid IPv4 or IPv6 literal is persisted and immediately
-  becomes the recorder's router endpoint; clearing it restores the default.
+- **SPEC-CTRL-007** — The router address defaults to the host's default gateway
+  discovered from IP routing tables, falling back to 192.168.1.1 if absent. It can
+  be edited and saved before the router answers. A valid IPv4 or IPv6 literal is
+  persisted and immediately becomes the recorder's router endpoint; clearing it
+  restores the discovered default gateway.
 - **SPEC-CTRL-008** — Maintenance actions share a compact height and use
   content-fitting labels so long destructive-action names do not make a button
   expand vertically.
@@ -55,6 +57,9 @@ account work in M9, where they can take the cloud path the Electron app uses.
   correct IPv4 or bracketed IPv6 router endpoint.
 - A failed write leaves the page showing the failure; it is never reported as a
   sent command.
+- The default router endpoint is selected from the host's active Linux default
+  route; the route parser is tested with multiple metrics, malformed entries,
+  and no-route fallback.
 - The GTK shell test verifies the maintenance action dimensions, router input
   and Save sizing, and dock clearance that keeps the settings page's final
   controls reachable.

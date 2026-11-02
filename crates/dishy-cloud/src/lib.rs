@@ -2002,7 +2002,9 @@ mod router_config_tests {
                 "targetId": "Router-controller",
                 "wifiSetConfig": {"wifiConfig": {
                     "nameservers": ["1.1.1.1", "2606:4700:4700::1111"],
-                    "applyNameservers": true
+                    "applyNameservers": true,
+                    "customDnsDisabled": false,
+                    "applyCustomDnsDisabled": true
                 }}
             })
         );
@@ -2016,6 +2018,18 @@ mod router_config_tests {
         assert_eq!(
             cleared["wifiSetConfig"]["wifiConfig"]["nameservers"],
             serde_json::json!([])
+        );
+        assert_eq!(
+            cleared["wifiSetConfig"]["wifiConfig"]["applyNameservers"],
+            serde_json::json!(true)
+        );
+        assert_eq!(
+            cleared["wifiSetConfig"]["wifiConfig"]["customDnsDisabled"],
+            serde_json::json!(true)
+        );
+        assert_eq!(
+            cleared["wifiSetConfig"]["wifiConfig"]["applyCustomDnsDisabled"],
+            serde_json::json!(true)
         );
     }
 

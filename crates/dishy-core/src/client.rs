@@ -25,12 +25,14 @@ impl Target {
     /// Where this box answers on its own LAN.
     ///
     /// The dish's 9201 is grpc-web; the router's 9001 is the matching endpoint.
-    /// Neither is configurable here: router addressing is a host preference and
-    /// belongs above this client.
-    pub fn default_handle_url(self) -> &'static str {
+    /// Router requests use the host's default gateway, falling back to the
+    /// historical router address when no gateway route exists.
+    pub fn default_handle_url(self) -> String {
         match self {
-            Self::Dish => DISH_LAN_HANDLE_URL,
-            Self::Router => ROUTER_LAN_HANDLE_URL,
+            Self::Dish => DISH_LAN_HANDLE_URL.to_owned(),
+            Self::Router => {
+                router_handle_url(&crate::gateway::default_router_address().to_string())
+            }
         }
     }
 }
@@ -72,7 +74,7 @@ impl DishClient {
         Ok(Self {
             transport: Arc::new(GrpcWebClient::new()),
             schema: Arc::new(Schema::bundled()?),
-            handle_url: target.default_handle_url().to_string(),
+            handle_url: target.default_handle_url(),
         })
     }
 
@@ -226,7 +228,10 @@ mod tests {
         assert!(DISH_LAN_HANDLE_URL.contains(":9201/"));
         assert!(ROUTER_LAN_HANDLE_URL.contains(":9001/"));
         assert_eq!(Target::Dish.default_handle_url(), DISH_LAN_HANDLE_URL);
-        assert_eq!(Target::Router.default_handle_url(), ROUTER_LAN_HANDLE_URL);
+        assert_eq!(
+            Target::Router.default_handle_url(),
+            router_handle_url(&crate::gateway::default_router_address().to_string())
+        );
     }
 
     // SPEC-CTRL-007: a saved router address maps to the device port, with IPv6
