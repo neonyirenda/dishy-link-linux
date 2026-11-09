@@ -3,7 +3,6 @@ name: CI
 on:
   push:
   pull_request:
-    branches: [main]
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -16,14 +15,24 @@ jobs:
   test:
     name: fmt, clippy, test
     runs-on: ubuntu-24.04
-    container:
-      image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-51
-      options: --privileged
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Rust from the GNOME SDK extension
-        run: echo "/usr/lib/sdk/rust-stable/bin" >> $GITHUB_PATH
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      # dishy-gtk links the real native stack. Xvfb lets the one window test run
+      # instead of skipping on a headless runner; libsecret and WebKitGTK join
+      # in M9 with the embedded account flow.
+      - name: Install GTK dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-4-dev libadwaita-1-dev xvfb xauth
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
 
       - name: Format
         run: cargo fmt --all -- --check
