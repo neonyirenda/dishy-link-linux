@@ -25,9 +25,6 @@ jobs:
       - name: Use Rust from the GNOME SDK extension
         run: echo "/usr/lib/sdk/rust-stable/bin" >> $GITHUB_PATH
 
-      - name: Install Xvfb
-        run: dnf install -y xorg-x11-server-Xvfb
-
       - name: Format
         run: cargo fmt --all -- --check
 
