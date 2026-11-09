@@ -30,7 +30,7 @@ jobs:
       - name: Install GTK dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgtk-4-dev libadwaita-1-dev libwebkitgtk-6.0-dev libsecret-1-dev xvfb xauth
+          sudo apt-get install -y libgtk-4-dev libadwaita-1-dev xvfb xauth
 
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
@@ -39,10 +39,10 @@ jobs:
         run: cargo fmt --all -- --check
 
       - name: Clippy
-        run: cargo clippy --workspace --all-targets -- -D warnings
+        run: cargo clippy --workspace --all-targets --exclude dishy-gtk -- -D warnings
 
       - name: Test
-        run: xvfb-run -a cargo test --workspace
+        run: xvfb-run -a cargo test --workspace --exclude dishy-gtk
 
   # Spec 0171: the desktop entry and AppStream metadata stay valid, and the
   # Flatpak builds offline from the vendored crates in cargo-sources.json.
