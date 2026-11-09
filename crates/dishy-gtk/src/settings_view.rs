@@ -1244,8 +1244,14 @@ impl SettingsPage {
                 };
                 Some((client_id, label))
             })
-            .collect();
-        self.inner.set_self_devices(devices);
+            .collect::<Vec<_>>();
+        // SPEC-SELF-003: an empty or unavailable roster does not wipe the
+        // last cached one, so the user keeps their choices; an explicit clear
+        // (None) still resets.
+        if snapshot.is_none() || !devices.is_empty() || self.inner.self_devices.borrow().is_empty()
+        {
+            self.inner.set_self_devices(devices);
+        }
 
         let nodes = snapshot
             .and_then(|snapshot| {

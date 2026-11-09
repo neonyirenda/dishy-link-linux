@@ -1203,19 +1203,72 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
                 .is_some_and(|label| label == "Pause" || label == "Unpause")
         })
     };
+    let has_refusal = |shell: &dishy_gtk::ui::ShellWindow| {
+        let mut widgets = Vec::new();
+        collect_widgets(shell.network.widget(), &mut widgets);
+        widgets
+            .iter()
+            .any(|widget| widget.widget_name() == "network-pause-refusal")
+    };
+    let refusal_label = |shell: &dishy_gtk::ui::ShellWindow| {
+        find_widget(shell.network.widget(), "network-pause-refusal")
+            .downcast::<gtk::Label>()
+            .expect("the refusal caption is a label")
+    };
     shell.network.set_self_client_id(Some(99));
     assert!(!has_pause(&shell), "no account, no pause");
+    // SPEC-PAUSE-007: with no account the row says why instead of hiding the
+    // control, and the message's link raises the account page.
+    assert!(has_refusal(&shell), "no account, a reason");
+    let refusal = refusal_label(&shell).label();
+    assert!(refusal.contains("Pause feature disabled!"), "{refusal}");
+    assert!(
+        refusal.contains("<a href=\"account\">sign in</a>"),
+        "{refusal}"
+    );
+    let raised_pages = std::rc::Rc::new(std::cell::RefCell::new(Vec::new()));
+    let page_sink = raised_pages.clone();
+    shell.network.connect_open_page(move |page| {
+        page_sink.borrow_mut().push(page.to_string());
+    });
+    refusal_label(&shell).emit_by_name::<bool>("activate-link", &[&"account"]);
+    assert_eq!(
+        *raised_pages.borrow(),
+        vec!["account".to_string()],
+        "the account link raises the account page"
+    );
     shell.network.set_cloud_connected(true);
     assert!(has_pause(&shell), "another device can be paused");
+    assert!(!has_refusal(&shell), "no reason once the gate holds");
     shell.network.set_self_client_id(Some(7));
     assert!(
         !has_pause(&shell),
         "the viewer's own row never offers a pause"
     );
+    // SPEC-PAUSE-007: the viewer's own row says it cannot be paused from
+    // here, without links.
+    let refusal = refusal_label(&shell).label();
+    assert!(
+        refusal.starts_with("This is the device you are using"),
+        "{refusal}"
+    );
     shell.network.set_self_client_id(None);
     assert!(
         !has_pause(&shell),
         "an unidentified viewer is not offered pause"
+    );
+    // SPEC-PAUSE-007: with an account but no chosen device, the reason says
+    // to pick one, and its link raises the settings page.
+    let refusal = refusal_label(&shell).label();
+    assert!(
+        refusal.contains("<a href=\"settings\">settings</a>"),
+        "{refusal}"
+    );
+    refusal_label(&shell).emit_by_name::<bool>("activate-link", &[&"settings"]);
+    assert_eq!(
+        *raised_pages.borrow(),
+        vec!["account".to_string(), "settings".to_string()],
+        "the settings link raises the settings page"
     );
     assert!(
         pause_rx.try_iter().all(|action| !matches!(
@@ -1243,6 +1296,15 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
             dishy_gtk::recorder::RecorderCommand::GetDeviceThroughput(key) if *key == opened
         )),
         "{requests:?}"
+    );
+    // SPEC-PAUSE-007: the detail window carries the same refusal, and asking
+    // for it added no command beyond the throughput read above.
+    assert!(
+        shell
+            .network
+            .device_detail_refusal()
+            .is_some_and(|text| text.contains("Pause feature disabled!")),
+        "the device detail says why too"
     );
     shell.network.set_device_throughput(&opened, Vec::new());
     shell.network.set_command_sender(None);
@@ -1635,7 +1697,7 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
         cloud_settings_rx.try_recv(),
         Ok(SettingsAction::UpdateRouterConfig(
             dishy_cloud::router_config::RouterConfigUpdate::CustomDns { nameservers }
-        )) if nameservers == ["1.1.1.1"]
+        )) if nameservers == ["1.1.1.1", "2606:4700:4700::1111"]
     ));
     shell.settings.set_cloud_write_result(Ok(()));
     let refreshed_config: WifiConfig = serde_json::from_value(serde_json::json!({

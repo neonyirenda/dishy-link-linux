@@ -563,8 +563,6 @@
     "measureTimer": "Timer",
     "measureSchedule": "Zeitplan",
     "measureAllowance": "Grenzwert",
-    "pauseFailed": "Dieses Gerät hat sein Limit erreicht, aber die Pause konnte nicht an Starlink gesendet werden.",
-    "pauseFailedRetry": "Es wird jede Minute erneut versucht.",
     "coversGroupShared": "Dieses Limit gilt für {{group}}, die es sich teilen. Eine Änderung hier gilt für alle.",
     "coversGroupEach": "Dieses Limit gilt für {{group}}, jedes mit seinem eigenen. Eine Änderung hier gilt für alle.",
     "autoPauseNote": "Die Daten des Geräts werden automatisch pausiert, wenn der Verbrauch dieses Limit erreicht.",

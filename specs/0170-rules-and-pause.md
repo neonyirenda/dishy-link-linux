@@ -41,6 +41,15 @@ Starlink account. A rule that is reached offers the pause; it never sends one.
   account it offers the explicit pause; without one, it says the router is not
   paused. The `dataLimit:` alerts use the shared catalog's
   allowance and countdown wording, for a device or for a group.
+- **SPEC-PAUSE-007** — A refused pause says why instead of hiding the control.
+  With no account the row shows the account message; with an unidentified
+  viewer, the self-device message; with both, the combined message; and the
+  viewer's own row, once the rest of the gate holds, says it cannot be paused
+  from here. The messages reuse the shared catalog, and their account and
+  settings links raise the matching page. A refusal adds no write control,
+  and a pause that reaches the host anyway — without a chosen self device, or
+  aimed at the viewer's own device — is refused with a message and never
+  sent.
 
 ## Acceptance criteria
 
@@ -48,6 +57,9 @@ Starlink account. A rule that is reached offers the pause; it never sends one.
   validation against recorded request shapes.
 - GTK tests cover the pause gate, rule card summaries, dialog round-trips into
   typed recorder commands, and the alert copy.
+- GTK tests cover each refusal message, the links raising the account and
+  settings pages, the same message in the device detail, and the host
+  refusing a self-targeted pause before it is sent.
 - On the Starlink LAN, with a signed-in account: pausing a second device cuts
   its traffic and unpausing restores it, and the viewer's own row never offers a
   pause.
