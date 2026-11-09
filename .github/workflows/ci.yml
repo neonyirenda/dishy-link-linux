@@ -3,6 +3,7 @@ name: CI
 on:
   push:
   pull_request:
+    branches: [main]
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -68,3 +69,11 @@ jobs:
           bundle: dishylink.flatpak
           manifest-path: packaging/linux/com.dishylink.app.json
           cache-key: flatpak-builder-${{ github.sha }}
+
+      - name: Upload Flatpak bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dishylink-flatpak
+          path: dishylink.flatpak
+          if-no-files-found: warn

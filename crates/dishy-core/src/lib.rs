@@ -40,8 +40,8 @@ pub mod throughput;
 pub mod usage;
 
 pub use client::{
-    DISH_LAN_ADDRESS, DISH_LAN_HANDLE_URL, DishClient, DishClientError, ROUTER_LAN_ADDRESS,
-    ROUTER_LAN_HANDLE_URL, Target,
+    DISH_LAN_ADDRESS, DISH_LAN_HANDLE_URL, DishClient, DishClientError, ROUTER_DEFAULT_HANDLE_PORT,
+    ROUTER_LAN_ADDRESS, ROUTER_LAN_HANDLE_URL, Target, router_handle_url,
 };
 pub use grpc_web::{GrpcCallBytes, GrpcWebClient, GrpcWebError};
 
