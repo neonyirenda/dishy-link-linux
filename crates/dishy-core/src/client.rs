@@ -31,7 +31,7 @@ impl Target {
         match self {
             Self::Dish => DISH_LAN_HANDLE_URL.to_owned(),
             Self::Router => {
-                router_handle_url(&crate::gateway::default_router_address().to_string())
+                router_handle_url(&crate::gateway::default_router_address().to_string(), None)
             }
         }
     }
@@ -41,14 +41,16 @@ pub const DISH_LAN_ADDRESS: &str = "192.168.100.1";
 pub const ROUTER_LAN_ADDRESS: &str = "192.168.1.1";
 pub const DISH_LAN_HANDLE_URL: &str = "http://192.168.100.1:9201/SpaceX.API.Device.Device/Handle";
 pub const ROUTER_LAN_HANDLE_URL: &str = "http://192.168.1.1:9001/SpaceX.API.Device.Device/Handle";
+pub const ROUTER_DEFAULT_HANDLE_PORT: u16 = 9001;
 
-pub fn router_handle_url(address: &str) -> String {
+pub fn router_handle_url(address: &str, port: Option<u16>) -> String {
     let authority = if address.contains(':') {
         format!("[{address}]")
     } else {
         address.to_owned()
     };
-    format!("http://{authority}:9001/SpaceX.API.Device.Device/Handle")
+    let port = port.unwrap_or(ROUTER_DEFAULT_HANDLE_PORT);
+    format!("http://{authority}:{port}/SpaceX.API.Device.Device/Handle")
 }
 
 #[derive(Debug, thiserror::Error)]
@@ -84,7 +86,26 @@ impl DishClient {
         Ok(Self {
             transport: Arc::new(GrpcWebClient::new()),
             schema: Arc::new(Schema::bundled()?),
-            handle_url: router_handle_url(address),
+            handle_url: router_handle_url(address, None),
+        })
+    }
+
+    /// Build the router client from the two saved endpoint dimensions. A missing
+    /// address resolves to the host's default gateway; a missing port resolves
+    /// to the device's default handle port. Neither dimension is validated
+    /// here — the caller does that before reaching this transport boundary.
+    // SPEC-CTRL-010, SPEC-CTRL-011: one URL decision, both dimensions optional.
+    pub fn router_client(
+        address: Option<&str>,
+        port: Option<u16>,
+    ) -> Result<Self, DishClientError> {
+        let address = address
+            .map(str::to_owned)
+            .unwrap_or_else(|| crate::gateway::default_router_address().to_string());
+        Ok(Self {
+            transport: Arc::new(GrpcWebClient::new()),
+            schema: Arc::new(Schema::bundled()?),
+            handle_url: router_handle_url(&address, port),
         })
     }
 
@@ -230,7 +251,7 @@ mod tests {
         assert_eq!(Target::Dish.default_handle_url(), DISH_LAN_HANDLE_URL);
         assert_eq!(
             Target::Router.default_handle_url(),
-            router_handle_url(&crate::gateway::default_router_address().to_string())
+            router_handle_url(&crate::gateway::default_router_address().to_string(), None)
         );
     }
 
@@ -239,12 +260,48 @@ mod tests {
     #[test]
     fn router_handle_url_uses_the_configured_address() {
         assert_eq!(
-            router_handle_url("10.0.0.1"),
+            router_handle_url("10.0.0.1", None),
             "http://10.0.0.1:9001/SpaceX.API.Device.Device/Handle"
         );
         assert_eq!(
-            router_handle_url("2001:db8::1"),
+            router_handle_url("2001:db8::1", None),
             "http://[2001:db8::1]:9001/SpaceX.API.Device.Device/Handle"
+        );
+    }
+
+    // SPEC-CTRL-010, SPEC-CTRL-011: a VPN or forwarded kit answers the same
+    // handle service on another port; the port is one URL decision in one place.
+    #[test]
+    fn router_handle_url_accepts_a_custom_access_port() {
+        assert_eq!(ROUTER_DEFAULT_HANDLE_PORT, 9001);
+        assert_eq!(
+            router_handle_url("10.0.0.1", Some(42622)),
+            "http://10.0.0.1:42622/SpaceX.API.Device.Device/Handle"
+        );
+        assert_eq!(
+            router_handle_url("2001:db8::1", Some(42622)),
+            "http://[2001:db8::1]:42622/SpaceX.API.Device.Device/Handle"
+        );
+    }
+
+    // SPEC-CTRL-011: the endpoint client resolves each missing dimension to its
+    // LAN default — the discovered gateway when no address is saved — and the
+    // plain default config drives the default endpoint with both held out.
+    #[test]
+    fn router_client_resolves_missing_endpoint_dimensions_to_defaults() {
+        let plain = DishClient::router_client(None, None).expect("default router client");
+        assert_eq!(plain.handle_url(), Target::Router.default_handle_url());
+        let gateway = crate::gateway::default_router_address().to_string();
+        let forwarded = DishClient::router_client(None, Some(42622)).expect("forwarded client");
+        assert_eq!(
+            forwarded.handle_url(),
+            format!("http://{gateway}:42622/SpaceX.API.Device.Device/Handle")
+        );
+        let moved = DishClient::router_client(Some("10.0.0.1"), Some(42622))
+            .expect("explicit endpoint client");
+        assert_eq!(
+            moved.handle_url(),
+            "http://10.0.0.1:42622/SpaceX.API.Device.Device/Handle"
         );
     }
 }

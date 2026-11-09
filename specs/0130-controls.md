@@ -44,6 +44,22 @@ account work in M9, where they can take the cloud path the Electron app uses.
   expand vertically.
 - **SPEC-CTRL-009** — Router address, DNS, subnet-password, and mesh-name inputs
   share consistent dimensions; their Save actions also use consistent sizing.
+- **SPEC-CTRL-010** — The Router tab exposes an access-port entry beside the
+  address so a VPN or port-forwarded setup still reaches the router without
+  leaving the tunnel. A valid port is 1–65535; an empty entry restores the
+  default 9001; anything else is refused before dispatch with the shared
+  address-row error. The choice persists to the shared preferences file as
+  `routerPort`, with `null` meaning default.
+- **SPEC-CTRL-011** — The saved port selects the recorder's LAN router endpoint
+  together with the address, through the single router URL builder in
+  `dishy-core`. An address-only or port-only save keeps the other dimension and
+  re-applies the endpoint without adding a poll, resetting the network-demand
+  cycle exactly once through one shared reset path. The settings page never
+  constructs a device client.
+- **SPEC-CTRL-012** — While the router is unreachable, the router group shows
+  advisory catalog copy that a VPN may have changed the access port and that
+  the port entry above can be updated. The notice rides the existing
+  reachability edge; no new poll is added.
 
 ## Acceptance criteria
 
@@ -63,6 +79,9 @@ account work in M9, where they can take the cloud path the Electron app uses.
 - The GTK shell test verifies the maintenance action dimensions, router input
   and Save sizing, and dock clearance that keeps the settings page's final
   controls reachable.
+- The port-related requirements above are traced to core and GTK tests: port
+  URL building, endpoint persistence and validation refusal, a one-cycle
+  endpoint reset on a port-only save, and the unreachable advisory copy.
 
 ## Deferred
 

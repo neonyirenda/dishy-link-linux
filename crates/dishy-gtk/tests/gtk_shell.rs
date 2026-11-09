@@ -428,6 +428,7 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
     );
     for name in [
         "router-address-entry",
+        "router-port-entry",
         "router-dns-0",
         "router-dns-1",
         "router-dns-2",
@@ -441,6 +442,7 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
     }
     for name in [
         "router-address-save",
+        "router-port-save",
         "router-dns-save",
         "router-subnet-save",
         "router-mesh-save",
@@ -1652,6 +1654,50 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
     assert_eq!(primary_dns.text(), "1.1.1.1");
     assert_eq!(backup_dns.text(), "");
     assert_eq!(subnet_selector.selected(), 6);
+    // SPEC-CTRL-010: the access port is validated before dispatch; junk is
+    // refused with the shared error, digits send typed intent, and a blank
+    // entry restores the device port.
+    let port_entry = settings_widgets
+        .iter()
+        .find(|widget| widget.widget_name() == "router-port-entry")
+        .and_then(|widget| widget.clone().downcast::<gtk::Entry>().ok())
+        .expect("port entry exists");
+    let port_save = find_button(shell.settings.widget(), |button| {
+        button.widget_name() == "router-port-save"
+    });
+    port_entry.set_text("80 http");
+    port_save.emit_clicked();
+    assert!(
+        cloud_settings_rx.try_recv().is_err(),
+        "junk does not dispatch"
+    );
+    assert!(
+        labels(shell.settings.widget())
+            .iter()
+            .any(|label| label.contains("65535")),
+        "the refusal names the valid range"
+    );
+    port_entry.set_text(" 42622 ");
+    port_save.emit_clicked();
+    assert!(matches!(
+        cloud_settings_rx.try_recv(),
+        Ok(SettingsAction::SetRouterPort(Some(42622)))
+    ));
+    port_entry.set_text("");
+    port_save.emit_clicked();
+    assert!(matches!(
+        cloud_settings_rx.try_recv(),
+        Ok(SettingsAction::SetRouterPort(None))
+    ));
+    // SPEC-CTRL-012: while the router is unreachable, the group advises that a
+    // VPN may have moved the port; the advice rides the existing reachability
+    // edge and hides again when the router answers.
+    shell.settings.set_router_reachable(Some(false));
+    let port_hint = find_widget(shell.settings.widget(), "router-port-hint");
+    assert!(port_hint.is_visible(), "unreachable: the advice shows");
+    shell.settings.set_router_reachable(Some(true));
+    assert!(!find_widget(shell.settings.widget(), "router-port-hint").is_visible());
+    shell.settings.set_router_reachable(Some(false));
     // SPEC-CLOUDCFG-008: when a bypassed router is unreachable on the LAN, its
     // confirmed reset uses the authenticated gateway instead of being hidden.
     shell.settings.set_router_reachable(Some(false));
@@ -1802,6 +1848,7 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
         see_through_glass: false,
         show_tray: true,
         router_address: None,
+        router_port: None,
         time_format: TimeFormat::Auto,
         toolbar_style: ToolbarStyle::Dock,
         self_client_id: None,
@@ -1916,6 +1963,7 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
         see_through_glass: false,
         show_tray: true,
         router_address: None,
+        router_port: None,
         time_format: TimeFormat::Auto,
         toolbar_style: ToolbarStyle::Dock,
         self_client_id: Some(99),
@@ -1980,6 +2028,7 @@ fn gtk_shell_hides_on_close_and_dashboard_reveals_on_data() {
         see_through_glass: false,
         show_tray: true,
         router_address: None,
+        router_port: None,
         time_format: TimeFormat::Hour12,
         toolbar_style: ToolbarStyle::Rail,
         self_client_id: None,

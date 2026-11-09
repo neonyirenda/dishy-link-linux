@@ -62,6 +62,8 @@ pub enum RecorderCommand {
     ClearClientTotals,
     /// Change the router endpoint without requiring the old endpoint to answer.
     SetRouterAddress(Option<String>),
+    /// Change the router access port, keeping the saved address.
+    SetRouterPort(Option<u16>),
     /// Read the metering rules and groups (spec 0170).
     GetRules,
     /// Energy over a range for an open tile detail (spec 0172). Its own
@@ -186,12 +188,29 @@ impl RecorderThread {
         data_dir: PathBuf,
         router_address: Option<String>,
     ) -> std::io::Result<(Self, Receiver<RecorderUpdate>)> {
+        Self::start_with_router_endpoint(data_dir, router_address, None)
+    }
+
+    pub fn start_with_router_endpoint(
+        data_dir: PathBuf,
+        router_address: Option<String>,
+        router_port: Option<u16>,
+    ) -> std::io::Result<(Self, Receiver<RecorderUpdate>)> {
         let (stop, stop_rx) = watch::channel(false);
         let (updates, receiver) = mpsc::channel();
         let (commands, command_rx) = mpsc::channel();
         let join = thread::Builder::new()
             .name("dishy-recorder".into())
-            .spawn(move || run(data_dir, router_address, stop_rx, command_rx, updates))?;
+            .spawn(move || {
+                run(
+                    data_dir,
+                    router_address,
+                    router_port,
+                    stop_rx,
+                    command_rx,
+                    updates,
+                )
+            })?;
         Ok((
             Self {
                 stop,
@@ -224,6 +243,7 @@ impl Drop for RecorderThread {
 fn run(
     data_dir: PathBuf,
     router_address: Option<String>,
+    router_port: Option<u16>,
     mut stop: watch::Receiver<bool>,
     commands: Receiver<RecorderCommand>,
     updates: Sender<RecorderUpdate>,
@@ -240,15 +260,18 @@ fn run(
     };
 
     runtime.block_on(async move {
-        let mut runner =
-            match RecorderRunner::open_with_router_address(&data_dir, router_address.as_deref()) {
-                Ok(runner) => runner,
-                Err(error) => {
-                    tracing::error!("recorder cannot open {}: {error}", data_dir.display());
-                    let _ = updates.send(RecorderUpdate::Failed(error.to_string()));
-                    return;
-                }
-            };
+        let mut runner = match RecorderRunner::open_with_router_endpoint(
+            &data_dir,
+            router_address.as_deref(),
+            router_port,
+        ) {
+            Ok(runner) => runner,
+            Err(error) => {
+                tracing::error!("recorder cannot open {}: {error}", data_dir.display());
+                let _ = updates.send(RecorderUpdate::Failed(error.to_string()));
+                return;
+            }
+        };
         tracing::info!("recording to {}", runner.data_dir().display());
         // The recorder opened with the persisted rolling snapshot. Hand it to
         // the dashboard now, not after the first network poll, so opening the
@@ -280,6 +303,11 @@ fn run(
                     RecorderCommand::SetRouterAddress(address) => {
                         if let Err(error) = runner.set_router_address(address.as_deref()) {
                             tracing::warn!("could not apply router address: {error}");
+                        }
+                    }
+                    RecorderCommand::SetRouterPort(port) => {
+                        if let Err(error) = runner.set_router_port(port) {
+                            tracing::warn!("could not apply router port: {error}");
                         }
                     }
                     RecorderCommand::Control(action) => {

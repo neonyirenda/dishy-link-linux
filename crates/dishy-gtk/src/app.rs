@@ -331,8 +331,12 @@ impl AppState {
 
     fn start_recorder(&self) {
         let data_dir = self.paths.data_dir().to_path_buf();
-        let router_address = self.preferences.borrow().get().router_address.clone();
-        match RecorderThread::start_with_router_address(data_dir, router_address) {
+        let preferences_borrow = self.preferences.borrow();
+        let preferences = preferences_borrow.get();
+        let router_address = preferences.router_address.clone();
+        let router_port = preferences.router_port;
+        drop(preferences_borrow);
+        match RecorderThread::start_with_router_endpoint(data_dir, router_address, router_port) {
             Ok((thread, updates)) => {
                 *self.recorder.borrow_mut() = Some(thread);
                 *self.recorder_updates.borrow_mut() = Some(updates);
@@ -1551,6 +1555,25 @@ impl AppState {
                 drop(preferences);
                 self.refresh_settings_state();
             }
+            SettingsAction::SetRouterPort(port) => {
+                let port = port.filter(|port| (1..=65535).contains(port));
+                let mut preferences = self.preferences.borrow_mut();
+                if let Err(error) = preferences.set(|preferences| {
+                    preferences.router_port = port;
+                }) {
+                    tracing::warn!("could not save router port preference: {error}");
+                }
+                if let Some(recorder) = self.recorder.borrow().as_ref()
+                    && recorder
+                        .command_sender()
+                        .send(RecorderCommand::SetRouterPort(port))
+                        .is_err()
+                {
+                    tracing::warn!("could not apply router port to recorder");
+                }
+                drop(preferences);
+                self.refresh_settings_state();
+            }
             SettingsAction::UpdateRouterConfig(update) => {
                 if self
                     .cloud_requests
@@ -1666,6 +1689,7 @@ impl AppState {
             see_through_glass: preferences.get().see_through_glass,
             show_tray: preferences.get().show_tray,
             router_address: preferences.get().router_address.clone(),
+            router_port: preferences.get().router_port,
             time_format: preferences.get().time_format,
             toolbar_style: preferences.get().toolbar_style,
             self_client_id: preferences.get().self_client_id,

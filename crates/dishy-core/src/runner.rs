@@ -108,6 +108,11 @@ pub struct RecorderRunner {
     network_tracker: ClientRateTracker,
     network_reachable: bool,
     network_misses: u32,
+
+    // The two saved dimensions of the recorder's LAN router endpoint. `None`
+    // means "use the discovered default" for that dimension.
+    router_address: Option<String>,
+    router_port: Option<u16>,
 }
 
 impl RecorderRunner {
@@ -119,14 +124,20 @@ impl RecorderRunner {
         data_dir: impl AsRef<std::path::Path>,
         router_address: Option<&str>,
     ) -> Result<Self, RunnerError> {
+        Self::open_with_router_endpoint(data_dir, router_address, None)
+    }
+
+    pub fn open_with_router_endpoint(
+        data_dir: impl AsRef<std::path::Path>,
+        router_address: Option<&str>,
+        router_port: Option<u16>,
+    ) -> Result<Self, RunnerError> {
         let recorder = Recorder::open(data_dir)?;
         let alerts = AlertEngine::new(&recorder.alerts().open_episodes());
+        let router_address = router_address.map(str::to_owned);
         Ok(Self {
             dish: DishClient::new(Target::Dish)?,
-            router: match router_address {
-                Some(address) => DishClient::router_at_address(address)?,
-                None => DishClient::new(Target::Router)?,
-            },
+            router: DishClient::router_client(router_address.as_deref(), router_port)?,
             recorder,
             alerts,
             dish_alert_reachable: None,
@@ -148,16 +159,17 @@ impl RecorderRunner {
             network_tracker: ClientRateTracker::default(),
             network_reachable: false,
             network_misses: 0,
+            router_address,
+            router_port,
         })
     }
 
-    /// Swap the LAN endpoint after the user saves a corrected address. Force
-    /// the existing network-demand cycle to obtain a fresh config and roster.
-    pub fn set_router_address(&mut self, address: Option<&str>) -> Result<(), RunnerError> {
-        self.router = match address {
-            Some(address) => DishClient::router_at_address(address)?,
-            None => DishClient::new(Target::Router)?,
-        };
+    /// Shared reset path: re-apply the router endpoint's client and reset the
+    /// network-demand cycle exactly once. Neither an address-only nor a
+    /// port-only save may add a poll.
+    // SPEC-CTRL-011: one shared reset path for both dimensions.
+    fn apply_router_endpoint(&mut self) -> Result<(), RunnerError> {
+        self.router = DishClient::router_client(self.router_address.as_deref(), self.router_port)?;
         self.last_network_clients_ms = None;
         self.last_network_config_ms = None;
         self.last_network_radio_ms = None;
@@ -168,6 +180,21 @@ impl RecorderRunner {
         self.network_reachable = false;
         self.network_misses = 0;
         Ok(())
+    }
+
+    /// Swap the LAN endpoint after the user saves a corrected address, keeping
+    /// the saved port. Force the existing network-demand cycle to obtain a fresh
+    /// config and roster.
+    pub fn set_router_address(&mut self, address: Option<&str>) -> Result<(), RunnerError> {
+        self.router_address = address.map(str::to_owned);
+        self.apply_router_endpoint()
+    }
+
+    /// Swap the LAN endpoint after the user saves a corrected access port,
+    /// keeping the saved address.
+    pub fn set_router_port(&mut self, port: Option<u16>) -> Result<(), RunnerError> {
+        self.router_port = port;
+        self.apply_router_endpoint()
     }
 
     pub fn data_dir(&self) -> &std::path::Path {
@@ -872,7 +899,64 @@ mod tests {
         runner.set_router_address(None).unwrap();
         assert_eq!(
             runner.router.handle_url(),
-            crate::client::router_handle_url(&crate::gateway::default_router_address().to_string())
+            crate::client::router_handle_url(
+                &crate::gateway::default_router_address().to_string(),
+                None
+            )
+        );
+    }
+
+    // SPEC-CTRL-010, SPEC-CTRL-011: the access port rides the same endpoint
+    // handling as the address. A port-only save works against the discovered
+    // gateway, keeps the saved address on the next address save, and clearing
+    // the port returns to the device port without adding a poll.
+    #[test]
+    fn router_access_port_selects_the_lan_endpoint() {
+        let directory = tempfile::tempdir().unwrap();
+        let mut runner = RecorderRunner::open_with_router_endpoint(
+            directory.path(),
+            Some("10.0.0.1"),
+            Some(42622),
+        )
+        .unwrap();
+        assert_eq!(
+            runner.router.handle_url(),
+            "http://10.0.0.1:42622/SpaceX.API.Device.Device/Handle"
+        );
+        // An address-only save keeps the forwarded port.
+        runner.set_router_address(Some("10.0.0.2")).unwrap();
+        assert_eq!(
+            runner.router.handle_url(),
+            "http://10.0.0.2:42622/SpaceX.API.Device.Device/Handle"
+        );
+        // Clearing the port returns to the device port, address untouched.
+        runner.set_router_port(None).unwrap();
+        assert_eq!(
+            runner.router.handle_url(),
+            "http://10.0.0.2:9001/SpaceX.API.Device.Device/Handle"
+        );
+        // A port-only save reaches the current discovered gateway.
+        runner.set_router_port(Some(42622)).unwrap();
+        let gateway = crate::gateway::default_router_address().to_string();
+        runner.set_router_address(None).unwrap();
+        assert_eq!(
+            runner.router.handle_url(),
+            format!("http://{gateway}:42622/SpaceX.API.Device.Device/Handle")
+        );
+    }
+
+    // SPEC-CTRL-011: the endpoint client resolves each missing dimension to its
+    // LAN default inside `client::router_client`; the runner only remembers the
+    // two saved dimensions, so a missing one keeps its default.
+    #[test]
+    fn open_without_an_address_uses_the_default_gateway_with_the_port() {
+        let directory = tempfile::tempdir().unwrap();
+        let runner =
+            RecorderRunner::open_with_router_endpoint(directory.path(), None, Some(42622)).unwrap();
+        let gateway = crate::gateway::default_router_address().to_string();
+        assert_eq!(
+            runner.router.handle_url(),
+            format!("http://{gateway}:42622/SpaceX.API.Device.Device/Handle")
         );
     }
 

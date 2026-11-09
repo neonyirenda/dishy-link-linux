@@ -174,6 +174,7 @@ pub struct Preferences {
     pub tray_icon_style: TrayIconStyle,
     pub window_bounds: Option<WindowBounds>,
     pub router_address: Option<String>,
+    pub router_port: Option<u16>,
     pub self_client_id: Option<u32>,
     pub locale: Option<Locale>,
     pub time_format: TimeFormat,
@@ -210,6 +211,7 @@ impl Default for Preferences {
             tray_icon_style: TrayIconStyle::Original,
             window_bounds: None,
             router_address: None,
+            router_port: None,
             self_client_id: None,
             locale: None,
             time_format: TimeFormat::Auto,
@@ -259,6 +261,15 @@ impl Preferences {
         }
         if let Some(Value::String(value)) = object.get("routerAddress") {
             preferences.router_address = normalize_ip_address(value);
+        }
+        if let Some(value) = object.get("routerPort") {
+            preferences.router_port = match value {
+                Value::Number(number) => number
+                    .as_u64()
+                    .and_then(|port| u16::try_from(port).ok())
+                    .filter(|port| (1..=65535).contains(port)),
+                _ => None,
+            };
         }
         if let Some(value) = object.get("selfClientId").and_then(Value::as_u64) {
             preferences.self_client_id = u32::try_from(value).ok();
@@ -345,6 +356,26 @@ pub fn normalize_ip_address(input: &str) -> Option<String> {
         .parse::<IpAddr>()
         .ok()
         .map(|address| address.to_string())
+}
+
+/// Normalize a port entry: blank or whitespace is "default" (`None`), a
+/// numeric literal in range is kept, anything else is refused (`None` here
+/// too — the caller distinguishes blank from junk before dispatch).
+// SPEC-CTRL-010: one normalization rule shared by the entry and its save.
+pub fn normalize_port(input: &str) -> Option<u16> {
+    let trimmed = input.trim();
+    if trimmed.is_empty() {
+        return None;
+    }
+    if !trimmed.bytes().all(|byte| byte.is_ascii_digit()) {
+        return None;
+    }
+    let value: u32 = trimmed.parse().ok()?;
+    if (1..=65535).contains(&value) {
+        Some(value as u16)
+    } else {
+        None
+    }
 }
 
 #[derive(Debug)]
@@ -480,6 +511,55 @@ mod tests {
                 .contains("\"alertSounds\": false")
         );
         assert!(!PreferencesStore::load(&path).get().alert_sounds);
+    }
+
+    // SPEC-CTRL-010: the access port persists as `routerPort`, `null` meaning
+    // default, and out-of-range or non-numeric values fall back individually.
+    #[test]
+    fn router_port_defaults_persists_and_refuses_out_of_range_values() {
+        assert_eq!(Preferences::default().router_port, None);
+        assert_eq!(
+            Preferences::parse(r#"{"routerPort": 42622}"#).router_port,
+            Some(42622)
+        );
+        for invalid in [
+            r#"{"routerPort": 0}"#,
+            r#"{"routerPort": 65536}"#,
+            r#"{"routerPort": "no"}"#,
+        ] {
+            assert_eq!(
+                Preferences::parse(invalid).router_port,
+                None,
+                "{invalid} must fall back"
+            );
+        }
+        let directory = tempdir().expect("temp dir");
+        let path = directory.path().join("preferences.json");
+        let mut store = PreferencesStore::load(&path);
+        store
+            .set(|preferences| preferences.router_port = Some(42622))
+            .expect("save port");
+        assert!(
+            fs::read_to_string(&path)
+                .unwrap()
+                .contains("\"routerPort\": 42622")
+        );
+        assert_eq!(PreferencesStore::load(&path).get().router_port, Some(42622));
+    }
+
+    // SPEC-CTRL-010: one normalization rule for the entry: blank restores the
+    // default, digits are validated, and junk is refused by the caller rather
+    // than silently rewritten into a default.
+    #[test]
+    fn port_entries_normalize_to_valid_ports_or_none() {
+        assert_eq!(normalize_port(" 42622 "), Some(42622));
+        assert_eq!(normalize_port("443"), Some(443));
+        assert_eq!(normalize_port(""), None);
+        assert_eq!(normalize_port("   "), None);
+        assert_eq!(normalize_port("0"), None);
+        assert_eq!(normalize_port("70000"), None);
+        assert_eq!(normalize_port("-1"), None);
+        assert_eq!(normalize_port("80 http"), None);
     }
 
     #[test]
