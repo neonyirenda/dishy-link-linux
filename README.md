@@ -86,6 +86,26 @@ the app publishes on D-Bus (`com.dishylink.Status1` at
 - **Headless recorder**: `dishy record` runs the same recorder without a window,
   for example on a server or a Raspberry Pi.
 
+## Downloads (0.1.0, testing)
+
+This is an early, **testing** release. Expect rough edges and please report issues.
+
+- **Latest Flatpak build**: download `dishylink-x86_64.flatpak` (or `dishylink.flatpak`)
+  from the artifacts of the most recent successful **CI run** on `main`:
+  https://github.com/neonyirenda/dishy-link-linux/actions/workflows/ci.yml
+  (open the latest run, then the `dishylink-flatpak` artifact).
+- **Tagged releases**: once a version is tagged, the Flatpak bundle is attached
+  to the GitHub Release for that tag under
+  https://github.com/neonyirenda/dishy-link-linux/releases
+- Install with:
+  ```sh
+  flatpak install --user dishylink-x86_64.flatpak
+  flatpak run com.dishylink.app
+  ```
+
+Pull requests and assistance are very welcome — open an issue or PR and I'll
+look at it.
+
 ## Building
 
 You need Rust 1.92 or newer and the GTK development packages.
