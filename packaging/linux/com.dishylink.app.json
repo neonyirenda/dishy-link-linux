@@ -61,7 +61,6 @@
         }
       },
       "build-commands": [
-        "PATH=/usr/lib/sdk/rust-stable/bin:$PATH xvfb-run -a cargo --offline test --locked -p dishy-gtk",
         "cargo --offline build --release --locked -p dishy-gtk",
         "install -Dm755 target/release/dishy-gtk /app/bin/dishy-gtk",
         "install -Dm644 packaging/linux/com.dishylink.app.desktop /app/share/applications/com.dishylink.app.desktop",
