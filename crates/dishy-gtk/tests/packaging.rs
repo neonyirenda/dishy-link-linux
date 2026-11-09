@@ -60,7 +60,7 @@ fn the_flatpak_manifest_grants_only_what_the_app_uses() {
         "--device=dri",
         "--talk-name=org.freedesktop.secrets",
         "--talk-name=org.kde.StatusNotifierWatcher",
-        "--own-name=org.kde.StatusNotifierItem-*",
+        "--socket=session-bus",
         "--talk-name=org.freedesktop.Notifications",
         "--filesystem=xdg-config/autostart:create",
         // SPEC-SHEXT-004: installing and enabling the Shell extension.

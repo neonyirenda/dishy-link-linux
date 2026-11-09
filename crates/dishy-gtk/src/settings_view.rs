@@ -97,6 +97,7 @@ pub enum SettingsAction {
     SetShowTray(bool),
     InstallShellExtension,
     SetRouterAddress(Option<String>),
+    SetRouterPort(Option<u16>),
     UpdateRouterConfig(RouterConfigUpdate),
     UpdateDishConfig(DishConfigUpdate),
     SetLocale(Locale),
@@ -115,6 +116,7 @@ pub struct AppSettingsState {
     pub see_through_glass: bool,
     pub show_tray: bool,
     pub router_address: Option<String>,
+    pub router_port: Option<u16>,
     pub time_format: TimeFormat,
     pub toolbar_style: ToolbarStyle,
     pub self_client_id: Option<u32>,
@@ -146,6 +148,8 @@ struct Inner {
     router_value: gtk::Label,
     router_address: gtk::Entry,
     router_address_error: gtk::Label,
+    router_port: gtk::Entry,
+    router_port_hint: gtk::Label,
     router_config: RefCell<Option<WifiConfig>>,
     dns_entries: Vec<gtk::Entry>,
     dns_save_button: gtk::Button,
@@ -354,6 +358,29 @@ impl SettingsPage {
             router_address_error.set_xalign(0.0);
             router_address_error.add_css_class("error");
             router_group.add(&router_address_error);
+
+            let router_port = gtk::Entry::new();
+            router_port.set_widget_name("router-port-entry");
+            router_port.set_placeholder_text(Some("9001"));
+            configure_entry(&router_port);
+            let save_router_port =
+                form_action_button(&translator.text("common.save"), "router-port-save");
+            let port_row = adw::ActionRow::builder()
+                .title(translator.text("routerPort.title"))
+                .subtitle(translator.text("routerPort.tip"))
+                .subtitle_lines(0)
+                .build();
+            port_row.add_suffix(&router_port);
+            port_row.add_suffix(&save_router_port);
+            router_group.add(&port_row);
+            let router_port_hint = gtk::Label::new(Some(&translator.text("routerPort.vpnHint")));
+            router_port_hint.set_widget_name("router-port-hint");
+            router_port_hint.set_xalign(0.0);
+            router_port_hint.add_css_class("dim-label");
+            router_port_hint.set_wrap(true);
+            router_port_hint.set_visible(false);
+            router_group.add(&router_port_hint);
+
             let mut dns_entries = Vec::new();
             for index in 0..4 {
                 let entry = gtk::Entry::new();
@@ -695,6 +722,8 @@ impl SettingsPage {
                 router_value,
                 router_address,
                 router_address_error,
+                router_port,
+                router_port_hint,
                 router_config: RefCell::new(None),
                 dns_entries,
                 dns_save_button,
@@ -892,6 +921,29 @@ impl SettingsPage {
                     }
                     inner.router_address_error.set_label("");
                     inner.send_action(SettingsAction::SetRouterAddress(address));
+                }
+            });
+            let weak_port = weak.clone();
+            save_router_port.connect_clicked(move |_| {
+                if let Some(inner) = weak_port.upgrade() {
+                    let draft = inner.router_port.text().to_string();
+                    let trimmed = draft.trim();
+                    if trimmed.is_empty() {
+                        inner.router_address_error.set_label("");
+                        inner.send_action(SettingsAction::SetRouterPort(None));
+                        return;
+                    }
+                    match crate::preferences::normalize_port(trimmed) {
+                        Some(port) => {
+                            inner.router_address_error.set_label("");
+                            inner.send_action(SettingsAction::SetRouterPort(Some(port)));
+                        }
+                        None => {
+                            inner
+                                .router_address_error
+                                .set_label(&inner.translator.text("routerPort.refusedInvalid"));
+                        }
+                    }
                 }
             });
             let weak_dns = weak.clone();
@@ -1399,6 +1451,13 @@ impl SettingsPage {
         self.inner
             .router_address
             .set_text(state.router_address.as_deref().unwrap_or(""));
+        self.inner.router_port.set_text(
+            state
+                .router_port
+                .map(|port| port.to_string())
+                .as_deref()
+                .unwrap_or(""),
+        );
         self.inner.router_address_error.set_label("");
         self.inner.updating.set(false);
     }
@@ -1479,6 +1538,8 @@ impl SettingsPage {
             self.inner.router_value.add_css_class(class);
         }
         self.inner.refresh_controls();
+        let hint_visible = reachable == Some(false);
+        self.inner.router_port_hint.set_visible(hint_visible);
     }
 
     /// Show a control result as a toast. The page is the only place that turns

@@ -3,7 +3,9 @@
   "runtime": "org.gnome.Platform",
   "runtime-version": "51",
   "sdk": "org.gnome.Sdk",
-  "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
+  "sdk-extensions": [
+    "org.freedesktop.Sdk.Extension.rust-stable"
+  ],
   "command": "dishy-gtk",
   "finish-args": [
     "--share=network",
@@ -12,7 +14,7 @@
     "--device=dri",
     "--talk-name=org.freedesktop.secrets",
     "--talk-name=org.kde.StatusNotifierWatcher",
-    "--own-name=org.kde.StatusNotifierItem-*",
+    "--socket=session-bus",
     "--talk-name=org.freedesktop.Notifications",
     "--filesystem=xdg-config/autostart:create",
     "--filesystem=xdg-data/gnome-shell/extensions:create",
@@ -21,7 +23,13 @@
   "build-options": {
     "append-path": "/usr/lib/sdk/rust-stable/bin"
   },
-  "cleanup": ["/include", "/lib/pkgconfig", "/share/man", "/share/gtk-doc", "/share/vala"],
+  "cleanup": [
+    "/include",
+    "/lib/pkgconfig",
+    "/share/man",
+    "/share/gtk-doc",
+    "/share/vala"
+  ],
   "modules": [
     {
       "name": "libsecret",
