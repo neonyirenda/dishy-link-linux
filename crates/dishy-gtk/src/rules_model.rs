@@ -77,7 +77,50 @@ pub fn pause_available(
     is_self: bool,
     client_id: Option<i64>,
 ) -> bool {
-    cloud_connected && viewer_identified && !is_self && client_id.is_some()
+    client_id.is_some()
+        && pause_refusal_reason(cloud_connected, viewer_identified, is_self).is_none()
+}
+
+/// Why a pause control is not offered, when `pause_available` refuses
+/// (SPEC-PAUSE-007). The page-wide reasons come first — no account, then an
+/// unidentified viewer — and the viewer's own row is explained only once the
+/// rest of the gate holds.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum PauseRefusal {
+    /// `network.pauseDisabledAccount`
+    Account,
+    /// `network.pauseDisabledSelf`
+    SelfDevice,
+    /// `network.pauseDisabledBoth`
+    Both,
+    /// `errors.selfPauseRefused`
+    OwnRow,
+}
+
+impl PauseRefusal {
+    /// The shared-catalog key that states this refusal.
+    pub fn message_key(self) -> &'static str {
+        match self {
+            PauseRefusal::Account => "network.pauseDisabledAccount",
+            PauseRefusal::SelfDevice => "network.pauseDisabledSelf",
+            PauseRefusal::Both => "network.pauseDisabledBoth",
+            PauseRefusal::OwnRow => "errors.selfPauseRefused",
+        }
+    }
+}
+
+pub fn pause_refusal_reason(
+    cloud_connected: bool,
+    viewer_identified: bool,
+    is_self: bool,
+) -> Option<PauseRefusal> {
+    match (cloud_connected, viewer_identified, is_self) {
+        (false, false, _) => Some(PauseRefusal::Both),
+        (false, true, _) => Some(PauseRefusal::Account),
+        (true, false, _) => Some(PauseRefusal::SelfDevice),
+        (true, true, true) => Some(PauseRefusal::OwnRow),
+        (true, true, false) => None,
+    }
 }
 
 pub fn cycle_label(cycle: &MeterCycle, translator: &Translator) -> String {
@@ -452,6 +495,30 @@ mod tests {
         assert!(!pause_available(true, false, false, Some(7)));
         assert!(!pause_available(true, true, true, Some(7)));
         assert!(!pause_available(true, true, false, None));
+    }
+
+    // SPEC-PAUSE-007: each refusal names its reason; the page-wide ones come
+    // first, and the viewer's own row is explained only once the rest of the
+    // gate holds.
+    #[test]
+    fn each_pause_refusal_names_its_reason() {
+        assert_eq!(
+            pause_refusal_reason(false, false, false),
+            Some(PauseRefusal::Both)
+        );
+        assert_eq!(
+            pause_refusal_reason(false, true, true),
+            Some(PauseRefusal::Account)
+        );
+        assert_eq!(
+            pause_refusal_reason(true, false, false),
+            Some(PauseRefusal::SelfDevice)
+        );
+        assert_eq!(
+            pause_refusal_reason(true, true, true),
+            Some(PauseRefusal::OwnRow)
+        );
+        assert_eq!(pause_refusal_reason(true, true, false), None);
     }
 
     // SPEC-PAUSE-005: cards say what each rule measures and how far along it

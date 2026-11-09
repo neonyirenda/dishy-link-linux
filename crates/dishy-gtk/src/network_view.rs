@@ -10,6 +10,7 @@ use std::rc::Rc;
 use std::sync::Once;
 use std::sync::mpsc::Sender;
 
+use gtk::glib;
 use gtk::prelude::*;
 use libadwaita as adw;
 use libadwaita::prelude::*;
@@ -22,7 +23,7 @@ use dishy_core::network::{
 use crate::format::format_mbps;
 use crate::i18n::Translator;
 use crate::recorder::RecorderCommand;
-use crate::rules_model::pause_available;
+use crate::rules_model::{PauseRefusal, pause_available, pause_refusal_reason};
 use crate::rules_view::RulesView;
 
 const CSS: &str = r#"
@@ -128,6 +129,8 @@ pub enum NetworkCloudAction {
     },
 }
 
+type PageOpener = Box<dyn Fn(&str)>;
+
 struct Inner {
     root: gtk::ScrolledWindow,
     overlay: adw::ToastOverlay,
@@ -140,6 +143,7 @@ struct Inner {
     translator: Translator,
     commands: RefCell<Option<Sender<RecorderCommand>>>,
     cloud_actions: RefCell<Option<Sender<NetworkCloudAction>>>,
+    open_page: RefCell<Option<PageOpener>>,
     snapshot: RefCell<Option<NetworkSnapshot>>,
     active: Cell<bool>,
     cloud_source: Cell<bool>,
@@ -282,6 +286,7 @@ impl NetworkPage {
             translator: translator.clone(),
             commands: RefCell::new(None),
             cloud_actions: RefCell::new(None),
+            open_page: RefCell::new(None),
             snapshot: RefCell::new(None),
             active: Cell::new(false),
             cloud_source: Cell::new(false),
@@ -346,6 +351,12 @@ impl NetworkPage {
         if self.inner.active.get() {
             self.inner.send_cloud_demand(true);
         }
+    }
+
+    /// Raises the named shell page from a refusal message's link
+    /// (SPEC-PAUSE-007). The host wires this to its view stack.
+    pub fn connect_open_page(&self, handler: impl Fn(&str) + 'static) {
+        *self.inner.open_page.borrow_mut() = Some(Box::new(handler));
     }
 
     /// Demand-gate the network reads. The map handlers call this; it is public
@@ -432,6 +443,16 @@ impl NetworkPage {
             .as_ref()
             .filter(|detail| detail.is_open())
             .map(|detail| detail.key().to_owned())
+    }
+
+    /// The refusal caption shown in the open device detail, if any
+    /// (SPEC-PAUSE-007).
+    pub fn device_detail_refusal(&self) -> Option<String> {
+        self.inner
+            .device_detail
+            .borrow()
+            .as_ref()
+            .and_then(|detail| detail.refusal_text())
     }
 
     pub fn set_device_throughput(
@@ -593,7 +614,7 @@ impl Inner {
         parts.join(" · ")
     }
 
-    fn fill_devices(&self, snapshot: &NetworkSnapshot) {
+    fn fill_devices(self: &Rc<Self>, snapshot: &NetworkSnapshot) {
         while let Some(child) = self.devices.first_child() {
             self.devices.remove(&child);
         }
@@ -612,10 +633,11 @@ impl Inner {
                 .self_client_id
                 .get()
                 .is_some_and(|client_id| device.client_id == Some(i64::from(client_id)));
-            let row = device_row(device, &self.translator, !self.cloud_source.get(), is_self);
+            let (row, main) =
+                device_row(device, &self.translator, !self.cloud_source.get(), is_self);
             row.set_activatable(true);
             if let Some(outer) = row.child().and_downcast::<gtk::Box>() {
-                self.append_device_actions(&outer, device, is_self);
+                self.append_device_actions(&outer, &main, device, is_self);
             }
             self.devices.append(&row);
         }
@@ -624,22 +646,27 @@ impl Inner {
     }
 
     /// Pause/unpause and rename, offered only behind the SPEC-PAUSE-003 gate
-    /// and each confirmed before it is sent once (SPEC-PAUSE-004).
-    fn append_device_actions(&self, outer: &gtk::Box, device: &NetworkDevice, is_self: bool) {
+    /// and each confirmed before it is sent once (SPEC-PAUSE-004). A refused
+    /// pause says why in `caption_parent` instead of hiding the control
+    /// (SPEC-PAUSE-007).
+    fn append_device_actions(
+        self: &Rc<Self>,
+        actions: &gtk::Box,
+        caption_parent: &gtk::Box,
+        device: &NetworkDevice,
+        is_self: bool,
+    ) {
         let Some(client_id) = device.client_id.and_then(|id| u32::try_from(id).ok()) else {
             return;
         };
         let cloud = self.cloud_connected.get();
+        let viewer_identified = self.self_client_id.get().is_some();
         let name = device
             .name
             .clone()
             .unwrap_or_else(|| device.mac_address.clone());
-        if pause_available(
-            cloud,
-            self.self_client_id.get().is_some(),
-            is_self,
-            device.client_id,
-        ) {
+        let refusal = pause_refusal_reason(cloud, viewer_identified, is_self);
+        if pause_available(cloud, viewer_identified, is_self, device.client_id) {
             let paused = device.blocked;
             let label = self.translator.text(if paused {
                 "network.unpause"
@@ -680,7 +707,9 @@ impl Inner {
                     },
                 );
             });
-            outer.append(&button);
+            actions.append(&button);
+        } else if let Some(reason) = refusal {
+            caption_parent.append(&self.pause_refusal_caption(reason));
         }
         if cloud {
             let rename = gtk::Button::from_icon_name("document-edit-symbolic");
@@ -698,8 +727,33 @@ impl Inner {
                     });
                 });
             });
-            outer.append(&rename);
+            actions.append(&rename);
         }
+    }
+
+    /// The caption that says why a pause is not offered: the shared catalog's
+    /// sentence, with its account and settings tags as links that raise the
+    /// matching page (SPEC-PAUSE-007).
+    fn pause_refusal_caption(self: &Rc<Self>, reason: PauseRefusal) -> gtk::Label {
+        let text = self.translator.text_with(
+            reason.message_key(),
+            &[("action", &self.translator.text("network.signIn"))],
+        );
+        let caption = gtk::Label::new(None);
+        caption.set_markup(&pause_reason_markup(&text));
+        caption.set_widget_name("network-pause-refusal");
+        caption.set_xalign(0.0);
+        caption.set_halign(gtk::Align::Start);
+        caption.set_wrap(true);
+        caption.add_css_class("dishy-network-row-sub");
+        let weak = Rc::downgrade(self);
+        caption.connect_activate_link(move |_, page| {
+            weak.upgrade()
+                .and_then(|inner| inner.open_page.borrow().as_ref().map(|open| open(page)))
+                .is_some()
+                .into()
+        });
+        caption
     }
 
     fn open_device_detail(self: &Rc<Self>, index: usize) {
@@ -726,7 +780,7 @@ impl Inner {
             upstream.as_deref(),
             month,
             &self.translator,
-            |header| self.append_device_actions(header, &device, is_self),
+            |header, caption| self.append_device_actions(header, caption, &device, is_self),
         );
         *self.device_detail.borrow_mut() = Some(detail);
         if let Some(sender) = self.commands.borrow().as_ref() {
@@ -828,6 +882,17 @@ fn label_for(translator: &Translator, paused: bool) -> String {
     })
 }
 
+/// Pango markup for a pause refusal (SPEC-PAUSE-007): the shared catalog's
+/// `<account>` and `<settings>` tags become links that raise the matching
+/// page; every other tag stays escaped text.
+fn pause_reason_markup(text: &str) -> String {
+    glib::markup_escape_text(text)
+        .replace("&lt;account&gt;", "<a href=\"account\">")
+        .replace("&lt;/account&gt;", "</a>")
+        .replace("&lt;settings&gt;", "<a href=\"settings\">")
+        .replace("&lt;/settings&gt;", "</a>")
+}
+
 fn confirm_action(
     anchor: &impl IsA<gtk::Widget>,
     heading: &str,
@@ -897,7 +962,7 @@ fn device_row(
     translator: &Translator,
     live_rates: bool,
     is_self: bool,
-) -> gtk::ListBoxRow {
+) -> (gtk::ListBoxRow, gtk::Box) {
     let row = gtk::ListBoxRow::new();
     row.set_activatable(false);
     row.set_selectable(false);
@@ -993,7 +1058,7 @@ fn device_row(
     }
     outer.append(&rates);
     row.set_child(Some(&outer));
-    row
+    (row, main)
 }
 
 fn node_tile(node: &NetworkNode, translator: &Translator) -> gtk::Box {
@@ -1218,5 +1283,24 @@ mod tests {
         assert_eq!(format_span(75.0, &translator), "1m 15s");
         assert_eq!(device_count_text(1, &translator), "1 device");
         assert_eq!(device_count_text(3, &translator), "3 devices");
+    }
+
+    // SPEC-PAUSE-007: only the catalog's account and settings tags become
+    // links; every other tag stays escaped text.
+    #[test]
+    fn pause_reason_markup_allows_only_account_and_settings_links() {
+        assert_eq!(
+            pause_reason_markup(
+                "To enable, <account>sign in</account> & pick <settings>settings</settings> <i>now</i>"
+            ),
+            "To enable, <a href=\"account\">sign in</a> &amp; pick \
+             <a href=\"settings\">settings</a> &lt;i&gt;now&lt;/i&gt;"
+        );
+        assert_eq!(
+            pause_reason_markup(
+                "This is the device you are using, so it cannot be paused from here."
+            ),
+            "This is the device you are using, so it cannot be paused from here."
+        );
     }
 }

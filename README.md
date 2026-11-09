@@ -86,7 +86,7 @@ the app publishes on D-Bus (`com.dishylink.Status1` at
 - **Headless recorder**: `dishy record` runs the same recorder without a window,
   for example on a server or a Raspberry Pi.
 
-## Downloads (0.1.0, testing)
+## Downloads (0.1.1, testing)
 
 This is an early, **testing** release. Expect rough edges and please report issues.
 

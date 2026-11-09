@@ -569,8 +569,6 @@
     "measureTimer": "timer",
     "measureSchedule": "schedule",
     "measureAllowance": "allowance",
-    "pauseFailed": "This device reached its limit, but the pause could not be sent to Starlink.",
-    "pauseFailedRetry": "It is retried every minute.",
     "coversGroupShared": "This limit covers {{group}}, which share it between them. Editing it here changes it for all of them.",
     "coversGroupEach": "This limit covers {{group}}, each with their own. Editing it here changes it for all of them.",
     "autoPauseNote": "Device data will automatically pause when usage reaches this limit.",
