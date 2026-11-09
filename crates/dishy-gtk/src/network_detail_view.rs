@@ -70,21 +70,23 @@ pub struct DeviceDetail {
     key: String,
     chart: ChartCanvas,
     empty: gtk::Label,
+    refusal_caption: gtk::Box,
     window_minutes: Rc<Cell<u32>>,
     samples: Rc<std::cell::RefCell<Vec<ClientSample>>>,
     translator: Translator,
 }
 
 impl DeviceDetail {
-    /// `actions` receives the header box, so the page can add rename and
-    /// pause behind its own gate.
+    /// `actions` receives the header box and the caption box under it, so the
+    /// page can add rename and pause behind its own gate, and the reason a
+    /// pause is not offered (SPEC-PAUSE-007).
     pub fn open(
         parent: Option<&gtk::Window>,
         device: &NetworkDevice,
         upstream_name: Option<&str>,
         month: Option<(u64, u64)>,
         translator: &Translator,
-        actions: impl FnOnce(&gtk::Box),
+        actions: impl FnOnce(&gtk::Box, &gtk::Box),
     ) -> Self {
         let vendor = dishy_core::oui::OuiRegistry::bundled().vendor_for_mac(&device.mac_address);
         let body = gtk::Box::new(gtk::Orientation::Vertical, 14);
@@ -97,8 +99,10 @@ impl DeviceDetail {
             .build();
         name.add_css_class("title-3");
         header.append(&name);
-        actions(&header);
+        let refusal_caption = gtk::Box::new(gtk::Orientation::Vertical, 0);
         body.append(&header);
+        body.append(&refusal_caption);
+        actions(&header, &refusal_caption);
 
         let heading = gtk::Label::builder()
             .label(translator.text("metrics.throughput"))
@@ -131,6 +135,7 @@ impl DeviceDetail {
             key: device.usage_key.clone(),
             chart,
             empty,
+            refusal_caption,
             window_minutes: Rc::new(Cell::new(DEVICE_WINDOWS[0])),
             samples: Rc::new(std::cell::RefCell::new(Vec::new())),
             translator: translator.clone(),
@@ -170,6 +175,19 @@ impl DeviceDetail {
 
     pub fn is_open(&self) -> bool {
         self.window.is_visible()
+    }
+
+    /// The refusal caption's text, when the pause gate refused this device
+    /// (SPEC-PAUSE-007).
+    pub fn refusal_text(&self) -> Option<String> {
+        let mut child = self.refusal_caption.first_child();
+        while let Some(widget) = child {
+            if let Ok(label) = widget.clone().downcast::<gtk::Label>() {
+                return Some(label.label().to_string());
+            }
+            child = widget.next_sibling();
+        }
+        None
     }
 
     pub fn set_samples(&self, samples: Vec<ClientSample>) {

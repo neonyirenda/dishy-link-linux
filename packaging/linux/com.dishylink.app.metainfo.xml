@@ -17,6 +17,14 @@
   <url type="bugtracker">https://github.com/neonyirenda/dishy-link-linux/issues</url>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.1.1" date="2026-11-09">
+      <description>
+        <p>Pause a device from the Network page or a reached rule, with a message
+        explaining why it cannot be paused (no signed-in account, no chosen
+        self-device, or the viewer's own device). Also runs the GTK test suite in
+        CI.</p>
+      </description>
+    </release>
     <release version="0.1.0" date="2026-10-30">
       <description>
         <p>First native GTK release: dashboard, sky view with the live constellation, data usage, network rules, speed test, alignment, alerts, and Starlink account controls.</p>

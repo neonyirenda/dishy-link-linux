@@ -570,8 +570,6 @@
     "measureTimer": "temporizador",
     "measureSchedule": "horario",
     "measureAllowance": "límite",
-    "pauseFailed": "Este dispositivo alcanzó su límite, pero no se pudo enviar la pausa a Starlink.",
-    "pauseFailedRetry": "Se reintenta cada minuto.",
     "coversGroupShared": "Este límite cubre a {{group}}, que lo comparten entre sí. Editarlo aquí lo cambia para todos.",
     "coversGroupEach": "Este límite cubre a {{group}}, cada uno con el suyo. Editarlo aquí lo cambia para todos.",
     "autoPauseNote": "Los datos del dispositivo se pausarán automáticamente cuando el uso alcance este límite.",

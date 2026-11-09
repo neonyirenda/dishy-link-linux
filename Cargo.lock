@@ -345,7 +345,7 @@ checksum = "092966b41edc516079bdf31ec78a2e0588d1d0c08f78b91d8307215928642b2b"
 
 [[package]]
 name = "dishy-cli"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "clap",
@@ -358,7 +358,7 @@ dependencies = [
 
 [[package]]
 name = "dishy-cloud"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "dishy-core",
  "dishy-proto",
@@ -371,7 +371,7 @@ dependencies = [
 
 [[package]]
 name = "dishy-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "base64 0.22.1",
  "bytes",
@@ -393,7 +393,7 @@ dependencies = [
 
 [[package]]
 name = "dishy-gtk"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cairo-rs",
  "chrono",
@@ -417,7 +417,7 @@ dependencies = [
 
 [[package]]
 name = "dishy-proto"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "prost",
  "prost-reflect",
@@ -427,7 +427,7 @@ dependencies = [
 
 [[package]]
 name = "dishy-sky"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "chrono",
  "serde",

@@ -719,13 +719,29 @@ impl AppState {
                     paused,
                     mac_address,
                 } => {
-                    let _ = self.cloud_requests.send(CloudRequest::UpdateClient(
-                        RouterConfigUpdate::ClientPause {
-                            client_id,
-                            paused,
-                            mac_address,
-                        },
-                    ));
+                    // SPEC-PAUSE-007: a pause that reaches the host without a
+                    // chosen self device, or aimed at the viewer's own
+                    // device, is refused with a message and never sent.
+                    match pause_send_refusal(
+                        self.preferences.borrow().get().self_client_id,
+                        client_id,
+                    ) {
+                        Some(key) => {
+                            let message = self.translator.borrow().text(key);
+                            if let Some(network) = self.network.borrow().as_ref() {
+                                network.client_write_result(Err(message));
+                            }
+                        }
+                        None => {
+                            let _ = self.cloud_requests.send(CloudRequest::UpdateClient(
+                                RouterConfigUpdate::ClientPause {
+                                    client_id,
+                                    paused,
+                                    mac_address,
+                                },
+                            ));
+                        }
+                    }
                 }
                 NetworkCloudAction::Rename {
                     client_id,
@@ -1755,6 +1771,12 @@ impl AppState {
             shell
                 .dashboard
                 .connect_open_sky(move || stack.set_visible_child_name("satellite"));
+            // SPEC-PAUSE-007: a refusal message's account and settings links
+            // raise the matching page.
+            let stack = shell.stack.clone();
+            shell
+                .network
+                .connect_open_page(move |page| stack.set_visible_child_name(page));
             shell.sky.set_status(self.latest_status.borrow().clone());
             shell
                 .sky
@@ -2050,6 +2072,16 @@ fn router_subnet_mismatch(requested: &str, config: &WifiConfig) -> Option<(Strin
     (actual != requested).then(|| (requested.to_owned(), actual.to_owned()))
 }
 
+/// The shared-catalog error key that refuses a pause sent without a chosen
+/// self device, or aimed at the viewer's own device (SPEC-PAUSE-007).
+fn pause_send_refusal(self_client_id: Option<u32>, target: u32) -> Option<&'static str> {
+    match self_client_id {
+        None => Some("errors.selfDeviceUnknown"),
+        Some(self_id) if self_id == target => Some("errors.selfPauseRefused"),
+        _ => None,
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::{
@@ -2108,7 +2140,7 @@ mod tests {
         );
     }
 
-    use super::{cloud_network_reads_allowed, cloud_roster_reads_allowed};
+    use super::{cloud_network_reads_allowed, cloud_roster_reads_allowed, pause_send_refusal};
 
     #[test]
     fn cloud_network_reads_require_visible_page_lan_failure_and_account() {
@@ -2119,5 +2151,21 @@ mod tests {
         assert!(!cloud_network_reads_allowed(true, Some(false), false));
         assert!(!cloud_roster_reads_allowed(true, Some(false), true, false));
         assert!(cloud_roster_reads_allowed(true, Some(false), true, true));
+    }
+
+    // SPEC-PAUSE-007: a pause that reaches the host without a chosen self
+    // device, or aimed at the viewer's own device, is refused with the
+    // matching message and never sent.
+    #[test]
+    fn a_pause_without_a_self_device_or_at_the_own_device_is_refused() {
+        assert_eq!(
+            pause_send_refusal(None, 7),
+            Some("errors.selfDeviceUnknown")
+        );
+        assert_eq!(
+            pause_send_refusal(Some(7), 7),
+            Some("errors.selfPauseRefused")
+        );
+        assert_eq!(pause_send_refusal(Some(99), 7), None);
     }
 }
